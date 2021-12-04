@@ -1,5 +1,7 @@
 {
   "name": "sharido",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "react"
 }

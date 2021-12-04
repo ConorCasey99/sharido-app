@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "sharido",
+	"webDir": "build",
+	"bundledWebRuntime": false
+}
