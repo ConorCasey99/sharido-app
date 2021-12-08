@@ -8,8 +8,11 @@ import {
   IonMenu,
   IonMenuToggle,
   IonNote,
-  IonButton
-} from '@ionic/react';
+  IonButton,
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+} from "@ionic/react";
 
 import { useLocation } from 'react-router-dom';
 import {
@@ -54,35 +57,34 @@ const appPages: AppPage[] = [
     iosIcon: heartOutline,
     mdIcon: heartSharp,
   },
-  {
-    title: "Archived",
-    url: "/page/Archived",
-    iosIcon: archiveOutline,
-    mdIcon: archiveSharp,
-  },
-  {
-    title: "Trash",
-    url: "/page/Trash",
-    iosIcon: trashOutline,
-    mdIcon: trashSharp,
-  },
-  {
-    title: "Spam",
-    url: "/page/Spam",
-    iosIcon: warningOutline,
-    mdIcon: warningSharp,
-  },
 ];
 
 const Menu: React.FC = () => {
   const location = useLocation();
 
   return (
-    <IonMenu contentId="main" type="overlay">
+    <IonMenu side="start" contentId="main" type="overlay">
+      <IonHeader>
+        <IonToolbar color="danger">
+          <IonTitle>Sharido</IonTitle>
+        </IonToolbar>
+      </IonHeader>
       <IonContent>
-        <IonListHeader>Sharido</IonListHeader>
-        <IonButton color="primary">Login</IonButton>
-        <IonButton color="primary">Register</IonButton>
+        <IonButton
+          color="primary"
+          routerLink="/page/Login"
+          routerDirection="forward"
+        >
+          Login
+        </IonButton>
+        <IonButton
+          color="primary"
+          routerLink="/page/Registration"
+          routerDirection="forward"
+        >
+          Registration
+        </IonButton>
+
         <IonList id="inbox-list">
           {appPages.map((appPage, index) => {
             return (

@@ -4,3 +4,11 @@ import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonInput, IonItem
 
 import "./login.css";
 
+import PageHeader from "../../components/pageHeader/pageHeader";
+
+const LoginPage = () => (
+  <>
+    <PageHeader pageTitle={"Login"}></PageHeader>
+  </>
+);
+export default LoginPage;

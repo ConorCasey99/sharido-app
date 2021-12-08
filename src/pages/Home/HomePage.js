@@ -1,7 +1,6 @@
-import CommunityCard from "../../components/CommunityCard";
 import * as Realm from "realm-web";
 import React from "react";
-
+import PageHeader from "../../components/pageHeader/pageHeader";
 import {
   IonToolbar,
   IonTitle,
@@ -17,11 +16,7 @@ import {
 
 const HomePage = () => (
   <>
-    <IonHeader>
-      <IonToolbar color="primary">
-        <IonTitle>Home Page</IonTitle>
-      </IonToolbar>
-    </IonHeader>
+    <PageHeader pageTitle={"Home"}></PageHeader>
     <IonContent>
       <IonCard>
         <IonCardHeader>
@@ -30,7 +25,6 @@ const HomePage = () => (
         </IonCardHeader>
         <IonCardContent>
           <p>Sample</p>
-
         </IonCardContent>
       </IonCard>
     </IonContent>

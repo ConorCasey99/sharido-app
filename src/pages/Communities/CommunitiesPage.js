@@ -1,6 +1,7 @@
-import CommunityCard from "../../components/CommunityCard";
 import * as Realm from "realm-web";
 import React, { useState } from "react";
+import PageHeader from "../../components/pageHeader/pageHeader";
+import CommunityCard from "../../components/communityHeader/communityCard";
 import {
   IonToolbar,
   IonTitle,
@@ -10,15 +11,13 @@ import {
   IonCardHeader,
   IonCardTitle,
   IonCardSubtitle,
+  IonMenuButton
+  
 } from "@ionic/react";
 
 const CommunitiesPage = () => (
   <>
-    <IonHeader>
-      <IonToolbar color="primary">
-        <IonTitle>Blog Page</IonTitle>
-      </IonToolbar>
-    </IonHeader>
+    <PageHeader pageTitle={"Communities"}></PageHeader>
     <IonContent>
       <IonCard>
         <IonCardHeader>
@@ -38,6 +37,7 @@ const CommunitiesPage = () => (
           <IonCardTitle>Ionic 4 and Angular</IonCardTitle>
         </IonCardHeader>
       </IonCard>
+      <CommunityCard community={"Home"}></CommunityCard>
     </IonContent>
   </>
 );
