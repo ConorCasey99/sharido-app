@@ -1,22 +1,13 @@
-import React, { useRef, useState } from "react";
-import {
-  IonContent,
-  IonHeader,
-  IonPage,
-  IonTitle,
-  IonToolbar,
-  IonInput,
-  IonItem,
-  IonLabel,
-  IonList,
-  IonItemDivider,
-} from "@ionic/react";
+import React from "react";
+import { IonPage } from "@ionic/react";
+import Registration from "../../components/authentication/registration";
 
-import "./Registration.css";
-import PageHeader from "../../components/pageHeader/pageHeader";
-const RegistrationPage = () => (
-  <>
-    <PageHeader pageTitle={"Registration"}></PageHeader>
-  </>
-);
+const RegistrationPage = () => {
+  return (
+    <IonPage>
+      <Registration></Registration>
+    </IonPage>
+  );
+};
+
 export default RegistrationPage;

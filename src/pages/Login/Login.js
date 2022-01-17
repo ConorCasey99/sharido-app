@@ -8,7 +8,9 @@ import PageHeader from "../../components/pageHeader/pageHeader";
 
 const LoginPage = () => (
   <>
+  <IonContent id='loginContent'>
     <PageHeader pageTitle={"Login"}></PageHeader>
+  </IonContent>
   </>
 );
 export default LoginPage;
