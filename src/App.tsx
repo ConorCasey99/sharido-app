@@ -40,6 +40,7 @@ const App: React.FC = () => {
             <Route path="/page/Communities" component={CommunitiesPage} exact />
             <Route path="/page/Login" component={LoginPage} exact />
             <Route path="/page/Registration" component={RegistrationPage} exact />
+          	<Redirect from="/" to="/page/Home" exact />
           </IonRouterOutlet>
         </IonSplitPane>
       </IonReactRouter>
