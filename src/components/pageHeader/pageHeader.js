@@ -6,23 +6,30 @@ import {
   IonTitle,
   IonMenuButton,
   IonGrid,
-  IonCol
+  IonCol,
+  IonContent,
+  IonPage
 } from "@ionic/react";
 
 const PageHeader = ({pageTitle}) => {
   return (
-    <IonHeader>
-      <IonToolbar color="danger">
-        <IonGrid>
-          <IonCol>
-            <IonMenuButton></IonMenuButton>
-          </IonCol>
-          <IonCol>
+    <>
+      <IonPage>
+        <IonHeader collapse="fade" translucent={true}>
+          <IonToolbar>
             <IonTitle>{pageTitle}</IonTitle>
-          </IonCol>
-        </IonGrid>
-      </IonToolbar>
-    </IonHeader>
+          </IonToolbar>
+        </IonHeader>
+
+        <IonContent fullscreen={true}>
+          <IonHeader collapse="condense">
+            <IonToolbar>
+              <IonTitle size="large">Header</IonTitle>
+            </IonToolbar>
+          </IonHeader>
+        </IonContent>
+      </IonPage>
+    </>
   );
 };
 
