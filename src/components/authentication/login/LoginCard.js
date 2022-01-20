@@ -1,6 +1,6 @@
-import React from 'react';
-import PageHeader from '../../pageHeader/pageHeader';
-import "./RegistrationCard.css";
+import React from "react";
+import PageHeader from "../../pageHeader/pageHeader";
+import "./LoginCard.css";
 
 import {
   IonCard,
@@ -12,26 +12,18 @@ import {
   IonContent,
   IonItem,
   IonCardContent,
-  IonList
- 
+  IonList,
 } from "@ionic/react";
 
-const RegistrationCard = () => {
+const LoginCard = () => {
   return (
     <IonContent>
       <div className="registration-section ion-padding">
         <div class="heading ion-padding">
           <h1>Sharido</h1>
-          <p>Register Your Account!</p>
+          <p>Welcome back!</p>
         </div>
         <div class="register-card ion-padding">
-          <div class="form-input">
-            <icon-icon name="md-eye-off"></icon-icon>
-            <ion-item>
-              <ion-label position="floating">Username</ion-label>
-              <ion-input type="text"></ion-input>
-            </ion-item>
-          </div>
           <div class="form-input">
             <icon-icon name="md-mail"></icon-icon>
             <ion-item>
@@ -46,19 +38,13 @@ const RegistrationCard = () => {
               <ion-input type="password"></ion-input>
             </ion-item>
           </div>
-          <div class="form-input">
-            <icon-icon name="md-eye-off"></icon-icon>
-            <ion-item>
-              <ion-label position="floating">Repeat Password</ion-label>
-              <ion-input type="password"></ion-input>
-            </ion-item>
-          </div>
         </div>
         <div class="action-button ion-padding">
           <ion-button size="large" class="register-button">
-            Register
+            Login
           </ion-button>
-          <p>Already have an account?</p>
+          <p>Forgot your password?</p>
+          <p>Dont have an account?</p>
           <ion-button
             class="login-button"
             size="large"
@@ -66,7 +52,7 @@ const RegistrationCard = () => {
             routerLink="/page/Login"
             routerDirection="forward"
           >
-            Login
+            Register
           </ion-button>
         </div>
       </div>
@@ -74,4 +60,4 @@ const RegistrationCard = () => {
   );
 };
 
-export default RegistrationCard;
+export default LoginCard;
