@@ -20,7 +20,7 @@
 .env.production.local
 .vscode
 .idea
-
+sharido\.en
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
