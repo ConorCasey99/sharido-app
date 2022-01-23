@@ -7,6 +7,7 @@ import HomePage from './pages/Home/HomePage';
 import CommunitiesPage from "./pages/Communities/CommunitiesPage";
 import LoginPage from "./pages/Login/Login";
 import RegistrationPage from "./pages/registration/RegistrationPage";
+import AuthenticationProvider from "./contexts/authentication/AuthenticationContext";
 //import Login from "./pages/Login/Login";
 
 
@@ -33,16 +34,26 @@ const App: React.FC = () => {
   return (
     <IonApp>
       <IonReactRouter>
-        <IonSplitPane contentId="main">
-          <Menu />
-          <IonRouterOutlet id="main">
-            <Route path="/page/Home" component={HomePage} exact />
-            <Route path="/page/Communities" component={CommunitiesPage} exact />
-            <Route path="/page/Login" component={LoginPage} exact />
-            <Route path="/page/Registration" component={RegistrationPage} exact />
-          	<Redirect from="/" to="/page/Home" exact />
-          </IonRouterOutlet>
-        </IonSplitPane>
+        <AuthenticationProvider>
+          <IonSplitPane contentId="main">
+            <Menu />
+            <IonRouterOutlet id="main">
+              <Route path="/page/Home" component={HomePage} exact />
+              <Route
+                path="/page/Communities"
+                component={CommunitiesPage}
+                exact
+              />
+              <Route path="/page/Login" component={LoginPage} exact />
+              <Route
+                path="/page/Registration"
+                component={RegistrationPage}
+                exact
+              />
+              <Redirect from="/" to="/page/Home" exact />
+            </IonRouterOutlet>
+          </IonSplitPane>
+        </AuthenticationProvider>
       </IonReactRouter>
     </IonApp>
   );
