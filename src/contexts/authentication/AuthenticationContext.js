@@ -16,11 +16,20 @@ const AuthenticationProvider = (props) => {
         return auth.createUserWithEmailAndPassword(email, password);
     }
 
+    useEffect(()=> {
+    const unsub = auth.onAuthStateChanged((user) => {
+    setCurrentUser(user);
+     })
+     return unsub
+    }, [])
+    
+
     function login(email, password) {
       return auth.signInWithEmailAndPassword(email, password);
     }
 
       const value = {
+        currentUser,
         registerUser,
         login
       };

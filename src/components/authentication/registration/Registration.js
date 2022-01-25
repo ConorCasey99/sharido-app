@@ -2,6 +2,9 @@ import React, {useState, useRef} from 'react';
 import PageHeader from '../../pageHeader/pageHeader';
 import "./RegistrationCard.css";
 import { useAuthentication } from '../../../contexts/authentication/AuthenticationContext';
+import { useLocation, useHistory } from "react-router-dom";
+import AlertComponent from '../../alertComponent/alertComponent';
+
 
 import {
   IonCard,
@@ -13,26 +16,58 @@ import {
   IonContent,
   IonItem,
   IonCardContent,
-  IonList
- 
+  IonList,
+  IonAlert,
+  alertController
 } from "@ionic/react";
+
 import { EmailAuthCredential } from 'firebase/auth';
 import { toastController } from '@ionic/core';
 
 const Registration = () => {
 
-  const {registerUser } = useAuthentication();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const {registerUser} = useAuthentication();
+  const [loading, setLoading] = useState(false);
 
   const emailRef = useRef();
   const passwordRef = useRef();
+  const checkPasswordRef = useRef();
+  //const [warning, setWarning] = useRef();
+  const history = useHistory
 
-  async function handleRegister() {
-    await registerUser(emailRef.current.value, passwordRef.current.value);
+  async function handleRegister(e) {
+    setLoading(true);
+
+    if (passwordRef.current.value !== checkPasswordRef.current.value) {
+      passwordAlert();
+    } 
+    try {
+      await registerUser(emailRef.current.value, passwordRef.current.value);
+      this.props.history.push("/page/Home");
+    } catch {
+     // setWarning("error");
+    }
+    setLoading(false);
+  }
+
+  async function passwordAlert() {
+    const alert = document.createElement("ion-alert");
+    alert.cssClass = "my-custom-class";
+    alert.header = "Alert";
+    alert.subHeader = "";
+    alert.message = "Passwords do not match!";
+    alert.buttons = ["OK"];
+
+    document.body.appendChild(alert);
+    await alert.present();
+
+    const { role } = await alert.onDidDismiss();
+    console.log("onDidDismiss resolved with role", role);
   }
   
+
   
+
 
 
 
@@ -92,12 +127,16 @@ const Registration = () => {
             <icon-icon name="md-eye-off"></icon-icon>
             <ion-item>
               <ion-label position="floating">Repeat Password</ion-label>
-              <ion-input type="password"></ion-input>
+              <ion-input 
+              type="password" 
+              ref={checkPasswordRef}>
+              </ion-input>
             </ion-item>
           </div>
         </div>
         <div class="action-button ion-padding">
           <ion-button
+            disabled={loading}
             size="large"
             class="register-button"
             onClick={handleRegister}
