@@ -1,4 +1,4 @@
-import React from "react";
+import React ,{useState, useRef} from "react";
 import PageHeader from "../../pageHeader/pageHeader";
 import "./LoginCard.css";
 
@@ -14,8 +14,42 @@ import {
   IonCardContent,
   IonList,
 } from "@ionic/react";
+import { useAuthentication } from "../../../contexts/authentication/AuthenticationContext";
 
 const LoginCard = () => {
+
+  const {login} = useAuthentication();
+  const [loading, setLoading] = useState(false);
+  const emailRef = useRef();
+  const passwordRef = useRef();
+
+  async function handleLogin(e) {
+    setLoading(true);
+
+    if (passwordRef.current.value) {
+      //passwordAlert();
+    }
+    try {
+      await login(emailRef.current.value, passwordRef.current.value);
+      this.props.history.push("/page/Home");
+    } catch {
+      // setWarning("error");
+    }
+    setLoading(false);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
   return (
     <IonContent>
       <div className="registration-section ion-padding">
@@ -28,19 +62,25 @@ const LoginCard = () => {
             <icon-icon name="md-mail"></icon-icon>
             <ion-item>
               <ion-label position="floating">Email</ion-label>
-              <ion-input type="email"></ion-input>
+              <ion-input
+               ref = {emailRef}
+               type="email"
+               ></ion-input>
             </ion-item>
           </div>
           <div class="form-input">
             <icon-icon name="md-eye-off"></icon-icon>
             <ion-item>
               <ion-label position="floating">Password</ion-label>
-              <ion-input type="password"></ion-input>
+              <ion-input
+               ref = {passwordRef}
+               type="password"
+               ></ion-input>
             </ion-item>
           </div>
         </div>
         <div class="action-button ion-padding">
-          <ion-button size="large" class="register-button">
+          <ion-button size="large" class="register-button" onClick = {handleLogin}>
             Login
           </ion-button>
           <p>Forgot your password?</p>
