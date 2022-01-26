@@ -33,9 +33,23 @@ const LoginCard = () => {
       await login(emailRef.current.value, passwordRef.current.value);
       this.props.history.push("/page/Home");
     } catch {
-      // setWarning("error");
+      loginAlert();
     }
     setLoading(false);
+  }
+
+  async function loginAlert() {
+    const alert = document.createElement("ion-alert");
+    alert.cssClass = "my-custom-class";
+    alert.header = "Alert";
+    alert.subHeader = "Incorrect email or password";
+    alert.buttons = ["OK"];
+
+    document.body.appendChild(alert);
+    await alert.present();
+
+    const { role } = await alert.onDidDismiss();
+    console.log("onDidDismiss resolved with role", role);
   }
 
 
@@ -80,16 +94,20 @@ const LoginCard = () => {
           </div>
         </div>
         <div class="action-button ion-padding">
-          <ion-button size="large" class="register-button" onClick = {handleLogin}>
+          <ion-button
+           size="large"
+           class="register-button"
+           onClick = {handleLogin}
+           disabled={loading}>
             Login
           </ion-button>
           <p>Forgot your password?</p>
           <p>Dont have an account?</p>
           <ion-button
-            class="login-button"
+            class="register-button"
             size="large"
             fill="outline"
-            routerLink="/page/Login"
+            routerLink="/page/Registration"
             routerDirection="forward"
           >
             Register
