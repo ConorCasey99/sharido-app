@@ -10,7 +10,7 @@ export function useAuthentication() {
 const AuthenticationProvider = (props) => {
      
     const [currentUser, setCurrentUser] = useState(null);
-     
+    const [loading, setLoading] = useState(true)
 
     function registerUser(email, password) {
         return auth.createUserWithEmailAndPassword(email, password);
@@ -19,6 +19,7 @@ const AuthenticationProvider = (props) => {
     useEffect(()=> {
     const unsub = auth.onAuthStateChanged((user) => {
     setCurrentUser(user);
+    setLoading(false)
      })
      return unsub
     }, [])
@@ -45,7 +46,7 @@ const AuthenticationProvider = (props) => {
       
     return (
       <AuthenticationContext.Provider value={value}>
-        {props.children}
+        {!loading && props.children}
       </AuthenticationContext.Provider>
     );
 

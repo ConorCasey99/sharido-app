@@ -7,10 +7,10 @@ import "./login.css";
 import PageHeader from "../../components/pageHeader/pageHeader";
 
 const LoginPage = () => (
-  <>
-  <IonContent id='loginContent'>
-    <LoginCard></LoginCard>
-  </IonContent>
-  </>
+  <IonPage>
+    <IonContent>
+      <LoginCard></LoginCard>
+    </IonContent>
+  </IonPage>
 );
 export default LoginPage;

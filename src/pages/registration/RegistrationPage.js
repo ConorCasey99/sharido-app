@@ -5,18 +5,6 @@ import "./Registration.css";
 import PageHeader from "../../components/pageHeader/pageHeader";
 
 const RegistrationPage = () => {
-
-
-
-
-
-
-
-
-
-
-
-
   return (
     <IonPage>
       <IonContent>
