@@ -53,7 +53,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "cypress": "cypress open",
+    "start:ci": "start-server-and-test 'http-server ./build  -p 3000' 3000 'cypress run --browser chrome --record'"
   },
   "eslintConfig": {
     "extends": [
@@ -77,6 +79,7 @@
   "devDependencies": {
     "@capacitor/cli": "3.3.2",
     "autoprefixer": "^9.8.8",
+    "cypress": "^9.3.1",
     "postcss": "^7.0.39",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17"
   }
