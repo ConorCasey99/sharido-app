@@ -4,7 +4,8 @@ import "./RegistrationCard.css";
 import { useAuthentication } from '../../../contexts/authentication/AuthenticationContext';
 import { useLocation, useHistory } from "react-router-dom";
 import AlertComponent from '../../alertComponent/alertComponent';
-
+import { storage } from '../../../firebase';
+import app from "../../../firebase"
 
 import {
   IonCard,
@@ -32,8 +33,10 @@ const Registration = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
   const checkPasswordRef = useRef();
+  const usernameRef = useRef();
+  
   //const [warning, setWarning] = useRef();
-  const history = useHistory
+  const history = useHistory()
 
   async function handleRegister(e) {
     setLoading(true);
@@ -43,7 +46,7 @@ const Registration = () => {
     } 
     try {
       await registerUser(emailRef.current.value, passwordRef.current.value);
-      this.props.history.push("/page/Home");
+      history.push("/page/Login");
     } catch {
      // setWarning("error");
     }
@@ -64,6 +67,13 @@ const Registration = () => {
     const { role } = await alert.onDidDismiss();
     console.log("onDidDismiss resolved with role", role);
   }
+
+  const storeUserDetails = () => {
+    const users = app.database().ref("Users");
+    const uuid = app.user.uid
+
+
+  };
   
 
   
@@ -98,7 +108,11 @@ const Registration = () => {
             <icon-icon name="md-eye-off"></icon-icon>
             <ion-item>
               <ion-label position="floating">Username</ion-label>
-              <ion-input type="text"></ion-input>
+              <ion-input
+               type="text"
+               id="username"
+               ref={usernameRef}>
+               </ion-input>
             </ion-item>
           </div>
           <div class="form-input">

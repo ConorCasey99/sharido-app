@@ -1,5 +1,5 @@
 import React, {useContext, useState, useEffect} from "react";
-import { auth, updateProfile } from "../../firebase"
+import { auth } from "../../firebase"
 
 const AuthenticationContext = React.createContext();
 
@@ -7,13 +7,18 @@ export function useAuthentication() {
     return useContext(AuthenticationContext);
 }
 
-const AuthenticationProvider = (props) => {
+const AuthenticationProvider = ({children}) => {
      
-    const [currentUser, setCurrentUser] = useState(null);
+    const [isAuthenticated, setIsAuthenticated] = useState(false)
+    const [currentUser, setCurrentUser] = useState();
     const [loading, setLoading] = useState(true)
 
     function registerUser(email, password) {
         return auth.createUserWithEmailAndPassword(email, password);
+    }
+
+    function login(email, password) {
+      return auth.signInWithEmailAndPassword(email, password);
     }
 
     useEffect(()=> {
@@ -23,30 +28,23 @@ const AuthenticationProvider = (props) => {
      })
      return unsub
     }, [])
-    
 
-    function login(email, password) {
-      return auth.signInWithEmailAndPassword(email, password);
+    
+    function signOut() {
+      setIsAuthenticated(false);
+      return auth.signOut();
     }
 
       const value = {
         currentUser,
         registerUser,
-        login
+        login,
+        signOut,
       };
-
-
-
-
-
-
-
-
-
       
     return (
       <AuthenticationContext.Provider value={value}>
-        {!loading && props.children}
+        {!loading && children}
       </AuthenticationContext.Provider>
     );
 

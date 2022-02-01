@@ -1,6 +1,7 @@
 import * as Realm from "realm-web";
 import React from "react";
 import PageHeader from "../../components/pageHeader/pageHeader";
+import Dashboard from "../../components/Dashboard/Dashboard";
 import {
   IonToolbar,
   IonTitle,
@@ -12,22 +13,19 @@ import {
   IonCardSubtitle,
   IonCardContent,
   IonButton,
+  IonPage,
 } from "@ionic/react";
 
 const HomePage = () => (
-  <>
-    <PageHeader pageTitle={"Home"}></PageHeader>
+  <IonPage>
+    <IonHeader collapse="fade" translucent={true}>
+      <IonToolbar>
+        <IonTitle>Home</IonTitle>
+      </IonToolbar>
+    </IonHeader>
     <IonContent>
-      <IonCard>
-        <IonCardHeader>
-          <IonCardSubtitle>Home Page</IonCardSubtitle>
-          <IonCardTitle>Welcome Home</IonCardTitle>
-        </IonCardHeader>
-        <IonCardContent>
-          <p>Sample</p>
-        </IonCardContent>
-      </IonCard>
+      <Dashboard></Dashboard>
     </IonContent>
-  </>
+  </IonPage>
 );
 export default HomePage;

@@ -13,8 +13,10 @@ import {
   IonItem,
   IonCardContent,
   IonList,
+  IonRouterLink,
 } from "@ionic/react";
 import { useAuthentication } from "../../../contexts/authentication/AuthenticationContext";
+import { useHistory } from "react-router";
 
 const LoginCard = () => {
 
@@ -22,16 +24,14 @@ const LoginCard = () => {
   const [loading, setLoading] = useState(false);
   const emailRef = useRef();
   const passwordRef = useRef();
+  const history = useHistory();
 
   async function handleLogin(e) {
-    setLoading(true);
-
-    if (passwordRef.current.value) {
-      //passwordAlert();
-    }
-    try {
+        e.preventDefault();
+  try {
+      setLoading(true);
       await login(emailRef.current.value, passwordRef.current.value);
-      this.props.history.push("/page/Home");
+      history.push("/page/Home");
     } catch {
       loginAlert();
     }
@@ -68,7 +68,7 @@ const LoginCard = () => {
     <IonContent>
       <div className="registration-section ion-padding">
         <div class="heading ion-padding">
-          <h1>Sharido</h1>
+          <h1>Log In</h1>
           <p>Welcome back!</p>
         </div>
         <div class="register-card ion-padding">
@@ -77,6 +77,7 @@ const LoginCard = () => {
             <ion-item>
               <ion-label position="floating">Email</ion-label>
               <ion-input
+               id="email"
                ref = {emailRef}
                type="email"
                ></ion-input>
@@ -102,16 +103,7 @@ const LoginCard = () => {
             Login
           </ion-button>
           <p>Forgot your password?</p>
-          <p>Dont have an account?</p>
-          <ion-button
-            class="register-button"
-            size="large"
-            fill="outline"
-            routerLink="/page/Registration"
-            routerDirection="forward"
-          >
-            Register
-          </ion-button>
+          <div>Dont have an account?</div>
         </div>
       </div>
     </IonContent>

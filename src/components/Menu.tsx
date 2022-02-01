@@ -1,3 +1,5 @@
+import { useState ,  } from "react";
+
 import {
   IonContent,
   IonIcon,
@@ -13,8 +15,9 @@ import {
   IonToolbar,
   IonTitle,
 } from "@ionic/react";
-
-import { useLocation } from 'react-router-dom';
+import { useAuthentication } from "../contexts/authentication/AuthenticationContext";
+import { useLocation, useHistory } from "react-router-dom";
+import { auth } from "../../src/firebase";
 import {
   archiveOutline,
   archiveSharp,
@@ -28,8 +31,10 @@ import {
   trashSharp,
   warningOutline,
   warningSharp,
+  exit
 } from "ionicons/icons";
 import './Menu.css';
+import { signOut } from "firebase/auth";
 
 interface AppPage {
   url: string;
@@ -57,10 +62,51 @@ const appPages: AppPage[] = [
     iosIcon: heartOutline,
     mdIcon: heartSharp,
   },
+  {
+    title: "Sign Out",
+    url: "/page/Followed",
+    iosIcon: exit,
+    mdIcon: exit,
+  },
 ];
 
 const Menu: React.FC = () => {
   const location = useLocation();
+  const [loading, setLoading] = useState(false);
+  const history = useHistory();
+
+
+   async function handleLogout() {
+
+    try {
+       setLoading(true);
+       await signOut();
+       history.push("/page/Login");
+     } catch {
+       signOutAlert();
+     }
+     setLoading(false);
+   }
+
+    async function signOutAlert() {
+      const alert = document.createElement("ion-alert");
+      alert.cssClass = "my-custom-class";
+      alert.header = "Alert";
+      alert.subHeader = "";
+      alert.message = "Error Signing Out!";
+      alert.buttons = ["OK"];
+
+      document.body.appendChild(alert);
+      await alert.present();
+
+      const { role } = await alert.onDidDismiss();
+      console.log("onDidDismiss resolved with role", role);
+    }
+
+    function signOut() {
+      return auth.signOut();
+    }
+
 
   return (
     <IonMenu side="start" contentId="main" type="overlay">
@@ -103,12 +149,20 @@ const Menu: React.FC = () => {
                     ios={appPage.iosIcon}
                     md={appPage.mdIcon}
                   />
+
                   <IonLabel>{appPage.title}</IonLabel>
                 </IonItem>
               </IonMenuToggle>
             );
           })}
         </IonList>
+        <IonButton
+          color="primary"
+          onClick={handleLogout}
+          routerDirection="forward"
+        >
+          Sign Out
+        </IonButton>
       </IonContent>
     </IonMenu>
   );
