@@ -2,6 +2,7 @@ import * as Realm from "realm-web";
 import React, { useState } from "react";
 import PageHeader from "../../components/pageHeader/pageHeader";
 import CommunityCard from "../../components/communityHeader/communityCard";
+import FloatingActionButton from "../../components/floatingActionButton/FloatingActionButton";
 import {
   IonToolbar,
   IonTitle,
@@ -38,7 +39,9 @@ const CommunitiesPage = () => (
         </IonCardHeader>
       </IonCard>
       <CommunityCard community={"Home"}></CommunityCard>
+      <FloatingActionButton></FloatingActionButton>
     </IonContent>
   </>
 );
+
 export default CommunitiesPage;

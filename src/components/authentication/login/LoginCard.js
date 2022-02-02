@@ -52,18 +52,6 @@ const LoginCard = () => {
     console.log("onDidDismiss resolved with role", role);
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
   return (
     <IonContent>
       <div className="registration-section ion-padding">

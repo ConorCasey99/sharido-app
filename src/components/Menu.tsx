@@ -1,4 +1,4 @@
-import { useState ,  } from "react";
+import { useState  } from "react";
 
 import {
   IonContent,
@@ -61,12 +61,6 @@ const appPages: AppPage[] = [
     url: "/page/Followed",
     iosIcon: heartOutline,
     mdIcon: heartSharp,
-  },
-  {
-    title: "Sign Out",
-    url: "/page/Followed",
-    iosIcon: exit,
-    mdIcon: exit,
   },
 ];
 
@@ -160,6 +154,7 @@ const Menu: React.FC = () => {
           color="primary"
           onClick={handleLogout}
           routerDirection="forward"
+          disabled={loading}
         >
           Sign Out
         </IonButton>

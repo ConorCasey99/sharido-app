@@ -7,6 +7,7 @@ import HomePage from './pages/Home/HomePage';
 import CommunitiesPage from "./pages/Communities/CommunitiesPage";
 import LoginPage from "./pages/Login/Login";
 import RegistrationPage from "./pages/registration/RegistrationPage";
+import CreateCommunityPage from "./pages/Communities/createCommunity/CreateCommunity";
 import AuthenticationProvider from "./contexts/authentication/AuthenticationContext";
 //import Login from "./pages/Login/Login";
 
@@ -15,7 +16,7 @@ import AuthenticationProvider from "./contexts/authentication/AuthenticationCont
 import "@ionic/react/css/core.css";
 
 /* Theme variables */
-import "./theme/variables.css";
+//import "./theme/variables.css";
 
 const App: React.FC = () => {
   return (
@@ -25,17 +26,18 @@ const App: React.FC = () => {
           <IonSplitPane contentId="main">
             <Menu />
             <IonRouterOutlet id="main">
-              <Route path="/page/Home"
-               component={HomePage} 
-               exact />
+              <Route path="/page/Home" component={HomePage} exact />
               <Route
                 path="/page/Communities"
                 component={CommunitiesPage}
                 exact
               />
-              <Route path="/page/Login" 
-              component={LoginPage} 
-              exact />
+              <Route
+                path="/page/CreateCommunity"
+                component={CreateCommunityPage}
+                exact
+              />
+              <Route path="/page/Login" component={LoginPage} exact />
               <Route
                 path="/page/Registration"
                 component={RegistrationPage}
