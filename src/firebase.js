@@ -6,6 +6,7 @@ import "firebase/database";
 import "firebase/storage";
 import getAnalytics from "firebase/analytics"
 import { env } from "process";
+import { getFirestore } from "firebase/firestore";
 
 //Firebase configurations
 const firebaseconfig = {
@@ -19,9 +20,11 @@ const firebaseconfig = {
 };
 
 // Initialize Firebase
-firebase.initializeApp(firebaseconfig);
+const app = firebase.initializeApp(firebaseconfig);
 //const analytics = getAnalytics(firebase);
 
 //Export 
+const db = getFirestore(app);
+export { db };
 export const auth = firebase.auth();
 export default firebase.app();

@@ -18,14 +18,20 @@ import {
 } from "@ionic/react";
 
 import { useHistory } from "react-router";
+import {db} from '../../firebase'
+import {collection, addDoc, Timestamp} from 'firebase/firestore'
+import { useAuthentication } from "../../contexts/authentication/AuthenticationContext";
 
-const LoginCard = () => {
+const CreateCommunityMenu = () => {
   const [loading, setLoading] = useState(false);
   const communityTitleRef = useRef();
   const communityDescriptionRef = useRef();
+  const communityCategoryRef = useRef();
+  const { currentUser } = useAuthentication();
+  const communitiesCollectionRef = collection(db, "communities");
 
-  function handleCreate(){
-
+  async function handleCreate(){
+     await addDoc(communitiesCollectionRef, { communityName: communityTitleRef.current.value, communityDescription: communityDescriptionRef.current.value, communityCategory: communityCategoryRef.current.value, admin: currentUser.email});
   }
 
 
@@ -56,7 +62,6 @@ const LoginCard = () => {
             <IonAvatar>
               <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" />
             </IonAvatar>
-
             <div class="form-input">
               <icon-icon name="md-mail"></icon-icon>
               <ion-item>
@@ -79,6 +84,35 @@ const LoginCard = () => {
               </ion-item>
             </div>
           </div>
+          <ion-item>
+            <ion-label>Community Category</ion-label>
+            <ion-select ref={communityCategoryRef} interface="action-sheet" class="custom-options">
+              <ion-select-option value="Mobile_Techology">
+                Mobile Technology
+              </ion-select-option>
+              <ion-select-option value="Automotive">
+                Automotive
+              </ion-select-option>
+              <ion-select-option value="Health_and_Fitness">
+                Health and Fitness
+              </ion-select-option>
+              <ion-select-option value="Arts_and_Crafts">
+                Arts and Crafts
+              </ion-select-option>
+              <ion-select-option value="Tv_and_Film">
+                Film and Tv
+               </ion-select-option>
+              <ion-select-option value="Cooking">
+                Cooking
+              </ion-select-option>
+              <ion-select-option value="Gaming">
+                Gaming
+              </ion-select-option>
+              <ion-select-option value="Music">
+                Music
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
           <div class="action-button ion-padding">
             <ion-button
               size="large"
@@ -86,7 +120,7 @@ const LoginCard = () => {
               onClick={handleCreate}
               disabled={loading}
             >
-               Upload Community Picture
+              Upload Community Picture
             </ion-button>
             <ion-button
               size="large"
@@ -103,4 +137,4 @@ const LoginCard = () => {
   );
 };
 
-export default LoginCard;
+export default CreateCommunityMenu;
