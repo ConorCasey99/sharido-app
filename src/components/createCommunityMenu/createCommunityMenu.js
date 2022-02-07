@@ -22,7 +22,7 @@ import {db} from '../../firebase'
 import {collection, addDoc, Timestamp} from 'firebase/firestore'
 import { useAuthentication } from "../../contexts/authentication/AuthenticationContext";
 
-const CreateCommunityMenu = () => {
+const CreateCommunityMenu = ({community}) => {
   const [loading, setLoading] = useState(false);
   const communityTitleRef = useRef();
   const communityDescriptionRef = useRef();
@@ -32,6 +32,7 @@ const CreateCommunityMenu = () => {
 
   async function handleCreate(){
      await addDoc(communitiesCollectionRef, { communityName: communityTitleRef.current.value, communityDescription: communityDescriptionRef.current.value, communityCategory: communityCategoryRef.current.value, admin: currentUser.email});
+     community = communitiesCollectionRef
   }
 
 

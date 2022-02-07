@@ -16,7 +16,5 @@ describe("Login Test", () => {
     cy.get("input#password").type("wrongpassword")
 
     cy.get("button#login")
-    
-
   });
 });
