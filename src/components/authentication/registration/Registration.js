@@ -4,7 +4,6 @@ import "./RegistrationCard.css";
 import { useAuthentication } from '../../../contexts/authentication/AuthenticationContext';
 import { useLocation, useHistory } from "react-router-dom";
 import AlertComponent from '../../alertComponent/alertComponent';
-import { storage } from '../../../firebase';
 import app from "../../../firebase"
 
 import {
@@ -24,6 +23,8 @@ import {
 
 import { EmailAuthCredential } from 'firebase/auth';
 import { toastController } from '@ionic/core';
+import { addDoc, collection } from 'firebase/firestore';
+import { db } from "../../../firebase";
 
 const Registration = () => {
 
@@ -38,17 +39,25 @@ const Registration = () => {
   //const [warning, setWarning] = useRef();
   const history = useHistory()
 
+  const usersCollectionRef = collection(db, "users");
+
   async function handleRegister(e) {
     setLoading(true);
 
     if (passwordRef.current.value !== checkPasswordRef.current.value) {
       passwordAlert();
-    } 
+    }
     try {
       await registerUser(emailRef.current.value, passwordRef.current.value);
+      await addDoc(usersCollectionRef, {
+        userEmail: emailRef.current.value,
+        userName: usernameRef.current.value,
+        userId: app.user.uuid,
+      });
       history.push("/page/Login");
+
     } catch {
-     // setWarning("error");
+     console.log(e)
     }
     setLoading(false);
   }

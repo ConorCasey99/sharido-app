@@ -13,23 +13,11 @@ import {
 
 const PageHeader = ({pageTitle}) => {
   return (
-    <>
-      <IonPage>
         <IonHeader collapse="fade" translucent={true}>
           <IonToolbar>
             <IonTitle>{pageTitle}</IonTitle>
           </IonToolbar>
-        </IonHeader>
-
-        <IonContent fullscreen={true}>
-          <IonHeader collapse="condense">
-            <IonToolbar>
-              <IonTitle size="large">Header</IonTitle>
-            </IonToolbar>
-          </IonHeader>
-        </IonContent>
-      </IonPage>
-    </>
+        </IonHeader> 
   );
 };
 

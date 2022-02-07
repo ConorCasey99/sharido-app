@@ -7,7 +7,8 @@ import {
   IonCardSubtitle,
   IonCardTitle,
   IonContent,
-  IonAvatar
+  IonAvatar,
+  IonPage
 } from "@ionic/react";
 
 import firebase from "../../firebase";
@@ -29,6 +30,7 @@ const SetCommunitiesList = () => {
 
   return <div className="communitiesPage">{communityList.map((community) => { 
       return (
+          
         <ion-card>
           <img
             src="https://media.istockphoto.com/photos/circle-around-the-word-community-picture-id174647392"
@@ -37,7 +39,7 @@ const SetCommunitiesList = () => {
           <ion-card-header>
             <ion-card-title>{community.communityName}</ion-card-title>
           </ion-card-header>
-          <ion-card-subtitle>{community.communityCategory}</ion-card-subtitle>
+          <ion-card-content>{community.communityCategory}</ion-card-content>
           <ion-card-content>{community.communityDescription}</ion-card-content>
           <ion-footer>
             <ion-row>
