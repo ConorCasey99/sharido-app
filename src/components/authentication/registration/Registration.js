@@ -21,45 +21,49 @@ import {
   alertController
 } from "@ionic/react";
 
-import { EmailAuthCredential } from 'firebase/auth';
+import { EmailAuthCredential, auth } from 'firebase/auth';
 import { toastController } from '@ionic/core';
 import { addDoc, collection } from 'firebase/firestore';
 import { db } from "../../../firebase";
+
 
 const Registration = () => {
 
   const {registerUser} = useAuthentication();
   const [loading, setLoading] = useState(false);
-
   const emailRef = useRef();
   const passwordRef = useRef();
   const checkPasswordRef = useRef();
   const usernameRef = useRef();
-  
+  const [userId, setUserId] = useState();
+  const { currentUser } = useAuthentication();
+
   //const [warning, setWarning] = useRef();
   const history = useHistory()
 
-  const usersCollectionRef = collection(db, "users");
-
   async function handleRegister(e) {
-    setLoading(true);
-
     if (passwordRef.current.value !== checkPasswordRef.current.value) {
       passwordAlert();
     }
     try {
+      setLoading(true);
       await registerUser(emailRef.current.value, passwordRef.current.value);
-      await addDoc(usersCollectionRef, {
-        userEmail: emailRef.current.value,
-        userName: usernameRef.current.value,
-        userId: app.user.uuid,
-      });
+      setUserId(currentUser?.uid)
+      addUserDetails(emailRef, usernameRef, userId);
       history.push("/page/Login");
-
     } catch {
      console.log(e)
     }
     setLoading(false);
+  }
+
+  const addUserDetails = () => {
+      const usersCollectionRef = collection(db, "users");
+      addDoc(usersCollectionRef, {
+      userEmail: emailRef.current.value,
+      userName: usernameRef.current.value,
+      userId: userId
+    });
   }
 
   async function passwordAlert() {
@@ -76,14 +80,6 @@ const Registration = () => {
     const { role } = await alert.onDidDismiss();
     console.log("onDidDismiss resolved with role", role);
   }
-
-  const storeUserDetails = () => {
-    const users = app.database().ref("Users");
-    const uuid = app.user.uid
-
-
-  };
-  
 
   
 
