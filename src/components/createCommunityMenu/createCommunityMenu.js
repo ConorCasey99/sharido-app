@@ -31,8 +31,34 @@ const CreateCommunityMenu = ({community}) => {
   const communitiesCollectionRef = collection(db, "communities");
 
   async function handleCreate(){
-     await addDoc(communitiesCollectionRef, { communityName: communityTitleRef.current.value, communityDescription: communityDescriptionRef.current.value, communityCategory: communityCategoryRef.current.value, admin: currentUser.email});
+     presentLoading()
+     await addDoc(communitiesCollectionRef, {
+        communityName: communityTitleRef.current.value, 
+        communityDescription: communityDescriptionRef.current.value, 
+        communityCategory: communityCategoryRef.current.value,
+        communityMembers: [
+          currentUser.email
+        ], 
+        admin: currentUser.email});
      community = communitiesCollectionRef
+  }
+
+  function loadUsers(){
+    
+  }
+
+  async function presentLoading() {
+    const loading = document.createElement("ion-loading");
+
+    loading.cssClass = "my-custom-class";
+    loading.message = "Creating Community!";
+    loading.duration = 2000;
+
+    document.body.appendChild(loading);
+    await loading.present();
+
+    const { role, data } = await loading.onDidDismiss();
+    console.log("Loading dismissed!");
   }
 
 
@@ -43,14 +69,6 @@ const CreateCommunityMenu = ({community}) => {
   function openImagePicker() {
      
   }
-
-
-
-
-
-
-
-
  
   return (
     <IonPage>

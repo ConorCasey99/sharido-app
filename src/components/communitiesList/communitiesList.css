@@ -1,0 +1,10 @@
+#communityList{
+    max-width: 40em;
+    align-content: center;
+    float:unset
+}
+
+img{
+    max-width: 50em;
+    align-items: center;
+}

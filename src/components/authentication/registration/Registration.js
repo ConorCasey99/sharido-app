@@ -46,7 +46,6 @@ const Registration = () => {
       passwordAlert();
     }
     try {
-      setLoading(true);
       await registerUser(emailRef.current.value, passwordRef.current.value);
       setUserId(currentUser?.uid)
       addUserDetails(emailRef, usernameRef, userId);
@@ -80,17 +79,6 @@ const Registration = () => {
     const { role } = await alert.onDidDismiss();
     console.log("onDidDismiss resolved with role", role);
   }
-
-  
-
-
-
-
-  
-
-
-
-
 
 
 

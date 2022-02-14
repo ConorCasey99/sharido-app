@@ -73,13 +73,27 @@ const Menu: React.FC = () => {
    async function handleLogout() {
 
     try {
-       setLoading(true);
        await signOut();
+       await presentLoading();
        history.push("/page/Login");
      } catch {
        signOutAlert();
      }
      setLoading(false);
+   }
+
+   async function presentLoading() {
+     const loading = document.createElement("ion-loading");
+
+     loading.cssClass = "my-custom-class";
+     loading.message = "Signing Out";
+     loading.duration = 1000;
+
+     document.body.appendChild(loading);
+     await loading.present();
+
+     const { role, data } = await loading.onDidDismiss();
+     console.log("Loading dismissed!");
    }
 
     async function signOutAlert() {
