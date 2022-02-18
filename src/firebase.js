@@ -3,7 +3,7 @@ import firebase from "firebase/compat/app";
 //Firebase SDKs
 import "firebase/compat/auth";
 import "firebase/database";
-import "firebase/storage";
+import "firebase/compat/storage";
 import getAnalytics from "firebase/analytics"
 import { env } from "process";
 import { getFirestore } from "firebase/firestore";
@@ -25,6 +25,8 @@ const app = firebase.initializeApp(firebaseconfig);
 
 //Export 
 const db = getFirestore(app);
-export { db };
+const storage = firebase.storage();
+
+export { db, storage};
 export const auth = firebase.auth();
 export default firebase.app();

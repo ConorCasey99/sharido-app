@@ -41,6 +41,14 @@ const SetCommunitiesList = () => {
     await deleteDoc(communityDoc)
   }}
 
+  const updateCommunity = async () => {
+
+  }
+
+  const getPosts = async (id) => {
+    console.log("hi")
+  }
+
   async function deleteAlert() {
     const alert = document.createElement("ion-alert");
     alert.cssClass = "my-custom-class";
@@ -59,7 +67,7 @@ const SetCommunitiesList = () => {
     <div id="communityCards" className="communitiesPage">
       {communityList.map((community) => {
         return (
-          <ion-card>
+          <ion-card onClick={getPosts}>
             <img
               src="https://media.istockphoto.com/photos/circle-around-the-word-community-picture-id174647392"
               alt="ion"
@@ -87,6 +95,14 @@ const SetCommunitiesList = () => {
                   >
                     {" "}
                     Delete Community
+                  </button>
+                  <button
+                    onClick={() => {
+                      deleteCommunity(community.id, community.admin);
+                    }}
+                  >
+                    {" "}
+                    Update Community
                   </button>
                 </ion-col>
                 <ion-col center text-center></ion-col>

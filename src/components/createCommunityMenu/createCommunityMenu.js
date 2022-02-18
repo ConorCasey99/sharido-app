@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, {useCallback , useState, useRef } from "react";
 
 import {
   IonCard,
@@ -21,6 +21,20 @@ import { useHistory } from "react-router";
 import {db} from '../../firebase'
 import {collection, addDoc, Timestamp} from 'firebase/firestore'
 import { useAuthentication } from "../../contexts/authentication/AuthenticationContext";
+import {
+  Camera,
+  CameraResultType,
+  CameraSource,
+  Photo,
+} from "@capacitor/camera";
+import { Filesystem, Directory } from "@capacitor/filesystem";
+import { Storage } from "@capacitor/storage";
+import { Capacitor } from "@capacitor/core";
+import {
+  useCamera,
+  availableFeatures,
+} from "@capacitor-community/camera-react";
+import { storage } from "../../firebase";
 
 const CreateCommunityMenu = ({community}) => {
   const [loading, setLoading] = useState(false);
@@ -29,6 +43,8 @@ const CreateCommunityMenu = ({community}) => {
   const communityCategoryRef = useRef();
   const { currentUser } = useAuthentication();
   const communitiesCollectionRef = collection(db, "communities");
+  const history = useHistory()
+  const { photo, getPhoto } = useCamera();
 
   async function handleCreate(){
      presentLoading()
@@ -39,8 +55,14 @@ const CreateCommunityMenu = ({community}) => {
         communityMembers: [
           currentUser.email
         ], 
-        admin: currentUser.email});
+        admin: currentUser.email,
+        posts: [
+
+        ]
+      });
+     uploadCommunityAvatar()
      community = communitiesCollectionRef
+     history.push("/page/Communities");
   }
 
   function loadUsers(){
@@ -52,18 +74,24 @@ const CreateCommunityMenu = ({community}) => {
 
     loading.cssClass = "my-custom-class";
     loading.message = "Creating Community!";
-    loading.duration = 2000;
-
+    loading.duration = 1400;
     document.body.appendChild(loading);
     await loading.present();
-
     const { role, data } = await loading.onDidDismiss();
     console.log("Loading dismissed!");
   }
 
+  
+const triggerCamera = useCallback(async () => {
+  getPhoto({
+    quality: 100,
+    allowEditing: false,
+    resultType: CameraResultType.DataUrl,
+  });
+}, [getPhoto]);
 
-  function uploadCommunityAvatar(imageURI) {
-
+  const uploadCommunityAvatar = () => {
+    
   }
 
   function openImagePicker() {
@@ -79,7 +107,7 @@ const CreateCommunityMenu = ({community}) => {
           </div>
           <div class="register-card ion-padding">
             <IonAvatar>
-              <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" />
+              <img src={photo?.dataUrl} />
             </IonAvatar>
             <div class="form-input">
               <icon-icon name="md-mail"></icon-icon>
@@ -105,38 +133,36 @@ const CreateCommunityMenu = ({community}) => {
           </div>
           <ion-item>
             <ion-label>Community Category</ion-label>
-            <ion-select ref={communityCategoryRef} interface="action-sheet" class="custom-options">
-              <ion-select-option value="Mobile_Techology">
+            <ion-select
+              ref={communityCategoryRef}
+              interface="action-sheet"
+              class="custom-options"
+            >
+              <ion-select-option value="Mobile Techology">
                 Mobile Technology
               </ion-select-option>
               <ion-select-option value="Automotive">
                 Automotive
               </ion-select-option>
-              <ion-select-option value="Health_and_Fitness">
+              <ion-select-option value="Health and Fitness">
                 Health and Fitness
               </ion-select-option>
-              <ion-select-option value="Arts_and_Crafts">
+              <ion-select-option value="Arts and Crafts">
                 Arts and Crafts
               </ion-select-option>
-              <ion-select-option value="Tv_and_Film">
+              <ion-select-option value="Tv and Film">
                 Film and Tv
-               </ion-select-option>
-              <ion-select-option value="Cooking">
-                Cooking
               </ion-select-option>
-              <ion-select-option value="Gaming">
-                Gaming
-              </ion-select-option>
-              <ion-select-option value="Music">
-                Music
-              </ion-select-option>
+              <ion-select-option value="Cooking">Cooking</ion-select-option>
+              <ion-select-option value="Gaming">Gaming</ion-select-option>
+              <ion-select-option value="Music">Music</ion-select-option>
             </ion-select>
           </ion-item>
           <div class="action-button ion-padding">
             <ion-button
               size="large"
               class="register-button"
-              onClick={handleCreate}
+              onClick={triggerCamera}
               disabled={loading}
             >
               Upload Community Picture
