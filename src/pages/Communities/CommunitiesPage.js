@@ -5,12 +5,12 @@ import {
   IonPage
   
 } from "@ionic/react";
-import SetCommunitiesList from "../../components/communitiesList/communitiesList";
+import CommunitiesList from "../../components/communitiesList/communitiesList";
 const CommunitiesPage = () => (
   <IonPage>
     <IonContent>
       <PageHeader pageTitle={"Communities"}></PageHeader>
-      <SetCommunitiesList></SetCommunitiesList>
+      <CommunitiesList></CommunitiesList>
       <FloatingActionButton></FloatingActionButton>
     </IonContent>
   </IonPage>

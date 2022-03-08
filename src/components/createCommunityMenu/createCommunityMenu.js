@@ -21,20 +21,14 @@ import { useHistory } from "react-router";
 import {db} from '../../firebase'
 import {collection, addDoc, Timestamp} from 'firebase/firestore'
 import { useAuthentication } from "../../contexts/authentication/AuthenticationContext";
-import {
-  Camera,
-  CameraResultType,
-  CameraSource,
-  Photo,
-} from "@capacitor/camera";
-import { Filesystem, Directory } from "@capacitor/filesystem";
-import { Storage } from "@capacitor/storage";
-import { Capacitor } from "@capacitor/core";
+
+
 import {
   useCamera,
   availableFeatures,
 } from "@capacitor-community/camera-react";
-import { storage } from "../../firebase";
+import { storage, uuid } from "../../firebase";
+import firebase from "../../firebase";
 
 const CreateCommunityMenu = ({community}) => {
   const [loading, setLoading] = useState(false);
@@ -44,7 +38,10 @@ const CreateCommunityMenu = ({community}) => {
   const { currentUser } = useAuthentication();
   const communitiesCollectionRef = collection(db, "communities");
   const history = useHistory()
-  const { photo, getPhoto } = useCamera();
+  //const { photo, getPhoto } = useCamera();
+  const [image, setImage] = useState(null);
+  const [communityPic, setCommunityPic] = useState("")
+  const [url, setUrl] = useState("");
 
   async function handleCreate(){
      presentLoading()
@@ -56,18 +53,50 @@ const CreateCommunityMenu = ({community}) => {
           currentUser.email
         ], 
         admin: currentUser.email,
+        communityPicture: url ,
         posts: [
 
         ]
       });
-     uploadCommunityAvatar()
+     //uploadImageAsync();
+     //handleUpload();
      community = communitiesCollectionRef
      history.push("/page/Communities");
   }
 
+  const handleChange = e => {
+    if (e.target.files[0]){
+      setImage(e.target.files[0]);
+    }
+  };
+
+  const handleUpload = () => {
+    //image.name(communityTitleRef)
+    const uploadTask = storage.ref(`images/${image.name}`).put(image);
+    uploadTask.on(
+      "state change",
+      snapshot => {},
+      error =>{
+        console.log(error)
+      },
+      () => {
+        storage
+        .ref("images")
+        .child(image.name)
+        .getDownloadURL()
+        .then(url => {
+          setUrl(url);
+        })
+      }
+    )
+  };
+  
+
   function loadUsers(){
     
   }
+
+  console.log("image: ", image)
 
   async function presentLoading() {
     const loading = document.createElement("ion-loading");
@@ -81,23 +110,26 @@ const CreateCommunityMenu = ({community}) => {
     console.log("Loading dismissed!");
   }
 
-  
+  /*
 const triggerCamera = useCallback(async () => {
   getPhoto({
     quality: 100,
     allowEditing: false,
-    resultType: CameraResultType.DataUrl,
+    resultType: CameraResultType.Base64,
   });
 }, [getPhoto]);
 
-  const uploadCommunityAvatar = () => {
-    
-  }
 
-  function openImagePicker() {
+   async function uploadImageAsync() {
+      console.log(communityPic);
+      storage
+        .ref(`/images/${communityTitleRef.current.value}`)
+        .put(communityPic);
      
   }
+*/
  
+
   return (
     <IonPage>
       <IonContent>
@@ -106,9 +138,7 @@ const triggerCamera = useCallback(async () => {
             <h1>Create a Community!</h1>
           </div>
           <div class="register-card ion-padding">
-            <IonAvatar>
-              <img src={photo?.dataUrl} />
-            </IonAvatar>
+            <IonAvatar src={url}></IonAvatar>
             <div class="form-input">
               <icon-icon name="md-mail"></icon-icon>
               <ion-item>
@@ -159,14 +189,14 @@ const triggerCamera = useCallback(async () => {
             </ion-select>
           </ion-item>
           <div class="action-button ion-padding">
+            Upload Community Picture<br></br>
+            <input type="file" onChange={handleChange}></input>
             <ion-button
               size="large"
               class="register-button"
-              onClick={triggerCamera}
+              onClick={handleUpload}
               disabled={loading}
-            >
-              Upload Community Picture
-            </ion-button>
+            ></ion-button>
             <ion-button
               size="large"
               class="register-button"

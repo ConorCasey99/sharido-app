@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
+import React,  {useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 
 import {
   IonCardContent,
@@ -18,13 +19,18 @@ import { db } from "../../firebase";
 import "./communitiesList.css"
 import { updateCurrentUser } from "firebase/auth";
 import { useAuthentication } from "../../contexts/authentication/AuthenticationContext";
+import { link } from "fs";
+import { useParams } from "react-router";
+export var Community_Name;
 
-
-const SetCommunitiesList = () => {
+const CommunitiesList = () => {
   const [communityList, setCommunitiesList] = useState([]);
   const communitiesCollectionRef = collection(db, "communities");
   const { currentUser } = useAuthentication();
+  const { communityName } = useParams();
 
+  Community_Name = communityName;
+  
   useEffect(() => {
     const getCommunities = async () => {
       const communities = await getDocs(communitiesCollectionRef);
@@ -45,10 +51,6 @@ const SetCommunitiesList = () => {
 
   }
 
-  const getPosts = async (id) => {
-    console.log("hi")
-  }
-
   async function deleteAlert() {
     const alert = document.createElement("ion-alert");
     alert.cssClass = "my-custom-class";
@@ -67,11 +69,13 @@ const SetCommunitiesList = () => {
     <div id="communityCards" className="communitiesPage">
       {communityList.map((community) => {
         return (
-          <ion-card onClick={getPosts}>
-            <img
-              src="https://media.istockphoto.com/photos/circle-around-the-word-community-picture-id174647392"
-              alt="ion"
-            ></img>
+          <ion-card>
+            <Link to={`/page/Communities/${community.id}`}>
+              <img
+                src={community?.communityPicture}
+                alt="ion"
+              ></img>
+            </Link>
             <ion-card-header>
               <ion-card-title>{community.communityName}</ion-card-title>
             </ion-card-header>
@@ -85,7 +89,7 @@ const SetCommunitiesList = () => {
                   <button>
                     <ion-icon name="thumbs-up"></ion-icon>
                     <div>
-                      Community Members: {community.communityMembers.length}
+                      Community Members: {community?.communityMembers?.length}
                     </div>
                   </button>
                   <button
@@ -98,7 +102,7 @@ const SetCommunitiesList = () => {
                   </button>
                   <button
                     onClick={() => {
-                      deleteCommunity(community.id, community.admin);
+                      <Link to={`/page/Communities/${community.id}`}></Link>;
                     }}
                   >
                     {" "}
@@ -115,4 +119,4 @@ const SetCommunitiesList = () => {
   );
 };
 
-export default SetCommunitiesList;
+export default CommunitiesList;

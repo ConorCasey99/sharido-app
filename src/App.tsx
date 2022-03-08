@@ -1,6 +1,7 @@
 import * as Realm from "realm-web";
 import { IonApp, IonRouterOutlet, IonSplitPane } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
+import React, { useState } from "react";
 import { Redirect, Route, RouteComponentProps } from "react-router-dom";
 import Menu from "./components/Menu";
 import HomePage from './pages/Home/HomePage';
@@ -9,6 +10,7 @@ import LoginPage from "./pages/Login/Login";
 import RegistrationPage from "./pages/registration/RegistrationPage";
 import CreateCommunityPage from "./pages/Communities/createCommunity/CreateCommunity";
 import AuthenticationProvider from "./contexts/authentication/AuthenticationContext";
+import CommunityPage from "./pages/Communities/communityPage/communityPage";
 //import Login from "./pages/Login/Login";
 
 
@@ -31,6 +33,10 @@ const App: React.FC = () => {
                 path="/page/Communities"
                 component={CommunitiesPage}
                 exact
+              />
+              <Route
+                path="/page/Communities/:communityId"
+                component={CommunityPage}
               />
               <Route
                 path="/page/CreateCommunity"
