@@ -11,8 +11,6 @@ import RegistrationPage from "./pages/registration/RegistrationPage";
 import CreateCommunityPage from "./pages/Communities/createCommunity/CreateCommunity";
 import AuthenticationProvider from "./contexts/authentication/AuthenticationContext";
 import CommunityPage from "./pages/Communities/communityPage/communityPage";
-//import Login from "./pages/Login/Login";
-
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -35,7 +33,7 @@ const App: React.FC = () => {
                 exact
               />
               <Route
-                path="/page/Communities/:communityId"
+                path="/page/CommunityPage/:id"
                 component={CommunityPage}
               />
               <Route
