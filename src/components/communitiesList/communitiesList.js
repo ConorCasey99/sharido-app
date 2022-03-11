@@ -28,9 +28,6 @@ const CommunitiesList = () => {
   const [communityList, setCommunitiesList] = useState([]);
   const communitiesCollectionRef = collection(db, "communities");
   const { currentUser } = useAuthentication();
-  const { communityName } = useParams();
-
-  Community_Name = communityName;
   
   useEffect(() => {
     const getCommunities = async () => {
@@ -65,6 +62,8 @@ const CommunitiesList = () => {
     const { role } = await alert.onDidDismiss();
     console.log("onDidDismiss resolved with role", role);
   }
+
+ 
 
   return (
         <div id="communityCards" className="communitiesPage">

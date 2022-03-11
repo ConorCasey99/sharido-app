@@ -17,11 +17,12 @@ import { useFirestoreQuery } from "@react-query-firebase/firestore";
 import { useCollection } from "react-query-firestore";
 import { useParams } from "react-router";
 
-
 const CommunityPage = (id) => {
    const [postList, setPostsList] = useState([]);
    const postsCollectionRef = collection(db, "posts");
-   const community = id;
+   let  communityId = useParams().id;
+  
+  // const community = communityId?.id;
 
  useEffect(() => {
   const getCommunities = async () => {
@@ -33,13 +34,13 @@ const CommunityPage = (id) => {
   getCommunities();
  }, [])
 
- console.log(id)
+ console.log(useParams().id)
 
   return (
         <div id="postCards" className="postPage">
           {postList.map((post) => {
             return (
-              <h1>{post.postTitle}</h1>
+              <h1>{communityId}</h1>
 
            );
        })}
