@@ -1,6 +1,4 @@
-import { IonPage, IonHeader } from "@ionic/react";
 import React, { useState, useEffect } from "react";
-import firestore from "../../firebase";
 import { Link } from "react-router-dom";
 
 import {
@@ -12,10 +10,7 @@ import {
   where,
 } from "firebase/firestore";
 import { db } from "../../firebase"
-import { useFirestoreQuery } from "@react-query-firebase/firestore";
-import { useCollection } from "react-query-firestore";
 import { useParams } from "react-router";
-import { refresh } from "ionicons/icons";
 
 const PostList = () => {
   const [postList, setPostsList] = useState([]);
