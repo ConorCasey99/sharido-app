@@ -53,45 +53,40 @@ const LoginCard = () => {
   }
 
   return (
-    <IonContent>
+    <IonContent class="ion-padding ion-text-center" color="danger">
+      <img src="\assets\images\logoWhiteName.png" class="logo" alt="logo"></img>
       <div className="registration-section ion-padding">
-        <div class="heading ion-padding">
-          <h1>Log In</h1>
-          <p>Welcome back!</p>
-        </div>
         <div class="register-card ion-padding">
+          <div class="heading ion-padding">
+            <h1 class="loginText">Log In</h1>
+            <p class="welcomeText">Welcome back!</p>
+          </div>
           <div class="form-input">
             <icon-icon name="md-mail"></icon-icon>
             <ion-item>
               <ion-label position="floating">Email</ion-label>
-              <ion-input
-               id="email"
-               ref = {emailRef}
-               type="email"
-               ></ion-input>
+              <ion-input id="email" ref={emailRef} type="email"></ion-input>
             </ion-item>
           </div>
           <div class="form-input">
             <icon-icon name="md-eye-off"></icon-icon>
             <ion-item>
               <ion-label position="floating">Password</ion-label>
-              <ion-input
-               ref = {passwordRef}
-               type="password"
-               ></ion-input>
+              <ion-input ref={passwordRef} type="password"></ion-input>
             </ion-item>
           </div>
         </div>
         <div class="action-button ion-padding">
           <ion-button
-           size="large"
-           class="register-button"
-           onClick = {handleLogin}
-           disabled={loading}>
+            size="large"
+            class="register-button"
+            onClick={handleLogin}
+            disabled={loading}
+          >
             Login
           </ion-button>
-          <p>Forgot your password?</p>
-          <div>Dont have an account?</div>
+          <p class="forgotPassword">Forgot your password?</p>
+          <div class="dontHave">Dont have an account?</div>
         </div>
       </div>
     </IonContent>

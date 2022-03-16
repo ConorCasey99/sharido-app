@@ -39,16 +39,16 @@ const CreatePostMenu = () => {
   const [image, setImage] = useState(null);
   const [postsPic, setPostPic] = useState("");
   const [url, setUrl] = useState("");
-  let communityIdParam = useParams().id
+  let postIdParam = useParams().id
 
   async function handleCreate() {
     presentLoading();
     await addDoc(postsCollectionRef, {
-      communityId: communityIdParam,
+      communityId: postIdParam,
       postTitle: postTitleRef.current.value,
-      communityDescription: postDescriptionRef.current.value,
+      postDescription: postDescriptionRef.current.value,
       poster: currentUser.email,
-      communityPicture: url,
+      postPicture: url,
       comments: [],
     });
     //uploadImageAsync();
@@ -63,7 +63,7 @@ const CreatePostMenu = () => {
   };
 
 
-  console.log(communityIdParam)
+  console.log(postIdParam)
   const handleUpload = () => {
     //image.name(communityTitleRef)
     const uploadTask = storage.ref(`images/${image.name}`).put(image);
@@ -87,9 +87,8 @@ const CreatePostMenu = () => {
 
   async function presentLoading() {
     const loading = document.createElement("ion-loading");
-
     loading.cssClass = "my-custom-class";
-    loading.message = "Creating Community!";
+    loading.message = "Creating Post!";
     loading.duration = 1400;
     document.body.appendChild(loading);
     await loading.present();
@@ -109,7 +108,7 @@ const CreatePostMenu = () => {
             <div class="form-input">
               <icon-icon name="md-mail"></icon-icon>
               <ion-item>
-                <ion-label position="floating">Community Name</ion-label>
+                <ion-label position="floating">Post Title</ion-label>
                 <ion-input
                   id="title"
                   ref={postTitleRef}
@@ -120,7 +119,7 @@ const CreatePostMenu = () => {
             <div class="form-input">
               <icon-icon name="md-eye-off"></icon-icon>
               <ion-item>
-                <ion-label position="floating">Community Description</ion-label>
+                <ion-label position="floating">Post Content</ion-label>
                 <ion-input
                   ref={postDescriptionRef}
                   type="description"
@@ -131,7 +130,7 @@ const CreatePostMenu = () => {
           <ion-item>
           </ion-item>
           <div class="action-button ion-padding">
-            Upload Community Picture<br></br>
+            Upload Post Picture<br></br>
             <input type="file" onChange={handleChange}></input>
             <ion-button
               size="large"
@@ -145,7 +144,7 @@ const CreatePostMenu = () => {
               onClick={handleCreate}
               disabled={loading}
             >
-              Create Community
+              Create Post
             </ion-button>
           </div>
         </div>

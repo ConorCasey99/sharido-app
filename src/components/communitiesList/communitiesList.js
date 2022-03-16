@@ -11,8 +11,12 @@ import {
   IonAvatar,
   IonPage,
   IonRouterLink,
+  useIonActionSheet,
+  IonButton,
+  IonActionSheet
 } from "@ionic/react";
 
+import { trash, share, caretForwardCircle, heart, close } from "ionicons/icons";
 import firebase from "../../firebase";
 import { getDocs, collection, deleteDoc, doc } from "firebase/firestore";
 import { async } from "@firebase/util";
@@ -64,6 +68,7 @@ const CommunitiesList = () => {
     console.log("onDidDismiss resolved with role", role);
   }
 
+ 
   return (
     <div id="communityCards" className="communitiesPage">
       {communityList.map((community) => {

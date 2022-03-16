@@ -1,0 +1,29 @@
+.logo{
+    width: 10em;
+    margin-left:35%;
+    margin-top: 4%;
+}
+
+.loginText{
+    color: black;
+    margin-left: 40%;
+}
+
+.welcomeText{
+    color:black;
+    margin-left: 39%;
+
+}
+
+.register-button{
+    margin-left: 20%;
+    width: 15em;
+}
+
+.forgotPassword{
+    color:black;
+}
+
+.dontHave{
+    color:black;
+}
