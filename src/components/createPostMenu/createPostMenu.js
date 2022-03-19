@@ -37,8 +37,12 @@ const CreatePostMenu = () => {
   const postsCollectionRef = collection(db, "posts");
   const history = useHistory();
   const [image, setImage] = useState(null);
+  const [file, setFile] = useState(null);
   const [postsPic, setPostPic] = useState("");
-  const [url, setUrl] = useState("");
+  const [pictureUrl, setPictureUrl] = useState("");
+  const [fileUrl, setFileUrl] = useState("");
+
+
   let postIdParam = useParams().id
 
   async function handleCreate() {
@@ -48,7 +52,8 @@ const CreatePostMenu = () => {
       postTitle: postTitleRef.current.value,
       postDescription: postDescriptionRef.current.value,
       poster: currentUser.email,
-      postPicture: url,
+      postPicture: pictureUrl,
+      postDocument: fileUrl,
       comments: [],
     });
     //uploadImageAsync();
@@ -62,9 +67,14 @@ const CreatePostMenu = () => {
     }
   };
 
+  const handleChangeFile = (e) => {
+    if (e.target.files[0]) {
+      setFile(e.target.files[0]);
+    }
+  };
 
-  console.log(postIdParam)
-  const handleUpload = () => {
+
+  const handleUploadPicture = () => {
     //image.name(communityTitleRef)
     const uploadTask = storage.ref(`images/${image.name}`).put(image);
     uploadTask.on(
@@ -79,7 +89,28 @@ const CreatePostMenu = () => {
           .child(image.name)
           .getDownloadURL()
           .then((url) => {
-            setUrl(url);
+            setPictureUrl(url);
+          });
+      }
+    );
+  };
+
+  const handleUploadFile = () => {
+    //image.name(communityTitleRef)
+    const uploadTask = storage.ref(`files/${file.name}`).put(file);
+    uploadTask.on(
+      "state change",
+      (snapshot) => {},
+      (error) => {
+        console.log(error);
+      },
+      () => {
+        storage
+          .ref("files")
+          .child(file.name)
+          .getDownloadURL()
+          .then((url) => {
+            setFileUrl(url);
           });
       }
     );
@@ -104,7 +135,7 @@ const CreatePostMenu = () => {
             <h1>Create a Post!</h1>
           </div>
           <div class="register-card ion-padding">
-            <IonAvatar src={url}></IonAvatar>
+            <IonAvatar src={pictureUrl}></IonAvatar>
             <div class="form-input">
               <icon-icon name="md-mail"></icon-icon>
               <ion-item>
@@ -127,17 +158,29 @@ const CreatePostMenu = () => {
               </ion-item>
             </div>
           </div>
-          <ion-item>
-          </ion-item>
+          <ion-item></ion-item>
           <div class="action-button ion-padding">
             Upload Post Picture<br></br>
             <input type="file" onChange={handleChange}></input>
+            <br></br>
+            Upload Documents<br></br>
+            <input type="file" onChange={handleChangeFile}></input>
             <ion-button
               size="large"
               class="register-button"
-              onClick={handleUpload}
+              onClick={handleUploadFile}
               disabled={loading}
-            ></ion-button>
+            >
+              Upload Files
+            </ion-button>
+            <ion-button
+              size="large"
+              class="register-button"
+              onClick={handleUploadPicture}
+              disabled={loading}
+            >
+              Upload Pciture
+            </ion-button>
             <ion-button
               size="large"
               class="register-button"

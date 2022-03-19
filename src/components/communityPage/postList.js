@@ -47,7 +47,7 @@ const PostList = () => {
               <img
                 key={post.id}
                 src={
-                  "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fst.automobilemag.com%2Fuploads%2Fsites%2F11%2F2016%2F03%2F2015-Mitsubishi-Lancer-Evolution-Final-Edition-engine-1.jpg&f=1&nofb=1"
+                  post?.postPicture
                 }
                 alt="ion"
               ></img>
@@ -55,8 +55,10 @@ const PostList = () => {
             <ion-card-header>
               <ion-card-title>{post.postTitle}</ion-card-title>
             </ion-card-header>
-            <ion-card-content>parts</ion-card-content>
             <ion-card-content>{post.postDescription}</ion-card-content>
+            <Link to={post.postDocument}>
+              <ion-card-content>{post.postTitle} Documents</ion-card-content>
+            </Link>
             <ion-footer>
               <ion-row>
                 <ion-col center text-center>

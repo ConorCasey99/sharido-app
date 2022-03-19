@@ -34,7 +34,7 @@ const App: React.FC = () => {
               />
               <Route path="/page/CommunityPage/:id" component={CommunityPage} />
               <Route
-                path="/page/CommunityPage/:id/CreatePostPage"
+                path="/page/CreatePostPage/:id"
                 component={CreatePostPage}
                 exact
               />

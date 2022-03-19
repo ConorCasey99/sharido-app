@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLocation, useHistory } from "react-router-dom";
+import { useLocation, useHistory, Link } from "react-router-dom";
 import app from "../../firebase";
 import { add } from "ionicons/icons";
 import { useAuthentication } from "../../contexts/authentication/AuthenticationContext";
@@ -11,7 +11,7 @@ const AddPostButton = () => {
   let communityId = useParams().id
 
   function handleOnClick() {
-    history.push(`/page/CommunityPage/${communityId}/CreatePostPage`);
+    
   }
 
   async function accountAlert() {
@@ -31,9 +31,11 @@ const AddPostButton = () => {
 
   return (
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-      <ion-fab-button>
-        <ion-icon icon={add} onClick={handleOnClick}></ion-icon>
-      </ion-fab-button>
+      <Link to={`/page/CreatePostPage/${communityId}`}>
+        <ion-fab-button>
+          <ion-icon icon={add} onClick={handleOnClick}></ion-icon>
+        </ion-fab-button>
+      </Link>
     </ion-fab>
   );
 };
