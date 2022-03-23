@@ -20,6 +20,7 @@ import { useLocation, useHistory } from "react-router-dom";
 import { auth } from "../../src/firebase";
 import {
   archiveOutline,
+  person,
   archiveSharp,
   heartOutline,
   heartSharp,
@@ -31,7 +32,10 @@ import {
   trashSharp,
   warningOutline,
   warningSharp,
-  exit
+  exit, 
+  book,
+  keypad,
+  information
 } from "ionicons/icons";
 import './Menu.css';
 import { signOut } from "firebase/auth";
@@ -51,16 +55,40 @@ const appPages: AppPage[] = [
     mdIcon: home,
   },
   {
-    title: "Communities",
+    title: "All Communities",
     url: "/page/Communities",
     iosIcon: gitNetworkOutline,
     mdIcon: gitNetwork,
   },
   {
+    title: "Community Categories",
+    url: "/page/CommunityCategories",
+    iosIcon: keypad,
+    mdIcon: keypad,
+  },
+  {
     title: "Followed Communities",
-    url: "/page/Followed",
+    url: "/page/FollowedCommunities",
     iosIcon: heartOutline,
     mdIcon: heartSharp,
+  },
+  {
+    title: "Users",
+    url: "/page/UsersPage",
+    iosIcon: person,
+    mdIcon: person,
+  },
+  {
+    title: "Classes",
+    url: "/page/Classes",
+    iosIcon: book,
+    mdIcon: book,
+  },
+  {
+    title: "About Us",
+    url: "/page/About",
+    iosIcon: information,
+    mdIcon: information,
   },
 ];
 

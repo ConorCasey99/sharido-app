@@ -42,23 +42,20 @@ const PostList = () => {
     <div id="communityCards" className="communitiesPage">
       {postList.map((post) => {
         return (
-          <ion-card key={post.id}>
+          <ion-card class="postcard" key={post.id}>
             <Link to={`/page/CommunityPage/${post.id}`}>
-              <img
-                key={post.id}
-                src={
-                  post?.postPicture
-                }
-                alt="ion"
-              ></img>
+              <img key={post.id} src={post?.postPicture} alt="ion"></img>
             </Link>
             <ion-card-header>
               <ion-card-title>{post.postTitle}</ion-card-title>
             </ion-card-header>
             <ion-card-content>{post.postDescription}</ion-card-content>
-            <Link to={post.postDocument}>
-              <ion-card-content>{post.postTitle} Documents</ion-card-content>
-            </Link>
+            <ion-card-content>
+              <a href={post.postDocument} download>
+                {post.postTitle} Document
+              </a>
+            </ion-card-content>
+
             <ion-footer>
               <ion-row>
                 <ion-col center text-center>

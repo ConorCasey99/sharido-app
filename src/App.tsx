@@ -14,7 +14,11 @@ import CommunityPage from "./pages/Communities/communityPage/communityPage";
 import CreatePostPage from "./pages/Posts/CreatePost/CreatePostPage";
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
-
+import UsersPage from "./pages/Users/UsersPage"
+import CommunityCategories from "./pages/Communities/communityCategories/CommunityCategories";
+import AboutPage from "./pages/about/AboutPage";
+import FollowedCommunities from "./pages/Communities/followedCommunities/FollowedCommunities";
+import AllClassesPage from "./pages/classes/allClasses/AllClassesPage";
 /* Theme variables */
 //import "./theme/variables.css";
 
@@ -32,12 +36,28 @@ const App: React.FC = () => {
                 component={CommunitiesPage}
                 exact
               />
+              <Route
+                path="/page/CommunityCategories"
+                component={CommunityCategories}
+                exact
+              />
+              <Route
+                path="/page/FollowedCommunities"
+                component={FollowedCommunities}
+                exact
+              />
               <Route path="/page/CommunityPage/:id" component={CommunityPage} />
               <Route
                 path="/page/CreatePostPage/:id"
                 component={CreatePostPage}
                 exact
               />
+              <Route path="/page/Classes"
+               component={AllClassesPage}
+               exact />
+              <Route path="/page/UsersPage"
+               component={UsersPage}
+               exact />
               <Route
                 path="/page/CreateCommunity"
                 component={CreateCommunityPage}
@@ -50,6 +70,7 @@ const App: React.FC = () => {
                 component={RegistrationPage}
                 exact
               />
+              <Route path="/page/About" component={AboutPage} exact />
               <Redirect from="/" to="/page/Home" exact />
             </IonRouterOutlet>
           </IonSplitPane>
