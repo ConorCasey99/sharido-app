@@ -37,14 +37,12 @@ const UsersList = () => {
     getUsers();
   });
 
-  const updateCommunity = async () => {};
-
   return (
     <div id="communityCards" className="communitiesPage">
       {usersList.map((user) => {
         return (
           <ion-card key={user.id}>
-            <Link to={`/page/CommunityPage/${user.id}`}>
+            <Link to={`/page/user/${user.userName}`}>
               <img className={styles.userIcon} key={user.id} src={user?.userPicture} alt="Avatar"></img>
             </Link>
             <ion-card-header>
@@ -56,7 +54,7 @@ const UsersList = () => {
                   <button>
                     <ion-icon name="thumbs-up"></ion-icon>
                     <div>
-                      Community Members: {user?.posts?.length}
+                      Users Posts: {user?.posts?.length}
                     </div>
                   </button>
                 </ion-col>

@@ -1,6 +1,6 @@
 import React, {useState, useRef} from 'react';
 import PageHeader from '../../pageHeader/pageHeader';
-import "./RegistrationCard.css";
+import styles from "./RegistrationCard.css";
 import { useAuthentication } from '../../../contexts/authentication/AuthenticationContext';
 import { useLocation, useHistory } from "react-router-dom";
 import AlertComponent from '../../alertComponent/alertComponent';
