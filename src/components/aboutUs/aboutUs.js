@@ -21,8 +21,30 @@ import {
 } from "ionicons/icons";
 
 const AboutUs = () => {
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   return (
-   
       <IonContent>
         <IonGrid>
           <IonRow className="ion-justify-content-center">
@@ -37,7 +59,7 @@ const AboutUs = () => {
                       <img
                         src="/assets/images/logo.png"
                         alt="avatar"
-                        className={styles.avatar}
+                        className={styles.appIcon}
                       />
                     </IonCol>
                     <IonCol size="8">
@@ -64,7 +86,7 @@ const AboutUs = () => {
               <IonCard className={styles.appCard}>
                 <IonCardContent>
                   <IonIcon icon={imageOutline} />
-                  <IonCardTitle>30</IonCardTitle>
+                  <IonCardTitle>23</IonCardTitle>
                   <IonCardSubtitle>Users</IonCardSubtitle>
                 </IonCardContent>
               </IonCard>
@@ -74,7 +96,7 @@ const AboutUs = () => {
               <IonCard className={styles.appCard}>
                 <IonCardContent>
                   <IonIcon icon={bookmarkOutline} />
-                  <IonCardTitle>1</IonCardTitle>
+                  <IonCardTitle>2</IonCardTitle>
                   <IonCardSubtitle>Communities</IonCardSubtitle>
                 </IonCardContent>
               </IonCard>

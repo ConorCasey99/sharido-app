@@ -25,6 +25,7 @@ import { EmailAuthCredential, auth } from 'firebase/auth';
 import { toastController } from '@ionic/core';
 import { addDoc, collection } from 'firebase/firestore';
 import { db } from "../../../firebase";
+import { storage, uuid } from "../../../firebase";
 
 
 const Registration = () => {
@@ -37,6 +38,8 @@ const Registration = () => {
   const usernameRef = useRef();
   const [userId, setUserId] = useState();
   const { currentUser } = useAuthentication();
+  const [image, setImage] = useState(null);
+  const [pictureUrl, setPictureUrl] = useState("");
 
   //const [warning, setWarning] = useRef();
   const history = useHistory()
@@ -48,7 +51,7 @@ const Registration = () => {
     try {
       await registerUser(emailRef.current.value, passwordRef.current.value);
       setUserId(currentUser?.uid)
-      addUserDetails(emailRef, usernameRef, userId);
+      addUserDetails(emailRef, usernameRef, userId, pictureUrl);
       history.push("/page/Login");
     } catch {
      console.log(e)
@@ -56,13 +59,14 @@ const Registration = () => {
     setLoading(false);
   }
 
-  const addUserDetails = () => {
+  async function addUserDetails () {
       const usersCollectionRef = collection(db, "users");
-      addDoc(usersCollectionRef, {
-      userEmail: emailRef.current.value,
-      userName: usernameRef.current.value,
-      userId: userId
-    });
+     await addDoc(usersCollectionRef, {
+        userEmail: emailRef.current.value,
+        userName: usernameRef.current.value,
+        userId: userId,
+        userPicture: pictureUrl,
+      });
   }
 
   async function passwordAlert() {
@@ -80,15 +84,32 @@ const Registration = () => {
     console.log("onDidDismiss resolved with role", role);
   }
 
+    const handleChange = (e) => {
+      if (e.target.files[0]) {
+        setImage(e.target.files[0]);
+      }
+    };
 
+     const handleUploadPicture = () => {
+       const uploadTask = storage.ref(`images/${image.name}`).put(image);
+       uploadTask.on(
+         "state change",
+         (snapshot) => {},
+         (error) => {
+           console.log(error);
+         },
+         () => {
+           storage
+             .ref("images")
+             .child(image.name)
+             .getDownloadURL()
+             .then((url) => {
+               setPictureUrl(url);
+             });
+         }
+       );
+     };
 
-
-
-
-
-
-
-  
   return (
     <IonContent>
       <div className="registration-section ion-padding">
@@ -102,21 +123,17 @@ const Registration = () => {
             <ion-item>
               <ion-label position="floating">Username</ion-label>
               <ion-input
-               type="text"
-               id="username"
-               ref={usernameRef}>
-               </ion-input>
+                type="text"
+                id="username"
+                ref={usernameRef}
+              ></ion-input>
             </ion-item>
           </div>
           <div class="form-input">
             <icon-icon name="md-mail"></icon-icon>
             <ion-item>
               <ion-label position="floating">Email</ion-label>
-              <ion-input
-                type="email"
-                id="email"
-                ref={emailRef}
-              ></ion-input>
+              <ion-input type="email" id="email" ref={emailRef}></ion-input>
             </ion-item>
           </div>
           <div class="form-input">
@@ -134,14 +151,21 @@ const Registration = () => {
             <icon-icon name="md-eye-off"></icon-icon>
             <ion-item>
               <ion-label position="floating">Repeat Password</ion-label>
-              <ion-input 
-              type="password" 
-              ref={checkPasswordRef}>
-              </ion-input>
+              <ion-input type="password" ref={checkPasswordRef}></ion-input>
             </ion-item>
           </div>
         </div>
+        Upload Profile Picture<br></br>
+        <input type="file" onChange={handleChange}></input>
         <div class="action-button ion-padding">
+          <ion-button
+            size="large"
+            class="register-button"
+            onClick={handleUploadPicture}
+            disabled={loading}
+          >
+            Upload Profile Pic
+          </ion-button>
           <ion-button
             disabled={loading}
             size="large"
