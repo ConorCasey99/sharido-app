@@ -1,0 +1,92 @@
+.home {
+
+    ion-header {
+        &.header-md:after {
+            background: none;
+        }
+    }
+
+    ion-header,
+    ion-toolbar {
+
+        border: none !important;
+        --border-style: none !important;
+        border-color: none !important;
+        border-bottom: none !important;
+    }
+
+    ion-toolbar {
+
+        background-color: #5893fa;
+    }
+}
+
+
+
+.avatar {
+    width: 20rem;
+    border-radius: 10px;
+}
+
+.appStats {
+
+    background-color: rgb(245, 245, 245);
+    border-radius: 10px !important;
+    padding: 0.2rem;
+    align-content: center;
+}
+
+.appStat {
+
+    text-align: center;
+    margin: 0 auto;
+
+    ion-card-title {
+
+        color: rgb(68, 68, 68);
+        font-size: 0.8rem;
+    }
+
+    ion-card-subtitle {
+
+        font-size: 0.6rem;
+    }
+}
+
+.appInfo {
+
+    text-align: left;
+    margin-top: -0.2rem;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.appName {
+
+    color: rgb(9, 59, 59) !important;
+    font-weight: 500 !important;
+}
+
+.appCard {
+
+    ion-icon {
+
+        font-size: 1.75rem;
+        color: #5893fa;
+        margin-bottom: 1rem;
+    }
+}
+
+
+.profileActionCard {
+
+    padding-top: 0.5rem;
+
+    ion-icon {
+
+        font-size: 1.75rem;
+        color: #5893fa;
+        margin-top: -0.3rem;
+    }
+}

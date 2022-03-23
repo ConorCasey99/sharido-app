@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import {
@@ -16,16 +16,10 @@ import {
   IonActionSheet
 } from "@ionic/react";
 
-import { trash, share, caretForwardCircle, heart, close } from "ionicons/icons";
-import firebase from "../../firebase";
 import { getDocs, collection, deleteDoc, doc } from "firebase/firestore";
-import { async } from "@firebase/util";
 import { db } from "../../firebase";
 import "./communitiesList.css";
-import { updateCurrentUser } from "firebase/auth";
 import { useAuthentication } from "../../contexts/authentication/AuthenticationContext";
-import { link } from "fs";
-import { useParams, useHistory } from "react-router";
 export var Community_Name;
 
 const CommunitiesList = () => {
