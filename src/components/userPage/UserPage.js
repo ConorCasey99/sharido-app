@@ -16,7 +16,7 @@ const UserPage = () => {
   //const [postList, setUsersList] = useState([]);
   const usersCollectionRef = collection(db, "users");
   let userParam = useParams().userName;
-  const [userProfile , setUserProfile] = useState("")
+  const [userProfile , setUserProfile] = useState([])
 
   useEffect(() => {
     const queryUsers = async () => {
@@ -25,7 +25,8 @@ const UserPage = () => {
         where("userName", "==", userParam)
       );
       const usersQuerySnap = await getDocs(usersQuery);
-      setUserProfile(usersQuerySnap.doc((doc) => ({ ...doc.data(), id: doc.id })));
+      setUserProfile(
+        usersQuerySnap.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
     queryUsers();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -33,27 +34,24 @@ const UserPage = () => {
 
   
   console.log(userParam)
-
-  return (
+return (
     <div id="communityCards" className="communitiesPage">
-      <ion-card class="postcard" key={userProfile.id}>
-        <img
-          key={userProfile.id}
-          src={userProfile?.userPicture}
-          alt="ion"
-        ></img>
+      {userProfile.map((Profile) => {
+  return (
+    <ion-card class="postcard" key={Profile.id}>
+      <img key={Profile.id} src={Profile?.userPicture} alt="ion"></img>
 
-        <ion-card-header>
-          <ion-card-title>{userProfile.userName}</ion-card-title>
-        </ion-card-header>
-        <ion-footer>
-          <ion-row>
-    
-            <ion-col center text-center></ion-col>
-          </ion-row>
-        </ion-footer>
-      </ion-card>
-      )
+      <ion-card-header>
+        <ion-card-title>{Profile.userName}</ion-card-title>
+      </ion-card-header>
+      <ion-footer>
+        <ion-row>
+          <ion-col center text-center></ion-col>
+        </ion-row>
+      </ion-footer>
+    </ion-card>
+  );
+      })}
     </div>
   );
 };
