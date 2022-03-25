@@ -38,12 +38,17 @@ const UsersList = () => {
   });
 
   return (
-    <div id="communityCards" className="communitiesPage">
+    <div id="communityCards" className={styles.usersPage}>
       {usersList.map((user) => {
         return (
-          <ion-card key={user.id}>
-            <Link to={`/page/user/${user.userName}`}>
-              <img className={styles.userIcon} key={user.id} src={user?.userPicture} alt="Avatar"></img>
+          <ion-card className={styles.userCard} key={user.userName}>
+            <Link to={`/page/User/${user.userName}`}>
+              <img
+                className={styles.userIcon}
+                key={user.userName}
+                src={user?.userPicture}
+                alt="Avatar"
+              ></img>
             </Link>
             <ion-card-header>
               <ion-card-title>{user.userName}</ion-card-title>
@@ -53,9 +58,7 @@ const UsersList = () => {
                 <ion-col center text-center>
                   <button>
                     <ion-icon name="thumbs-up"></ion-icon>
-                    <div>
-                      Users Posts: {user?.posts?.length}
-                    </div>
+                    <div>Users Posts: {user?.posts?.length}</div>
                   </button>
                 </ion-col>
                 <ion-col center text-center></ion-col>

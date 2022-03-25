@@ -168,24 +168,33 @@ const triggerCamera = useCallback(async () => {
               interface="action-sheet"
               class="custom-options"
             >
-              <ion-select-option value="Mobile Techology">
+              <ion-select-option value="MobileTechnology">
                 Mobile Technology
               </ion-select-option>
               <ion-select-option value="Automotive">
                 Automotive
               </ion-select-option>
-              <ion-select-option value="Health and Fitness">
+              <ion-select-option value="HealthandFitness">
                 Health and Fitness
               </ion-select-option>
-              <ion-select-option value="Arts and Crafts">
+              <ion-select-option value="ArtsandCrafts">
                 Arts and Crafts
               </ion-select-option>
-              <ion-select-option value="Tv and Film">
+              <ion-select-option value="TvandFilm">
                 Film and Tv
               </ion-select-option>
-              <ion-select-option value="Cooking">Cooking</ion-select-option>
-              <ion-select-option value="Gaming">Gaming</ion-select-option>
-              <ion-select-option value="Music">Music</ion-select-option>
+              <ion-select-option value="Outdoors">
+                Outdoors
+              </ion-select-option>
+              <ion-select-option value="Cooking">
+                Cooking
+              </ion-select-option>
+              <ion-select-option value="Gaming">
+                Gaming
+              </ion-select-option>
+              <ion-select-option value="Music">
+                Music
+              </ion-select-option>
             </ion-select>
           </ion-item>
           <div class="action-button ion-padding">

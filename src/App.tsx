@@ -20,6 +20,7 @@ import AboutPage from "./pages/about/AboutPage";
 import FollowedCommunities from "./pages/Communities/followedCommunities/FollowedCommunities";
 import AllClassesPage from "./pages/classes/allClasses/AllClassesPage";
 import UserPage from "./components/userPage/UserPage";
+import CommunityCategoryPage from "./pages/Communities/communityCategory/communityCategoryPage";
 /* Theme variables */
 //import "./theme/variables.css";
 
@@ -47,6 +48,10 @@ const App: React.FC = () => {
                   exact
                 />
                 <Route
+                  path="/page/CommunityCategories/:communityCategory"
+                  component={CommunityCategoryPage}
+                />
+                <Route
                   path="/page/FollowedCommunities"
                   component={FollowedCommunities}
                   exact
@@ -60,18 +65,9 @@ const App: React.FC = () => {
                   component={CreatePostPage}
                   exact
                 />
-                <Route 
-                 path="/page/Classes"
-                 component={AllClassesPage}
-                 exact />
-                <Route 
-                 path="/page/UsersPage" 
-                 component={UsersPage} 
-                 exact />
-                <Route 
-                 path="/page/user/:userName" 
-                 component={UserPage} 
-                 exact />
+                <Route path="/page/Classes" component={AllClassesPage} exact />
+                <Route path="/page/UsersPage" component={UsersPage} exact />
+                <Route path="/page/User/:userName" component={UserPage} />
                 <Route
                   path="/page/CreateCommunity"
                   component={CreateCommunityPage}

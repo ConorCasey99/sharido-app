@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 
 import {
   getDocs,
-  deleteDoc,
-  doc,
   query,
   collection,
   where,
@@ -32,15 +30,12 @@ const UserPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  
-  console.log(userParam)
-return (
+  return (
     <div id="communityCards" className="communitiesPage">
       {userProfile.map((Profile) => {
   return (
     <ion-card class="postcard" key={Profile.id}>
       <img key={Profile.id} src={Profile?.userPicture} alt="ion"></img>
-
       <ion-card-header>
         <ion-card-title>{Profile.userName}</ion-card-title>
       </ion-card-header>
