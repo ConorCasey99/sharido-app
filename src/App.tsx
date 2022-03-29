@@ -50,6 +50,7 @@ const App: React.FC = () => {
                 <Route
                   path="/page/CommunityCategories/:communityCategory"
                   component={CommunityCategoryPage}
+                  exact={true}
                 />
                 <Route
                   path="/page/FollowedCommunities"

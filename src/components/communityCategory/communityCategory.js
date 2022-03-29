@@ -13,6 +13,7 @@ import {
 
 import { db } from "../../firebase";
 import { useAuthentication } from "../../contexts/authentication/AuthenticationContext";
+import { IonRefresher } from "@ionic/react";
 export var Community_Name;
 
 const CommunityCategory = () => {
@@ -22,7 +23,7 @@ const CommunityCategory = () => {
   let communityParam = useParams().communityCategory;
 
   useEffect(() => {
-    const queryCommunites = async () => {
+      const queryCommunites = async () => {
       const communityQuery = query(
         communitiesCollectionRef,
         where("communityCategory", "==", communityParam)
@@ -36,7 +37,6 @@ const CommunityCategory = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  console.log(communityParam);
   const deleteCommunity = async (id, admin) => {
     if (admin !== currentUser.email) {
       deleteAlert();
