@@ -55,6 +55,7 @@ const CreatePostMenu = () => {
       postPicture: pictureUrl,
       postDocument: fileUrl,
       comments: [],
+      postId: postsCollectionRef.id
     });
     //uploadImageAsync();
     //handleUpload();
