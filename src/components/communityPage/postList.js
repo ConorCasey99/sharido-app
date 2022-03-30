@@ -43,7 +43,7 @@ const PostList = () => {
       {postList.map((post) => {
         return (
           <ion-card class="postcard" key={post.id}>
-            <Link to={`/page/CommunityPage/${post.id}`}>
+            <Link to={`/page/Post/${post.id}`}>
               <img key={post.id} src={post?.postPicture} alt="ion"></img>
             </Link>
             <ion-card-header>
@@ -59,27 +59,21 @@ const PostList = () => {
             <ion-footer>
               <ion-row>
                 <ion-col center text-center>
-                  <button>
-                    <ion-icon name="thumbs-up"></ion-icon>
-                    <div>
-                      Community Members: {post?.communityMembers?.length}
-                    </div>
-                  </button>
                   <button
                     onClick={() => {
                       deletePost(post.id, post.admin);
                     }}
                   >
                     {" "}
-                    Delete Community
+                    Delete Post
                   </button>
                   <button
                     onClick={() => {
-                      <Link to={`/page/CommunityPage/${post.id}`}></Link>;
+                      <Link to={`/page/Post/${post.id}`}></Link>;
                     }}
                   >
                     {" "}
-                    Update Community
+                    Update Post
                   </button>
                 </ion-col>
                 <ion-col center text-center></ion-col>
