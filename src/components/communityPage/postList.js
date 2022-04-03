@@ -11,7 +11,7 @@ import {
 } from "firebase/firestore";
 import { db } from "../../firebase"
 import { useParams } from "react-router";
-
+import styles from './postList.module.scss'
 const PostList = () => {
   const [postList, setPostsList] = useState([]);
   const postsCollectionRef = collection(db, "posts");
@@ -42,9 +42,12 @@ const PostList = () => {
     <div id="communityCards" className="communitiesPage">
       {postList.map((post) => {
         return (
+           <ion-grid>
+            <ion-row>
+              <ion-col class="ion-align-self-center" size-md="6" push-md="3">
           <ion-card class="postcard" key={post.id}>
             <Link to={`/page/Post/${post.id}`}>
-              <img key={post.id} src={post?.postPicture} alt="ion"></img>
+              <img key={post.id} src={post?.postPicture} alt="ion" className={styles.postPic}></img>
             </Link>
             <ion-card-header>
               <ion-card-title>{post.postTitle}</ion-card-title>
@@ -80,7 +83,11 @@ const PostList = () => {
               </ion-row>
             </ion-footer>
           </ion-card>
+               </ion-col>
+            </ion-row>
+          </ion-grid>
         );
+        
       })}
     </div>
   );

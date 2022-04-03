@@ -1,0 +1,15 @@
+ ion-card{
+    display: flex;
+    flex-direction: column;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  .postPic{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 120%;
+  height: 50vh;
+  text-align: center;
+  }
