@@ -1,0 +1,31 @@
+.communityImage{
+    border-radius: 2em;
+    height: 41vh;
+}
+
+.createCommunitySection{
+    height:74vh;
+    width: 100%;
+    max-width: 500px;
+    background: white;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    position: fixed;
+    margin:auto;
+    padding-bottom: 21vh;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+}
+
+.createCommunityHeader{
+    margin-left: 10vh;
+}
+
+.createCommunityInput{
+    width:60vh;
+}
+
+.uploadButton{
+    width: 20vh;
+}

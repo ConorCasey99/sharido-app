@@ -19,7 +19,7 @@ import {
 
 import { useHistory, useParams } from "react-router";
 import { db } from "../../firebase";
-import { collection, addDoc, Timestamp } from "firebase/firestore";
+import { collection, addDoc, Timestamp, doc } from "firebase/firestore";
 import { useAuthentication } from "../../contexts/authentication/AuthenticationContext";
 
 import {
@@ -55,7 +55,6 @@ const CreatePostMenu = () => {
       postPicture: pictureUrl,
       postDocument: fileUrl,
       comments: [],
-      postId: postsCollectionRef.id
     });
     //uploadImageAsync();
     //handleUpload();

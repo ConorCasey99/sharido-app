@@ -7,7 +7,9 @@ import {
   collection,
   where,
   deleteDoc,
-  doc
+  doc,
+  snapshot, 
+  onSnapshot
 } from "firebase/firestore";
 
 import { db } from "../../firebase";
@@ -16,29 +18,41 @@ import {IonIcon, IonCardTitle, IonContent, IonItem, IonText } from "@ionic/react
 import { podiumOutline, folder, create, trash } from "ionicons/icons";
 import styles from "./postPageComponent.module.scss"
 import { useAuthentication } from "../../contexts/authentication/AuthenticationContext";
+import "firebase/firestore";
+import firebase from "../../firebase";
 
 const PostPageComponent = () => {
-  const postsCollectionRef = collection(db, "posts");
-  let postIdParam = useParams().id;
-  const [post, setPost] = useState([]);
+  const { id } = useParams();
   var fileIncluded = true;
   const { currentUser } = useAuthentication();
+  const [post, setPost] = useState([]);
+  const postsCollectionRef = collection(db, "posts");
 
-  useEffect(() => {
-    const queryPost = async () => {
-      const postQuery = query(
-        postsCollectionRef,
-        where("postId", "==", postIdParam)
-      );
-      const postsQuerySnap = await getDocs(postQuery);
-      setPost(
-        postsQuerySnap.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-      );
-    };
-    queryPost();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  },  []);
+  
+   useEffect(() => {
+     const queryPosts = async () => {
+       const postsQuery = query(
+         postsCollectionRef,
+         where("communityId", "==", id)
+       );
+       const postsQuerySnap = await doc(postsQuery);
+       setPost(
+         postsQuerySnap.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+       );
+     };
+     queryPosts();
+     // eslint-disable-next-line react-hooks/exhaustive-deps
+   }, []);
 
+  // Get Data
+  function getPost() {
+   db.collection("posts")
+     .doc('Mto9tqWfVGqAYeAsLwli')
+     .get()
+     .then((snapshot) => setPost(snapshot.data()));
+  }
+
+  console.log(post)
   const deletePost = async (id, poster) => {
     if (poster !== currentUser.email) {
       deleteAlert();
@@ -48,19 +62,19 @@ const PostPageComponent = () => {
     }
   };
 
-   async function deleteAlert() {
-     const alert = document.createElement("ion-alert");
-     alert.cssClass = "my-custom-class";
-     alert.header = "Alert";
-     alert.subHeader = "You need to be the poster to delete this";
-     alert.buttons = ["OK"];
+  async function deleteAlert() {
+    const alert = document.createElement("ion-alert");
+    alert.cssClass = "my-custom-class";
+    alert.header = "Alert";
+    alert.subHeader = "You need to be the poster to delete this";
+    alert.buttons = ["OK"];
 
-     document.body.appendChild(alert);
-     await alert.present();
+    document.body.appendChild(alert);
+    await alert.present();
 
-     const { role } = await alert.onDidDismiss();
-     console.log("onDidDismiss resolved with role", role);
-   }
+    const { role } = await alert.onDidDismiss();
+    console.log("onDidDismiss resolved with role", role);
+  }
 
   return (
     <div id="communityCards" className="communitiesPage">

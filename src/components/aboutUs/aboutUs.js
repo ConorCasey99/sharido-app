@@ -62,20 +62,6 @@ const AboutUs = () => {
                         className={styles.appIcon}
                       />
                     </IonCol>
-                    <IonCol size="8">
-                      <IonRow className={styles.appInfo}>
-                        <IonCol size="12">
-                          <IonText color="dark" className={styles.appName}>
-                            <h1>Sharido</h1>
-                          </IonText>
-                          <IonText color="medium">
-                            <h2>About Us</h2>
-                          </IonText>
-                        </IonCol>
-                      </IonRow>
-                      <IonRow className={styles.appStats}>
-                      </IonRow>
-                    </IonCol>
                   </IonRow>
                 </IonCardContent>
               </IonCard>

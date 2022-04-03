@@ -50,8 +50,10 @@ const UsersList = () => {
                 alt="Avatar"
               ></img>
             </Link>
-            <ion-card-header>
-              <ion-card-title>{user.userName}</ion-card-title>
+            <ion-card-header className={styles.userName}>
+              <ion-card-title className={styles.userName}>
+                {user.userName}
+              </ion-card-title>
             </ion-card-header>
             <ion-footer>
               <ion-row>

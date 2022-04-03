@@ -17,6 +17,7 @@ import {
 } from "@ionic/react";
 import { useAuthentication } from "../../../contexts/authentication/AuthenticationContext";
 import { useHistory } from "react-router";
+import styles from "./LoginCard.module.scss"
 
 const LoginCard = () => {
 
@@ -54,7 +55,7 @@ const LoginCard = () => {
 
   return (
     <IonContent class="ion-padding ion-text-center" color="danger">
-      <img src="\assets\images\logoWhiteName.png" class="logo" alt="logo"></img>
+      <img src="\assets\images\logoWhiteName.png" className={styles.loginLogo} alt="logo"></img>
       <div className="registration-section ion-padding">
         <div class="register-card ion-padding">
           <div class="heading ion-padding">

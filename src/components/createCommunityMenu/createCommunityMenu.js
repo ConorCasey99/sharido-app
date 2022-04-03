@@ -21,7 +21,7 @@ import { useHistory } from "react-router";
 import {db} from '../../firebase'
 import {collection, addDoc, Timestamp} from 'firebase/firestore'
 import { useAuthentication } from "../../contexts/authentication/AuthenticationContext";
-
+import styles from "./createCommunityMenu.module.scss";
 
 import {
   useCamera,
@@ -131,93 +131,80 @@ const triggerCamera = useCallback(async () => {
  
 
   return (
-    <IonPage>
-      <IonContent>
-        <div className="registration-section ion-padding">
-          <div class="heading ion-padding">
-            <h1>Create a Community!</h1>
-          </div>
-          <div class="register-card ion-padding">
-            <IonAvatar src={url}></IonAvatar>
-            <div class="form-input">
-              <icon-icon name="md-mail"></icon-icon>
-              <ion-item>
-                <ion-label position="floating">Community Name</ion-label>
-                <ion-input
-                  id="title"
-                  ref={communityTitleRef}
-                  type="text"
-                ></ion-input>
-              </ion-item>
-            </div>
-            <div class="form-input">
-              <icon-icon name="md-eye-off"></icon-icon>
-              <ion-item>
-                <ion-label position="floating">Community Description</ion-label>
-                <ion-input
-                  ref={communityDescriptionRef}
-                  type="description"
-                ></ion-input>
-              </ion-item>
-            </div>
-          </div>
+    <div className={styles.createCommunitySection}>
+      <h1 classname={styles.createCommunityHeader}>Create a Community!</h1>
+      <div class="register-card">
+        <img className={styles.communityImage} src={url} alt={url}></img>
+        <div className={styles.createCommunityInput}  class="form-input">
+          <icon-icon name="md-mail"></icon-icon>
           <ion-item>
-            <ion-label>Community Category</ion-label>
-            <ion-select
-              ref={communityCategoryRef}
-              interface="action-sheet"
-              class="custom-options"
-            >
-              <ion-select-option value="MobileTechnology">
-                Mobile Technology
-              </ion-select-option>
-              <ion-select-option value="Automotive">
-                Automotive
-              </ion-select-option>
-              <ion-select-option value="HealthandFitness">
-                Health and Fitness
-              </ion-select-option>
-              <ion-select-option value="ArtsandCrafts">
-                Arts and Crafts
-              </ion-select-option>
-              <ion-select-option value="TvandFilm">
-                Film and Tv
-              </ion-select-option>
-              <ion-select-option value="Outdoors">
-                Outdoors
-              </ion-select-option>
-              <ion-select-option value="Cooking">
-                Cooking
-              </ion-select-option>
-              <ion-select-option value="Gaming">
-                Gaming
-              </ion-select-option>
-              <ion-select-option value="Music">
-                Music
-              </ion-select-option>
-            </ion-select>
+            <ion-label position="floating">Community Name</ion-label>
+            <ion-input
+              id="title"
+              ref={communityTitleRef}
+              type="text"
+              className={styles.createCommunityInput}
+            ></ion-input>
           </ion-item>
-          <div class="action-button ion-padding">
-            Upload Community Picture<br></br>
-            <input type="file" onChange={handleChange}></input>
-            <ion-button
-              size="large"
-              class="register-button"
-              onClick={handleUpload}
-              disabled={loading}
-            ></ion-button>
-            <ion-button
-              size="large"
-              class="register-button"
-              onClick={handleCreate}
-              disabled={loading}
-            >
-              Create Community
-            </ion-button>
-          </div>
         </div>
-      </IonContent>
-    </IonPage>
+        <div className={styles.createCommunityInput} class="form-input">
+          <icon-icon name="md-eye-off"></icon-icon>
+          <ion-item>
+            <ion-label position="floating">Community Description</ion-label>
+            <ion-input
+              ref={communityDescriptionRef}
+              type="description"
+            ></ion-input>
+          </ion-item>
+        </div>
+      </div>
+      <ion-item>
+        <ion-label>Community Category</ion-label>
+        <ion-select
+          ref={communityCategoryRef}
+          interface="action-sheet"
+          class="custom-options"
+          className={styles.createCommunityInput}
+        >
+          <ion-select-option value="MobileTechnology">
+            Mobile Technology
+          </ion-select-option>
+          <ion-select-option value="Automotive">Automotive</ion-select-option>
+          <ion-select-option value="HealthandFitness">
+            Health and Fitness
+          </ion-select-option>
+          <ion-select-option value="ArtsandCrafts">
+            Arts and Crafts
+          </ion-select-option>
+          <ion-select-option value="TvandFilm">Film and Tv</ion-select-option>
+          <ion-select-option value="Outdoors">Outdoors</ion-select-option>
+          <ion-select-option value="Cooking">Cooking</ion-select-option>
+          <ion-select-option value="Gaming">Gaming</ion-select-option>
+          <ion-select-option value="Music">Music</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <div class="action-button ion-padding">
+        Upload Community Picture<br></br>
+        <input type="file" onChange={handleChange}></input>
+        <ion-button
+          size="large"
+          class="register-button"
+          onClick={handleUpload}
+          disabled={loading}
+          className={styles.uploadButton}
+        >
+          Upload Photo
+        </ion-button>
+        <ion-button
+          size="large"
+          class="register-button"
+          onClick={handleCreate}
+          disabled={loading}
+        >
+          Create Community
+        </ion-button>
+      </div>
+    </div>
   );
 };
 

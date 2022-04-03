@@ -18,7 +18,6 @@ import {
 
 import { getDocs, collection, deleteDoc, doc } from "firebase/firestore";
 import { db } from "../../firebase";
-import "./communitiesList.css";
 import { useAuthentication } from "../../contexts/authentication/AuthenticationContext";
 import styles from "./communitiesList.module.scss"
 export var Community_Name;
@@ -70,12 +69,13 @@ const CommunitiesList = () => {
         return (
           <ion-grid>
             <ion-row>
-              <ion-col>
+              <ion-col class="ion-align-self-center" size-md="6" push-md="3">
                 <ion-card classname={styles.communityCard} key={community.id}>
                   <Link to={`/page/CommunityPage/${community.id}`}>
                     <img
                       key={community.id}
                       src={community?.communityPicture}
+                      className={styles.communityIcon}
                       alt="ion"
                     ></img>
                   </Link>
@@ -122,12 +122,12 @@ const CommunitiesList = () => {
                   </ion-footer>
                 </ion-card>
               </ion-col>
-              
             </ion-row>
           </ion-grid>
         );
       })}
     </div>
+    
   );
 };
 
