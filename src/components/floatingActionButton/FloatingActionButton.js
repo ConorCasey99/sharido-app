@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 import { useLocation, useHistory } from "react-router-dom";
 import "./FloatingActionButton"
-import app from "../../firebase"
+import firebase from "../../firebase";
 import {add} from 'ionicons/icons'
-import { useAuthentication } from "../../contexts/authentication/AuthenticationContext";
+
 const FloatingActionButton = () => {
 const history = useHistory();
-const {currentUser} = useAuthentication
+let user = firebase.auth().currentUser;
 
   function handleOnClick() {
-   // if (app.user.email !== null){
-    history.push("CreateCommunity");
- // } else {
-  //  accountAlert()
-  }
+   if (user != null) {
+     history.push("CreateCommunity");
+   } else {
+     accountAlert();
+   }}
 
  async function accountAlert() {
   const alert = document.createElement("ion-alert");

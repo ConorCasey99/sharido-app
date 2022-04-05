@@ -1,10 +1,11 @@
 import React, {useState, useRef} from 'react';
 import PageHeader from '../../pageHeader/pageHeader';
-import styles from "./RegistrationCard.css";
+import styles from "./Registration.module.scss";
 import { useAuthentication } from '../../../contexts/authentication/AuthenticationContext';
 import { useLocation, useHistory } from "react-router-dom";
 import AlertComponent from '../../alertComponent/alertComponent';
 import app from "../../../firebase"
+import "./RegistrationCard.css";
 
 import {
   IonCard,
@@ -28,7 +29,7 @@ import { db } from "../../../firebase";
 import { storage, uuid } from "../../../firebase";
 
 
-const Registration = () => {
+const RegistrationCard = () => {
 
   const {registerUser} = useAuthentication();
   const [loading, setLoading] = useState(false);
@@ -111,11 +112,16 @@ const Registration = () => {
      };
 
   return (
-    <IonContent>
+    <IonContent class="ion-text-center ion-padding " color="danger">
+      <img
+        src="\assets\images\logoWhiteName.png"
+        className={styles.registrationLogo}
+        alt="logo"
+      ></img>
       <div className="registration-section ion-padding">
         <div class="heading ion-padding">
-          <h1>Sharido</h1>
-          <p>Register Your Account!</p>
+          <h1 class={styles.registerText}>Register</h1>
+          <p class={styles.registerSub}>Welcome to Sharido</p>
         </div>
         <div class="register-card ion-padding">
           <div class="form-input">
@@ -155,12 +161,17 @@ const Registration = () => {
             </ion-item>
           </div>
         </div>
-        Upload Profile Picture<br></br>
-        <input type="file" onChange={handleChange}></input>
+        <p className={styles.uploadText}>Upload Profile Picture</p>
+        <input
+          className={styles.fileUpload}
+          type="file"
+          onChange={handleChange}
+        ></input>
         <div class="action-button ion-padding">
           <ion-button
             size="large"
             class="register-button"
+            className={styles.uploadbutton}
             onClick={handleUploadPicture}
             disabled={loading}
           >
@@ -174,20 +185,11 @@ const Registration = () => {
           >
             Register
           </ion-button>
-          <p>Already have an account?</p>
-          <ion-button
-            class="login-button"
-            size="large"
-            fill="outline"
-            routerLink="/page/Login"
-            routerDirection="forward"
-          >
-            Login
-          </ion-button>
+          <p className={styles.alreadyHaveAccount}>Already have an account?</p>
         </div>
       </div>
     </IonContent>
   );
 };
 
-export default Registration;
+export default RegistrationCard;
