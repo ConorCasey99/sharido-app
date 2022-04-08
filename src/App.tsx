@@ -64,9 +64,8 @@ const App: React.FC = () => {
                 />
 
                 <Route
-                  path="/page/CreatePostPage/:id"
+                  path="/page/CommunityPage/CreatePostPage/:id"
                   component={CreatePostPage}
-                  exact
                 />
                 <Route path="/page/Classes" component={AllClassesPage} exact />
                 <Route path="/page/Post/:id" component={PostPage} />

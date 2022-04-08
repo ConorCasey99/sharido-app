@@ -1,17 +1,22 @@
 import React, { useState } from "react";
 import { useLocation, useHistory, Link } from "react-router-dom";
-import app from "../../firebase";
 import { add } from "ionicons/icons";
-import { useAuthentication } from "../../contexts/authentication/AuthenticationContext";
-import { link } from "fs";
 import { useParams } from "react-router";
+import firebase from "../../firebase";
 
 const AddPostButton = () => {
   const history = useHistory();
   let communityId = useParams().id
+  let user = firebase.auth().currentUser;
+  let idParam = useParams().id;
 
   function handleOnClick() {
-    
+    if (user != null) {
+      history.replace(`CreatePostPage/${idParam}`);
+      window.location.reload(false);
+    } else {
+      accountAlert();
+    }
   }
 
   async function accountAlert() {
@@ -19,7 +24,7 @@ const AddPostButton = () => {
     alert.cssClass = "my-custom-class";
     alert.header = "Alert";
     alert.subHeader = "";
-    alert.message = "Please sign in to create a community";
+    alert.message = "Please sign in to create a post";
     alert.buttons = ["OK"];
 
     document.body.appendChild(alert);
@@ -31,11 +36,9 @@ const AddPostButton = () => {
 
   return (
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-      <Link to={`/page/CreatePostPage/${communityId}`}>
         <ion-fab-button>
           <ion-icon icon={add} onClick={handleOnClick}></ion-icon>
         </ion-fab-button>
-      </Link>
     </ion-fab>
   );
 };

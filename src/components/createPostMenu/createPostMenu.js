@@ -158,7 +158,6 @@ const CreatePostMenu = () => {
               </ion-item>
             </div>
           </div>
-          <ion-item></ion-item>
           <div class="action-button ion-padding">
             Upload Post Picture<br></br>
             <input type="file" onChange={handleChange}></input>
@@ -179,7 +178,7 @@ const CreatePostMenu = () => {
               onClick={handleUploadPicture}
               disabled={loading}
             >
-              Upload Pciture
+              Upload Picture
             </ion-button>
             <ion-button
               size="large"
