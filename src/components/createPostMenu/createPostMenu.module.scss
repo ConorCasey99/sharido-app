@@ -1,0 +1,31 @@
+.postImage{
+    border-radius: 2em;
+    height: 30vh;
+}
+
+.createPostSection{
+    height:74vh;
+    width: 100%;
+    max-width: 500px;
+    background: white;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    position: fixed;
+    margin:auto;
+    padding-bottom: 21vh;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+}
+
+.createPostHeader{
+    margin-left: 30%;
+}
+
+.createPostInput{
+    width:60vh;
+}
+
+.uploadButton{
+    width: 20vh;
+}

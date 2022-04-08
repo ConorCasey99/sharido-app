@@ -21,6 +21,7 @@ import { useHistory, useParams } from "react-router";
 import { db } from "../../firebase";
 import { collection, addDoc, Timestamp, doc } from "firebase/firestore";
 import { useAuthentication } from "../../contexts/authentication/AuthenticationContext";
+import styles from "./createPostMenu.module.scss";
 
 import {
   useCamera,
@@ -41,6 +42,7 @@ const CreatePostMenu = () => {
   const [postsPic, setPostPic] = useState("");
   const [pictureUrl, setPictureUrl] = useState("");
   const [fileUrl, setFileUrl] = useState("");
+  //const [url, setUrl] = useState("");
 
 
   let postIdParam = useParams().id
@@ -130,12 +132,16 @@ const CreatePostMenu = () => {
   return (
     <IonPage>
       <IonContent>
-        <div className="registration-section ion-padding">
-          <div class="heading ion-padding">
+        <div className={styles.createPostSection}>
+          <div class={styles.createPostHeader}>
             <h1>Create a Post!</h1>
           </div>
           <div class="register-card ion-padding">
-            <IonAvatar src={pictureUrl}></IonAvatar>
+            <img
+              className={styles.postImage}
+              src={pictureUrl}
+              alt={pictureUrl}
+            ></img>
             <div class="form-input">
               <icon-icon name="md-mail"></icon-icon>
               <ion-item>
@@ -144,6 +150,7 @@ const CreatePostMenu = () => {
                   id="title"
                   ref={postTitleRef}
                   type="text"
+                  className={styles.createPostInput}
                 ></ion-input>
               </ion-item>
             </div>
@@ -154,6 +161,7 @@ const CreatePostMenu = () => {
                 <ion-input
                   ref={postDescriptionRef}
                   type="description"
+                  className={styles.createPostInput}
                 ></ion-input>
               </ion-item>
             </div>
