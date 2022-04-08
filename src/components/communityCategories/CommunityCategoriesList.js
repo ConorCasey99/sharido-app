@@ -1,20 +1,7 @@
-import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styles from "./CommunityCategoriesList.module.scss"
 
 import {
-  IonCardContent,
-  IonCard,
-  IonCardHeader,
-  IonCardSubtitle,
-  IonCardTitle,
-  IonContent,
-  IonAvatar,
-  IonPage,
-  IonRouterLink,
-  useIonActionSheet,
-  IonButton,
-  IonActionSheet,
   IonImg
 } from "@ionic/react";
 

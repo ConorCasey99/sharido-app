@@ -4,11 +4,6 @@ import {
   IonHeader,
   IonToolbar,
   IonTitle,
-  IonMenuButton,
-  IonGrid,
-  IonCol,
-  IonContent,
-  IonPage
 } from "@ionic/react";
 
 const PageHeader = ({pageTitle}) => {

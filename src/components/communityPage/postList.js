@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 
 import {
   getDocs,
-  deleteDoc,
-  doc,
   query,
   collection,
   where,
@@ -12,6 +10,7 @@ import {
 import { db } from "../../firebase"
 import { useParams } from "react-router";
 import styles from './postList.module.scss'
+
 const PostList = () => {
   const [postList, setPostsList] = useState([]);
   const postsCollectionRef = collection(db, "posts");

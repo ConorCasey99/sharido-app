@@ -4,8 +4,6 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import "firebase/database";
 import "firebase/compat/storage";
-import getAnalytics from "firebase/analytics"
-import { env } from "process";
 import { getFirestore } from "firebase/firestore";
 
 //Firebase configurations

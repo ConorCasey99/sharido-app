@@ -1,32 +1,16 @@
 import React, {useState, useRef} from 'react';
-import PageHeader from '../../pageHeader/pageHeader';
 import styles from "./Registration.module.scss";
 import { useAuthentication } from '../../../contexts/authentication/AuthenticationContext';
-import { useLocation, useHistory } from "react-router-dom";
-import AlertComponent from '../../alertComponent/alertComponent';
-import app from "../../../firebase"
+import { useHistory } from "react-router-dom";
 import "./RegistrationCard.css";
 
 import {
-  IonCard,
-  IonInput,
-  IonPage,
-  IonHeader,
-  IonToolbar,
-  IonTitle,
   IonContent,
-  IonItem,
-  IonCardContent,
-  IonList,
-  IonAlert,
-  alertController
 } from "@ionic/react";
 
-import { EmailAuthCredential, auth } from 'firebase/auth';
-import { toastController } from '@ionic/core';
 import { addDoc, collection } from 'firebase/firestore';
 import { db } from "../../../firebase";
-import { storage, uuid } from "../../../firebase";
+import { storage } from "../../../firebase";
 
 
 const RegistrationCard = () => {

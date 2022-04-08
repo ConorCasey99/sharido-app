@@ -1,17 +1,8 @@
-import * as Realm from "realm-web";
-import React, { useState } from "react";
+import React from "react";
 import CreatePostMenu from "../../../components/createPostMenu/createPostMenu";
 import {
-  IonToolbar,
-  IonTitle,
   IonContent,
-  IonCard,
-  IonHeader,
-  IonCardHeader,
-  IonCardTitle,
-  IonCardSubtitle,
-  IonMenuButton,
-  IonPage,
+  IonPage
 } from "@ionic/react";
 import PageHeader from "../../../components/pageHeader/pageHeader";
 

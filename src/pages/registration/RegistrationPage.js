@@ -2,7 +2,6 @@ import React from "react";
 import { IonPage, IonContent } from "@ionic/react";
 import RegistrationCard from "../../components/authentication/registration/Registration";
 import "./Registration.css";
-import PageHeader from "../../components/pageHeader/pageHeader";
 
 const RegistrationPage = () => {
   return (

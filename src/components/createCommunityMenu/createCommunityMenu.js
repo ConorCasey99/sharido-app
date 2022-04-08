@@ -1,34 +1,11 @@
-import React, {useCallback , useState, useRef } from "react";
-
-import {
-  IonCard,
-  IonInput,
-  IonPage,
-  IonHeader,
-  IonToolbar,
-  IonTitle,
-  IonContent,
-  IonItem,
-  IonCardContent,
-  IonList,
-  IonRouterLink,
-  IonAccordionGroup, 
-  IonLabel,
-  IonAvatar
-} from "@ionic/react";
+import React, { useState, useRef } from "react";
 
 import { useHistory } from "react-router";
 import {db} from '../../firebase'
-import {collection, addDoc, Timestamp} from 'firebase/firestore'
+import {collection, addDoc} from 'firebase/firestore'
 import { useAuthentication } from "../../contexts/authentication/AuthenticationContext";
 import styles from "./createCommunityMenu.module.scss";
-
-import {
-  useCamera,
-  availableFeatures,
-} from "@capacitor-community/camera-react";
-import { storage, uuid } from "../../firebase";
-import firebase from "../../firebase";
+import { storage } from "../../firebase";
 
 const CreateCommunityMenu = ({community}) => {
   const [loading, setLoading] = useState(false);
@@ -38,9 +15,7 @@ const CreateCommunityMenu = ({community}) => {
   const { currentUser } = useAuthentication();
   const communitiesCollectionRef = collection(db, "communities");
   const history = useHistory()
-  //const { photo, getPhoto } = useCamera();
   const [image, setImage] = useState(null);
-  const [communityPic, setCommunityPic] = useState("")
   const [url, setUrl] = useState("");
 
   async function handleCreate(){

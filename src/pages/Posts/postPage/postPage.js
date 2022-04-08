@@ -1,5 +1,4 @@
-import * as Realm from "realm-web";
-import React, { useState } from "react";
+import React from "react";
 import PostPageComponent from "../../../components/postPage/postPageComponent";
 import {
   IonContent,

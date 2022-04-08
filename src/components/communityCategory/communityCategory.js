@@ -15,7 +15,6 @@ import styles from "./communityCategory.module.scss";
 
 import { db } from "../../firebase";
 import { useAuthentication } from "../../contexts/authentication/AuthenticationContext";
-import { IonRefresher } from "@ionic/react";
 export var Community_Name;
 
 const CommunityCategory = () => {

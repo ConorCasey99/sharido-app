@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import { useLocation, useHistory, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { add } from "ionicons/icons";
 import { useParams } from "react-router";
 import firebase from "../../firebase";
 
 const AddPostButton = () => {
   const history = useHistory();
-  let communityId = useParams().id
   let user = firebase.auth().currentUser;
   let idParam = useParams().id;
 

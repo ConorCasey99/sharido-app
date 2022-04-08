@@ -2,30 +2,13 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styles from "./usersList.module.scss";
 
-import {
-  IonCardContent,
-  IonCard,
-  IonCardHeader,
-  IonCardSubtitle,
-  IonCardTitle,
-  IonContent,
-  IonAvatar,
-  IonPage,
-  IonRouterLink,
-  useIonActionSheet,
-  IonButton,
-  IonActionSheet,
-} from "@ionic/react";
-
 import { getDocs, collection} from "firebase/firestore";
 import { db } from "../../firebase";
-import { useAuthentication } from "../../contexts/authentication/AuthenticationContext";
 export var Community_Name;
 
 const UsersList = () => {
   const [usersList, setUsersList] = useState([]);
   const usersCollectionRef = collection(db, "users");
-  const { currentUser } = useAuthentication();
 
   useEffect(() => {
     const getUsers = async () => {

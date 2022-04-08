@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { IonPage, IonAlert, IonButton, IonContent, useIonAlert } from "@ionic/react";
+import { IonAlert} from "@ionic/react";
 
 const AlertComponent = () => {
 

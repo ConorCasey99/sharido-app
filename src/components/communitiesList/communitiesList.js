@@ -1,21 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import {
-  IonCardContent,
-  IonCard,
-  IonCardHeader,
-  IonCardSubtitle,
-  IonCardTitle,
-  IonContent,
-  IonAvatar,
-  IonPage,
-  IonRouterLink,
-  useIonActionSheet,
-  IonButton,
-  IonActionSheet
-} from "@ionic/react";
-
 import { getDocs, collection, deleteDoc, doc } from "firebase/firestore";
 import { db } from "../../firebase";
 import { useAuthentication } from "../../contexts/authentication/AuthenticationContext";
@@ -45,8 +30,6 @@ const CommunitiesList = () => {
       await deleteDoc(communityDoc);
     }
   };
-
-  const updateCommunity = async () => {};
 
   async function deleteAlert() {
     const alert = document.createElement("ion-alert");

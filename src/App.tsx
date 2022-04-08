@@ -1,8 +1,7 @@
-import * as Realm from "realm-web";
 import { IonApp, IonRouterOutlet, IonSplitPane } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
-import React, { useState, lazy, Suspense} from "react";
-import { Redirect, Route, RouteComponentProps } from "react-router-dom";
+import React, {lazy, Suspense} from "react";
+import { Redirect, Route } from "react-router-dom";
 import Menu from "./components/Menu";
 
 import CommunitiesPage from "./pages/Communities/CommunitiesPage";

@@ -1,29 +1,23 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 
 import {
-  getDocs,
   query,
   collection,
   where,
   deleteDoc,
   doc,
-  snapshot, 
-  onSnapshot
 } from "firebase/firestore";
 
 import { db } from "../../firebase";
 import { useParams } from "react-router";
-import {IonIcon, IonCardTitle, IonContent, IonItem, IonText } from "@ionic/react";
-import { podiumOutline, folder, create, trash } from "ionicons/icons";
+import {IonItem} from "@ionic/react";
+import { folder, create, trash } from "ionicons/icons";
 import styles from "./postPageComponent.module.scss"
 import { useAuthentication } from "../../contexts/authentication/AuthenticationContext";
 import "firebase/firestore";
-import firebase from "../../firebase";
 
 const PostPageComponent = () => {
   const { id } = useParams();
-  var fileIncluded = true;
   const { currentUser } = useAuthentication();
   const [post, setPost] = useState([]);
   const postsCollectionRef = collection(db, "posts");

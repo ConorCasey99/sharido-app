@@ -1,19 +1,7 @@
 import React ,{useState, useRef} from "react";
-import PageHeader from "../../pageHeader/pageHeader";
 import "./LoginCard.css";
-
 import {
-  IonCard,
-  IonInput,
-  IonPage,
-  IonHeader,
-  IonToolbar,
-  IonTitle,
-  IonContent,
-  IonItem,
-  IonCardContent,
-  IonList,
-  IonRouterLink,
+  IonContent
 } from "@ionic/react";
 import { useAuthentication } from "../../../contexts/authentication/AuthenticationContext";
 import { useHistory } from "react-router";

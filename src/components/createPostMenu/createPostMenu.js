@@ -1,34 +1,16 @@
-import React, { useCallback, useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 
 import {
-  IonCard,
-  IonInput,
   IonPage,
-  IonHeader,
-  IonToolbar,
-  IonTitle,
   IonContent,
-  IonItem,
-  IonCardContent,
-  IonList,
-  IonRouterLink,
-  IonAccordionGroup,
-  IonLabel,
-  IonAvatar,
 } from "@ionic/react";
 
-import { useHistory, useParams } from "react-router";
+import { useParams } from "react-router";
 import { db } from "../../firebase";
-import { collection, addDoc, Timestamp, doc } from "firebase/firestore";
+import { collection, addDoc} from "firebase/firestore";
 import { useAuthentication } from "../../contexts/authentication/AuthenticationContext";
 import styles from "./createPostMenu.module.scss";
-
-import {
-  useCamera,
-  availableFeatures,
-} from "@capacitor-community/camera-react";
-import { storage, uuid } from "../../firebase";
-import firebase from "../../firebase";
+import { storage } from "../../firebase";
 
 const CreatePostMenu = () => {
   const [loading, setLoading] = useState(false);
@@ -36,14 +18,10 @@ const CreatePostMenu = () => {
   const postDescriptionRef = useRef();
   const { currentUser } = useAuthentication();
   const postsCollectionRef = collection(db, "posts");
-  const history = useHistory();
   const [image, setImage] = useState(null);
   const [file, setFile] = useState(null);
-  const [postsPic, setPostPic] = useState("");
   const [pictureUrl, setPictureUrl] = useState("");
   const [fileUrl, setFileUrl] = useState("");
-  //const [url, setUrl] = useState("");
-
 
   let postIdParam = useParams().id
 
@@ -60,7 +38,6 @@ const CreatePostMenu = () => {
     });
     //uploadImageAsync();
     //handleUpload();
-    
   }
 
   const handleChange = (e) => {
@@ -74,7 +51,6 @@ const CreatePostMenu = () => {
       setFile(e.target.files[0]);
     }
   };
-
 
   const handleUploadPicture = () => {
     //image.name(communityTitleRef)

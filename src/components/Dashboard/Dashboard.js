@@ -1,32 +1,14 @@
-import { updateCurrentUser } from "firebase/auth";
-import react from "react";
-import { useAuthentication } from "../../contexts/authentication/AuthenticationContext";
-import { chevronBack, chevronForward, trashOutline } from 'ionicons/icons';
-import styles from "./Dashboard.css";
 
 import {
-  IonButton,
-  IonButtons,
-  IonCardSubtitle,
   IonContent,
-  IonFooter,
-  IonHeader,
-  IonIcon,
-  IonItem,
-  IonLabel,
-  IonList,
   IonPage,
-  IonSearchbar,
-  IonToolbar,
   IonCol,
   IonRow,
   IonGrid,
-  IonCard
 } from "@ionic/react";
 
 const Dashboard = () => {
   
-  const{currentUser} = useAuthentication()
   
     return (
       <IonPage>

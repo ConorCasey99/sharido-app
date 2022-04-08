@@ -6,39 +6,28 @@ import {
   IonItem,
   IonLabel,
   IonList,
-  IonListHeader,
   IonMenu,
   IonMenuToggle,
-  IonNote,
   IonButton,
   IonHeader,
   IonToolbar,
   IonTitle,
 } from "@ionic/react";
-import { useAuthentication } from "../contexts/authentication/AuthenticationContext";
 import { useLocation, useHistory } from "react-router-dom";
 import { auth } from "../../src/firebase";
 import {
-  archiveOutline,
   person,
-  archiveSharp,
   heartOutline,
   heartSharp,
   homeOutline,
   home,
   gitNetwork,
   gitNetworkOutline,
-  trashOutline,
-  trashSharp,
-  warningOutline,
-  warningSharp,
-  exit, 
   book,
   keypad,
   information
 } from "ionicons/icons";
 import './Menu.css';
-import { signOut } from "firebase/auth";
 
 interface AppPage {
   url: string;

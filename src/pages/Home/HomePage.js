@@ -1,18 +1,10 @@
-import * as Realm from "realm-web";
 import React from "react";
-import PageHeader from "../../components/pageHeader/pageHeader";
 import Dashboard from "../../components/Dashboard/Dashboard";
 import {
   IonToolbar,
   IonTitle,
   IonContent,
-  IonCard,
   IonHeader,
-  IonCardHeader,
-  IonCardTitle,
-  IonCardSubtitle,
-  IonCardContent,
-  IonButton,
   IonPage,
 } from "@ionic/react";
 

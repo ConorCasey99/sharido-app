@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLocation, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "./FloatingActionButton"
 import firebase from "../../firebase";
 import {add} from 'ionicons/icons'
