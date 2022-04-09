@@ -110,12 +110,12 @@ const triggerCamera = useCallback(async () => {
       <h1 classname={styles.createCommunityHeader}>Create a Community!</h1>
       <div class="register-card">
         <img className={styles.communityImage} src={url} alt={url}></img>
-        <div className={styles.createCommunityInput}  class="form-input">
+        <div className={styles.createCommunityInput} class="form-input">
           <icon-icon name="md-mail"></icon-icon>
           <ion-item>
             <ion-label position="floating">Community Name</ion-label>
             <ion-input
-              id="title"
+              id="communityTitle"
               ref={communityTitleRef}
               type="text"
               className={styles.createCommunityInput}
@@ -127,6 +127,7 @@ const triggerCamera = useCallback(async () => {
           <ion-item>
             <ion-label position="floating">Community Description</ion-label>
             <ion-input
+              id="communityDescription"
               ref={communityDescriptionRef}
               type="description"
             ></ion-input>

@@ -36,7 +36,10 @@ const App: React.FC = () => {
             <IonSplitPane contentId="main">
               <Menu />
               <IonRouterOutlet id="main">
-                <Route path="/page/Home" component={HomePage} exact />
+                <Route 
+                  path="/page/Home" 
+                  component={HomePage} 
+                  exact />
                 <Route
                   path="/page/Communities"
                   component={CommunitiesPage}
@@ -66,24 +69,41 @@ const App: React.FC = () => {
                   path="/page/CommunityPage/CreatePostPage/:id"
                   component={CreatePostPage}
                 />
-                <Route path="/page/Classes" component={AllClassesPage} exact />
-                <Route path="/page/Post/:id" component={PostPage} />
-                <Route path="/page/UsersPage" component={UsersPage} exact />
-                <Route path="/page/User/:userName" component={UserPage} />
+                <Route 
+                  path="/page/Classes" 
+                  component={AllClassesPage} 
+                  exact />
+                <Route 
+                  path="/page/Post/:id" 
+                  component={PostPage} />
+                <Route 
+                  path="/page/UsersPage" 
+                  component={UsersPage} 
+                  exact />
+                <Route 
+                  path="/page/User/:userName" 
+                  component={UserPage} />
                 <Route
                   path="/page/CreateCommunity"
                   component={CreateCommunityPage}
                   exact
                 />
-
-                <Route path="/page/Login" component={LoginPage} exact />
+                <Route path="/page/Login"
+                  component={LoginPage} 
+                  exact />
                 <Route
                   path="/page/Registration"
                   component={RegistrationPage}
                   exact
                 />
-                <Route path="/page/About" component={AboutPage} exact />
-                <Redirect from="/" to="/page/Home" exact />
+                <Route
+                  path="/page/About" 
+                  component={AboutPage} 
+                  exact />
+                <Redirect 
+                  from="/" 
+                  to="/page/Home" 
+                  exact />
               </IonRouterOutlet>
             </IonSplitPane>
           </AuthenticationProvider>
