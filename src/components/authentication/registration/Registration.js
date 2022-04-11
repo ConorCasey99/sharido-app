@@ -151,20 +151,20 @@ const RegistrationCard = () => {
           type="file"
           onChange={handleChange}
         ></input>
-        <div class="action-button ion-padding">
+        <div class="ion-padding ion-text-center">
           <ion-button
             size="large"
-            class="register-button"
-            className={styles.uploadbutton}
+            class="uploadProfilePicButton"
             onClick={handleUploadPicture}
             disabled={loading}
           >
             Upload Profile Pic
           </ion-button>
+          <br></br>
           <ion-button
             disabled={loading}
             size="large"
-            class="register-button"
+            class="registerButton"
             onClick={handleRegister}
           >
             Register

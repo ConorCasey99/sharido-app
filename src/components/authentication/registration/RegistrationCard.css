@@ -17,9 +17,6 @@
    --background: blue;
 }
 
-.login-button{
-    
-}
 
 .loginText{
     color: black;
@@ -30,4 +27,21 @@
     color:black;
     margin-left: 39%;
 
+}
+
+.registerButton{
+    width: 15em;
+    right: 0;
+    left: 0;
+    position: fixed;
+    margin:auto;
+    margin-top: 7vh;
+}
+
+.uploadProfilePicButton{
+    width: 15em;
+    right: 0;
+    left: 0;
+    position: fixed;
+    margin:auto;
 }

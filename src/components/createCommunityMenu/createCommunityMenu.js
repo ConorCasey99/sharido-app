@@ -107,8 +107,8 @@ const triggerCamera = useCallback(async () => {
 
   return (
     <div className={styles.createCommunitySection}>
-      <h1 classname={styles.createCommunityHeader}>Create a Community!</h1>
-      <div class="register-card">
+      <div>
+        <h1 classname={styles.createCommunityHeader}>Create a Community!</h1>
         <img className={styles.communityImage} src={url} alt={url}></img>
         <div className={styles.createCommunityInput} class="form-input">
           <icon-icon name="md-mail"></icon-icon>
@@ -162,9 +162,9 @@ const triggerCamera = useCallback(async () => {
       <div class="action-button ion-padding">
         Upload Community Picture<br></br>
         <input type="file" onChange={handleChange}></input>
+        <br></br>
         <ion-button
           size="large"
-          class="register-button"
           onClick={handleUpload}
           disabled={loading}
           className={styles.uploadButton}
@@ -173,9 +173,9 @@ const triggerCamera = useCallback(async () => {
         </ion-button>
         <ion-button
           size="large"
-          class="register-button"
           onClick={handleCreate}
           disabled={loading}
+          className={styles.createButton}
         >
           Create Community
         </ion-button>

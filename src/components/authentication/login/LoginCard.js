@@ -43,7 +43,11 @@ const LoginCard = () => {
 
   return (
     <IonContent class="ion-padding ion-text-center" color="danger">
-      <img src="\assets\images\logoWhiteName.png" className={styles.loginLogo} alt="logo"></img>
+      <img
+        src="\assets\images\logoWhiteName.png"
+        className={styles.loginLogo}
+        alt="logo"
+      ></img>
       <div className="registration-section ion-padding">
         <div class="register-card ion-padding">
           <div class="heading ion-padding">
@@ -65,16 +69,20 @@ const LoginCard = () => {
             </ion-item>
           </div>
         </div>
-        <div class="action-button ion-padding">
+        <div class="ion-padding ion-text-center">
           <ion-button
             size="large"
-            class="register-button"
+            class="login-button"
             onClick={handleLogin}
             disabled={loading}
           >
             Login
           </ion-button>
-          <p class="forgotPassword">Forgot your password?</p>
+          <p 
+          class="forgotPassword"
+          className={styles.forgotPass}
+          >Forgot your password?
+          </p>
           <div class="dontHave">Dont have an account?</div>
         </div>
       </div>

@@ -10,15 +10,17 @@
 
 }
 
-.register-button{
-    margin-left: 20%;
-    width: 15em;
+.login-button{
+    margin-left: 37%;
+    width: 15vh;
 }
 
 .forgotPassword{
+    margin-left: 32%;
     color:black;
 }
 
 .dontHave{
     color:black;
+    margin-left: 32%;
 }

@@ -148,6 +148,7 @@ const CreatePostMenu = () => {
             <br></br>
             Upload Documents<br></br>
             <input type="file" onChange={handleChangeFile}></input>
+            <br></br>
             <ion-button
               size="large"
               class="register-button"
@@ -164,6 +165,7 @@ const CreatePostMenu = () => {
             >
               Upload Picture
             </ion-button>
+            <br></br>
             <ion-button
               size="large"
               class="register-button"
