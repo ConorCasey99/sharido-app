@@ -36,8 +36,6 @@ const CreatePostMenu = () => {
       postDocument: fileUrl,
       comments: [],
     });
-    //uploadImageAsync();
-    //handleUpload();
   }
 
   const handleChange = (e) => {
