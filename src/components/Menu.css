@@ -114,3 +114,25 @@ ion-item.selected {
   --color: var(--ion-color-primary);
 } 
 
+.userEmail{
+  margin: auto;
+  display: block;
+  text-align: center;
+}
+
+.loginButton{
+  margin-top: 1em;
+  margin-left: 22%;
+}
+
+.registerButton2{
+   margin-top: 1em;
+}
+
+.userProfilePic{
+  height: 9em;
+  margin: auto;
+  display: block;
+  border-radius: 2em;
+  margin-bottom: 3%;
+}

@@ -20,7 +20,7 @@ const CommunitiesList = () => {
       );
     };
     getCommunities();
-  });
+  }, []);
 
   const deleteCommunity = async (id, admin) => {
     if (admin !== currentUser.email) {

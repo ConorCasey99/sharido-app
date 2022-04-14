@@ -1,4 +1,4 @@
-import { useState  } from "react";
+import { useEffect, useState  } from "react";
 
 import {
   IonContent,
@@ -12,9 +12,10 @@ import {
   IonHeader,
   IonToolbar,
   IonTitle,
+  IonAvatar,
 } from "@ionic/react";
 import { useLocation, useHistory } from "react-router-dom";
-import { auth } from "../../src/firebase";
+import { auth } from "../firebase";
 import {
   person,
   heartOutline,
@@ -28,7 +29,9 @@ import {
   information
 } from "ionicons/icons";
 import './Menu.css';
-
+import firebase from '../firebase'
+import { db } from '../firebase'
+import { getDocs, query, collection, where } from "firebase/firestore";
 interface AppPage {
   url: string;
   iosIcon: string;
@@ -81,14 +84,20 @@ const appPages: AppPage[] = [
   },
 ];
 
+
+
 const Menu: React.FC = () => {
   const location = useLocation();
   const [loading, setLoading] = useState(false);
   const history = useHistory();
+  const user = firebase.auth().currentUser;
+  const email = user?.email;
+  var isLoggedIn = false;
 
+  const [userProfile, setUserProfile] = useState([]);
+  const usersCollectionRef = collection(db, "users");
 
    async function handleLogout() {
-
     try {
        await signOut();
        await presentLoading();
@@ -132,7 +141,6 @@ const Menu: React.FC = () => {
       return auth.signOut();
     }
 
-
   return (
     <IonMenu side="start" contentId="main" type="overlay">
       <IonHeader>
@@ -141,10 +149,17 @@ const Menu: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
+        <img
+          className="userProfilePic"
+          src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fgladstoneentertainment.com%2Fwp-content%2Fuploads%2F2018%2F05%2Favatar-placeholder-450x450.gif&f=1&nofb=1"
+          alt="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fgladstoneentertainment.com%2Fwp-content%2Fuploads%2F2018%2F05%2Favatar-placeholder-450x450.gif&f=1&nofb=1"
+        ></img>
+        <IonLabel className="userEmail">{email}</IonLabel>
         <IonButton
           color="primary"
           routerLink="/page/Login"
           routerDirection="forward"
+          className="loginButton"
         >
           Login
         </IonButton>
@@ -152,6 +167,8 @@ const Menu: React.FC = () => {
           color="primary"
           routerLink="/page/Registration"
           routerDirection="forward"
+          className="registerButton2"
+          disabled={isLoggedIn}
         >
           Registration
         </IonButton>

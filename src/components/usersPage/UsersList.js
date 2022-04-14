@@ -18,7 +18,7 @@ const UsersList = () => {
       );
     };
     getUsers();
-  });
+  }, []);
 
   return (
     <div id="communityCards" className={styles.usersPage}>
