@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
+import { IonPopover, IonButton, IonContent } from "@ionic/react";
+
 import {
   getDocs,
   query,
@@ -41,52 +43,57 @@ const PostList = () => {
     <div id="communityCards" className="communitiesPage">
       {postList.map((post) => {
         return (
-           <ion-grid>
+          <ion-grid>
             <ion-row>
               <ion-col class="ion-align-self-center" size-md="6" push-md="3">
-          <ion-card class="postcard" key={post.id}>
-            <Link to={`/page/Post/${post.id}`}>
-              <img key={post.id} src={post?.postPicture} alt="ion" className={styles.postPic}></img>
-            </Link>
-            <ion-card-header>
-              <ion-card-title>{post.postTitle}</ion-card-title>
-            </ion-card-header>
-            <ion-card-content>{post.postDescription}</ion-card-content>
-            <ion-card-content>
-              <a href={post.postDocument} download>
-                {post.postTitle} Document
-              </a>
-            </ion-card-content>
+                <ion-card class="postcard" key={post.id}>
+                 
+                  <Link to={`/page/Post/${post.id}`}>
+                    <img
+                      key={post.id}
+                      src={post?.postPicture}
+                      alt="ion"
+                      className={styles.postPic}
+                    ></img>
+                  </Link>
+                  <ion-card-header>
+                    <ion-card-title>{post.postTitle}</ion-card-title>
+                  </ion-card-header>
+                  <ion-card-content>{post.postDescription}</ion-card-content>
+                  <ion-card-content>
+                    <a href={post.postDocument} download>
+                      {post.postTitle} Document
+                    </a>
+                  </ion-card-content>
 
-            <ion-footer>
-              <ion-row>
-                <ion-col center text-center>
-                  <button
-                    onClick={() => {
-                      deletePost(post.id, post.admin);
-                    }}
-                  >
-                    {" "}
-                    Delete Post
-                  </button>
-                  <button
-                    onClick={() => {
-                      <Link to={`/page/Post/${post.id}`}></Link>;
-                    }}
-                  >
-                    {" "}
-                    Update Post
-                  </button>
-                </ion-col>
-                <ion-col center text-center></ion-col>
-              </ion-row>
-            </ion-footer>
-          </ion-card>
-               </ion-col>
+                  <ion-footer>
+                    <ion-row>
+                      <ion-col center text-center>
+                        <button
+                          onClick={() => {
+                            deletePost(post.id, post.admin);
+                          }}
+                        >
+                          {" "}
+                          Delete Post
+                        </button>
+                        <button
+                          onClick={() => {
+                            <Link to={`/page/Post/${post.id}`}></Link>;
+                          }}
+                        >
+                          {" "}
+                          Update Post
+                        </button>
+                      </ion-col>
+                      <ion-col center text-center></ion-col>
+                    </ion-row>
+                  </ion-footer>
+                </ion-card>
+              </ion-col>
             </ion-row>
           </ion-grid>
         );
-        
       })}
     </div>
   );

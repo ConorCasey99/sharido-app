@@ -155,24 +155,23 @@ const Menu: React.FC = () => {
           alt="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fgladstoneentertainment.com%2Fwp-content%2Fuploads%2F2018%2F05%2Favatar-placeholder-450x450.gif&f=1&nofb=1"
         ></img>
         <IonLabel className="userEmail">{email}</IonLabel>
-        <IonButton
-          color="primary"
-          routerLink="/page/Login"
-          routerDirection="forward"
-          className="loginButton"
-        >
-          Login
-        </IonButton>
-        <IonButton
-          color="primary"
-          routerLink="/page/Registration"
-          routerDirection="forward"
-          className="registerButton2"
-          disabled={isLoggedIn}
-        >
-          Registration
-        </IonButton>
-
+        <div className="buttonDiv">
+          <IonButton
+            color="primary"
+            routerLink="/page/Login"
+            routerDirection="forward"
+          >
+            Login
+          </IonButton>
+          <IonButton
+            color="primary"
+            routerLink="/page/Registration"
+            routerDirection="forward"
+            disabled={isLoggedIn}
+          >
+            Registration
+          </IonButton>
+        </div>
         <IonList id="inbox-list">
           {appPages.map((appPage, index) => {
             return (
