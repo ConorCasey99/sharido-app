@@ -20,7 +20,7 @@ const Dashboard = () => {
             <Link to={`/page/Communities`}>
               <IonImg
                 className={styles.menuOptionPic}
-                src="https://cdn-icons.flaticon.com/png/512/745/premium/745154.png?token=exp=1650041808~hmac=a23b2ebf6c8ac07b5468af69519adaa4"
+                src="assets\images\group.png"
               ></IonImg>
             </Link>
             <ion-card-header>
@@ -33,7 +33,7 @@ const Dashboard = () => {
             <Link to={`/page/CommunityCategories`}>
               <IonImg
                 className={styles.menuOptionPic}
-                src="https://cdn-icons-png.flaticon.com/512/718/718970.png"
+                src="assets\images\categories.png"
               ></IonImg>
             </Link>
             <ion-card-header>
@@ -48,7 +48,7 @@ const Dashboard = () => {
             <Link to={`/page/UsersPage`}>
               <IonImg
                 className={styles.menuOptionPic}
-                src="https://cdn-icons-png.flaticon.com/512/3791/3791146.png"
+                src="assets\images\users.png"
               ></IonImg>
             </Link>
             <ion-card-header>
@@ -61,7 +61,7 @@ const Dashboard = () => {
             <Link to={`/page/FollowedCommunities`}>
               <IonImg
                 className={styles.menuOptionPic}
-                src="https://cdn-icons.flaticon.com/png/512/210/premium/210545.png?token=exp=1650041996~hmac=7c60ab8df4869047e7f2f679024fe863"
+                src="assets\images\heart.png"
               ></IonImg>
             </Link>
             <ion-card-header>
