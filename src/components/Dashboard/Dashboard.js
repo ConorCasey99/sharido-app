@@ -2,16 +2,12 @@ import { Link } from "react-router-dom";
 import styles from "./Dashboard.module.scss"
 import {
   IonImg,
-  IonContent,
-  IonPage,
-  IonCol,
-  IonRow,
-  IonGrid,
-  IonButton,
-  IonPopover,
 } from "@ionic/react";
 
 const Dashboard = () => {
+
+
+    
   return (
     <ion-grid>
       <ion-row>

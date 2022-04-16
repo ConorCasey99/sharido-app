@@ -34,11 +34,12 @@ const CreatePostMenu = () => {
       poster: currentUser.email,
       postPicture: pictureUrl,
       postDocument: fileUrl,
+      postLikes: [],
       comments: [],
     });
+
   }
 
-  
   const handleChange = (e) => {
     if (e.target.files[0]) {
       setImage(e.target.files[0]);
@@ -54,6 +55,7 @@ const CreatePostMenu = () => {
   const handleUploadPicture = () => {
     //image.name(communityTitleRef)
     const uploadTask = storage.ref(`images/${image.name}`).put(image);
+    presentUploading();
     uploadTask.on(
       "state change",
       (snapshot) => {},
@@ -75,6 +77,7 @@ const CreatePostMenu = () => {
   const handleUploadFile = () => {
     //image.name(communityTitleRef)
     const uploadTask = storage.ref(`files/${file.name}`).put(file);
+    presentUploading();
     uploadTask.on(
       "state change",
       (snapshot) => {},
@@ -97,7 +100,18 @@ const CreatePostMenu = () => {
     const loading = document.createElement("ion-loading");
     loading.cssClass = "my-custom-class";
     loading.message = "Creating Post!";
-    loading.duration = 1400;
+    loading.duration = 3000;
+    document.body.appendChild(loading);
+    await loading.present();
+    const { role, data } = await loading.onDidDismiss();
+    console.log("Loading dismissed!");
+  }
+
+  async function presentUploading() {
+    const loading = document.createElement("ion-loading");
+    loading.cssClass = "my-custom-class";
+    loading.message = "Uploading";
+    loading.duration = 3000;
     document.body.appendChild(loading);
     await loading.present();
     const { role, data } = await loading.onDidDismiss();

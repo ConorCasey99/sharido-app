@@ -99,6 +99,16 @@ const CommunitiesList = () => {
                           {" "}
                           Update Community
                         </button>
+                        <button
+                          onClick={() => {
+                            <Link
+                              to={`/page/CommunityPage/${community.id}`}
+                            ></Link>;
+                          }}
+                        >
+                          {" "}
+                          Follow Community
+                        </button>
                       </ion-col>
                       <ion-col center text-center></ion-col>
                     </ion-row>

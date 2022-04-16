@@ -14,8 +14,11 @@ import {
   IonTitle,
   IonAvatar,
 } from "@ionic/react";
+
 import { useLocation, useHistory } from "react-router-dom";
+
 import { auth } from "../firebase";
+
 import {
   person,
   heartOutline,
@@ -28,9 +31,13 @@ import {
   keypad,
   information
 } from "ionicons/icons";
+
 import './Menu.css';
+
 import firebase from '../firebase'
+
 import { db } from '../firebase'
+
 import { getDocs, query, collection, where } from "firebase/firestore";
 interface AppPage {
   url: string;
@@ -83,8 +90,6 @@ const appPages: AppPage[] = [
     mdIcon: information,
   },
 ];
-
-
 
 const Menu: React.FC = () => {
   const location = useLocation();
