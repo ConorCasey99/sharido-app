@@ -14,14 +14,43 @@ import {
   IonText,
 } from "@ionic/react";
 
+import { getDocs, collection, deleteDoc, doc } from "firebase/firestore";
+import { useAuthentication } from "../../contexts/authentication/AuthenticationContext";
+import { db } from "../../firebase";
+
+
 import {
   bookmarkOutline,
   imageOutline,
+  person,
 } from "ionicons/icons";
 
 const AboutUs = () => {
+    const [communityList, setCommunitiesList] = useState([]);
+    const communitiesCollectionRef = collection(db, "communities");
+    const { currentUser } = useAuthentication();
+    const [usersList, setUsersList] = useState([]);
+    const usersCollectionRef = collection(db, "users");
 
- 
+  useEffect(() => {
+    const getCommunities = async () => {
+      const communities = await getDocs(communitiesCollectionRef);
+      setCommunitiesList(
+        communities.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+      );
+    };
+    getCommunities();
+  }, []);
+
+   
+
+   useEffect(() => {
+     const getUsers = async () => {
+       const users = await getDocs(usersCollectionRef);
+       setUsersList(users.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+     };
+     getUsers();
+   }, []);
 
 
 
@@ -48,13 +77,12 @@ const AboutUs = () => {
         <IonGrid>
           <IonRow className="ion-justify-content-center">
             <IonCol
-              size="12"
-              className="ion-justify-content-center ion-align-items-center ion-text-center"
+              className={styles.imageCard}
             >
               <IonCard className={styles.appHeader}>
                 <IonCardContent>
                   <IonRow>
-                    <IonCol size="4">
+                    <IonCol>
                       <img
                         src="/assets/images/logo.png"
                         alt="avatar"
@@ -67,21 +95,21 @@ const AboutUs = () => {
             </IonCol>
           </IonRow>
           <IonRow>
-            <IonCol size="6">
+            <IonCol>
               <IonCard className={styles.appCard}>
                 <IonCardContent>
-                  <IonIcon icon={imageOutline} />
-                  <IonCardTitle>23</IonCardTitle>
+                  <IonIcon icon={person} />
+                  <IonCardTitle>{usersList.length}</IonCardTitle>
                   <IonCardSubtitle>Users</IonCardSubtitle>
                 </IonCardContent>
               </IonCard>
             </IonCol>
 
-            <IonCol size="6">
+            <IonCol>
               <IonCard className={styles.appCard}>
                 <IonCardContent>
                   <IonIcon icon={bookmarkOutline} />
-                  <IonCardTitle>2</IonCardTitle>
+                  <IonCardTitle>{communityList.length}</IonCardTitle>
                   <IonCardSubtitle>Communities</IonCardSubtitle>
                 </IonCardContent>
               </IonCard>

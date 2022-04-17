@@ -24,10 +24,18 @@
 
 
 .appIcon {
+  height: 30vh;
+  margin: auto;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 51vh;    
+  border-radius: 2em;
+  margin-bottom: 3%;
+  text-align: center;
+
+}
+
+.imageCard{
+  margin: auto;
+  display: block;
 }
 
 .appStats {
