@@ -45,6 +45,9 @@ const CommunitiesList = () => {
     console.log("onDidDismiss resolved with role", role);
   }
 
+  const followCommunity = () => {
+
+  }
  
   return (
     <div id="communityCards" className="communitiesPage">
@@ -101,9 +104,7 @@ const CommunitiesList = () => {
                         </button>
                         <button
                           onClick={() => {
-                            <Link
-                              to={`/page/CommunityPage/${community.id}`}
-                            ></Link>;
+                            followCommunity();
                           }}
                         >
                           {" "}

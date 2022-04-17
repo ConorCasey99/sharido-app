@@ -159,9 +159,9 @@ const triggerCamera = useCallback(async () => {
           <ion-select-option value="Music">Music</ion-select-option>
         </ion-select>
       </ion-item>
-      <div class="action-button ion-padding">
+      <div className={styles.uploadAreaText}>
         Upload Community Picture<br></br>
-        <input type="file" onChange={handleChange}></input>
+        <input className={styles.uploadArea} type="file" onChange={handleChange}></input>
         <br></br>
         <ion-button
           size="large"

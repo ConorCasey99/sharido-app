@@ -17,6 +17,7 @@
     padding-bottom: 21vh;
     border-top-left-radius: 40px;
     border-top-right-radius: 40px;
+        text-align: center;
 }
 
 .createCommunityInput{
@@ -25,4 +26,20 @@
 
 .uploadButton{
     width: 20vh;
+}
+
+.createCommunityHeader{
+    text-align: center;
+    margin: auto;
+
+}
+
+.uploadArea{
+    display: block;
+    margin: auto;
+    padding-left: 8vh;
+}
+
+.uploadTextArea{
+    text-align: center;
 }
