@@ -38,6 +38,10 @@
   display: block;
 }
 
+.aboutText{
+    color: black;
+}
+
 .appStats {
 
     background-color: rgb(245, 245, 245);
@@ -99,4 +103,9 @@
         color: #5893fa;
         margin-top: -0.3rem;
     }
+}
+
+.aboutHeading{
+    text-align: center;
+    color:crimson;
 }

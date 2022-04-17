@@ -5,10 +5,9 @@ import { IonContent, IonPage } from "@ionic/react";
 
 const AboutPage = () => (
   <IonPage>
-    <IonContent>
       <PageHeader pageTitle={"About Us"}></PageHeader>
       <AboutUs></AboutUs>
-    </IonContent>
+
   </IonPage>
 );
 
