@@ -35,7 +35,7 @@ const RegistrationCard = () => {
     }
     try {
       await registerUser(emailRef.current.value, passwordRef.current.value);
-      setUserId(currentUser?.uid)
+      //setUserId(currentUser?.uid)
       addUserDetails(emailRef, usernameRef, userId, pictureUrl);
       history.push("/page/Login");
     } catch {
@@ -49,7 +49,7 @@ const RegistrationCard = () => {
      await addDoc(usersCollectionRef, {
         userEmail: emailRef.current.value,
         userName: usernameRef.current.value,
-        userId: userId,
+        //userId: userId,
         userPicture: pictureUrl,
       });
   }

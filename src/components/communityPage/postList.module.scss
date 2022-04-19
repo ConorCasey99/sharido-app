@@ -16,7 +16,8 @@
 
   .userPicture{
     height: 4em;
-    border-radius: 32px;
+    border-radius: 50%;
+    aspect-ratio: 1;
   }
 
   .userName{

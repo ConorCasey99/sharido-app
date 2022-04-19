@@ -51,7 +51,7 @@ const PostList = () => {
                     <div className={styles.picDiv}>
                       <img
                         src={post?.posterPicture}
-                        alt="ion"
+                        alt="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fclinicforspecialchildren.org%2Fwp-content%2Fuploads%2F2016%2F08%2Favatar-placeholder.gif&f=1&nofb=1"
                         className={styles.userPicture}
                       ></img>
                     </div>
