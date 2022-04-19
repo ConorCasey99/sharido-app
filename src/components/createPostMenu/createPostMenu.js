@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 import {
   IonPage,
@@ -7,7 +7,13 @@ import {
 
 import { useParams } from "react-router";
 import { db } from "../../firebase";
-import { collection, addDoc} from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  getDocs,
+  query,
+  where,
+} from "firebase/firestore";
 import { useAuthentication } from "../../contexts/authentication/AuthenticationContext";
 import styles from "./createPostMenu.module.scss";
 import { storage } from "../../firebase";
@@ -22,8 +28,25 @@ const CreatePostMenu = () => {
   const [file, setFile] = useState(null);
   const [pictureUrl, setPictureUrl] = useState("");
   const [fileUrl, setFileUrl] = useState("");
+  const usersCollectionRef = collection(db, "users");
+  const [user, setUser] = useState([]);
 
   let postIdParam = useParams().id
+
+   useEffect(() => {
+     const queryUsers = async () => {
+       const usersQuery = query(
+         usersCollectionRef,
+         where("userEmail", "==", currentUser?.email)
+       );
+       const usersQuerySnap = await getDocs(usersQuery);
+       setUser(
+         usersQuerySnap?.docs?.map((doc) => ({ ...doc.data(), id: doc.id }))
+       );
+     };
+     queryUsers();
+     // eslint-disable-next-line react-hooks/exhaustive-deps
+   }, []);
 
   async function handleCreate() {
     presentLoading();
@@ -36,8 +59,10 @@ const CreatePostMenu = () => {
       postDocument: fileUrl,
       postLikes: [],
       comments: [],
+      posterName: user[0].userName,
+      posterPicture: user[0].userPicture,
+      posterEmail: user[0].userEmail,
     });
-
   }
 
   const handleChange = (e) => {

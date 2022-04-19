@@ -149,7 +149,7 @@ const Menu: React.FC = () => {
   return (
     <IonMenu side="start" contentId="main" type="overlay">
       <IonHeader>
-        <IonToolbar color="danger">
+        <IonToolbar color="primary">
           <IonTitle>Sharido</IonTitle>
         </IonToolbar>
       </IonHeader>

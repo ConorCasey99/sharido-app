@@ -47,7 +47,20 @@ const PostList = () => {
             <ion-row>
               <ion-col class="ion-align-self-center" size-md="6" push-md="3">
                 <ion-card class="postcard" key={post.id}>
-                 
+                  <ion-card-content className={styles.cardHeader}>
+                    <div className={styles.picDiv}>
+                      <img
+                        src={post?.posterPicture}
+                        alt="ion"
+                        className={styles.userPicture}
+                      ></img>
+                    </div>
+                    <div className={styles.nameDiv}>
+                      <ion-card-content className={styles.userName}>
+                        {post?.posterName}
+                      </ion-card-content>
+                    </div>
+                  </ion-card-content>
                   <Link to={`/page/Post/${post.id}`}>
                     <img
                       key={post.id}
@@ -56,6 +69,7 @@ const PostList = () => {
                       className={styles.postPic}
                     ></img>
                   </Link>
+
                   <ion-card-header>
                     <ion-card-title>{post.postTitle}</ion-card-title>
                   </ion-card-header>

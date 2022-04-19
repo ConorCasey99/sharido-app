@@ -64,11 +64,11 @@ const AboutUs = () => {
      const queryUsers = async () => {
        const usersQuery = query(
          usersCollectionRef,
-         where("userEmail", "==", currentUser.email)
+         where("userEmail", "==", currentUser?.email)
        );
        const usersQuerySnap = await getDocs(usersQuery);
        setUser(
-         usersQuerySnap.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+         usersQuerySnap?.docs?.map((doc) => ({ ...doc.data(), id: doc.id }))
        );
      };
      queryUsers();
@@ -96,16 +96,16 @@ const AboutUs = () => {
             </IonCard>
           </IonCol>
         </IonRow>
- {user.map((user) => {
+ {user?.map((user) => {
         return (
         <IonRow>
           <IonCol>
             <IonCard className={styles.appCard}>
               <IonCardContent>
-                <h1>About who we are</h1>
-                <p className={styles.aboutText}> Thank you {user.userName} for being a member of Sharido!<br></br>
+                <h1 className={styles.aboutHeading}>About Who We Are</h1>
+                <p className={styles.aboutText}> Thank you {user?.userName} for being a member of Sharido!<br></br>
                 We built this platform in order to encourage the spreading of knowledge and skills.
-                This wouldn't be possible without users like you {user.userName} and we wanted to thank you for
+                This wouldn't be possible without users like you {user?.userName} and we wanted to thank you for
                 beleiving in us enough to join and contribute to this social platform.</p>
               </IonCardContent>
             </IonCard>

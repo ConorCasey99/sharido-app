@@ -96,7 +96,7 @@ const RegistrationCard = () => {
      };
 
   return (
-    <IonContent class="ion-text-center ion-padding " color="danger">
+    <IonContent class="ion-text-center ion-padding " color="primary">
       <img
         src="\assets\images\logoWhiteName.png"
         className={styles.registrationLogo}

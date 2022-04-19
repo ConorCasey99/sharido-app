@@ -13,3 +13,27 @@
   height: 50vh;
   text-align: center;
   }
+
+  .userPicture{
+    height: 4em;
+    border-radius: 32px;
+  }
+
+  .userName{
+    padding-left: 10em;
+  }
+
+  .nameDiv{
+          display: inline-block;
+          width: 5em;     
+          height: 3em;     
+          float: inline-start;
+          color: black;
+  }
+
+  .picDiv{
+          display: inline-block;
+          width:4em;
+          height:4em;
+          float:inline-start;
+  }

@@ -42,7 +42,7 @@ const LoginCard = () => {
   }
 
   return (
-    <IonContent class="ion-padding ion-text-center" color="danger">
+    <IonContent class="ion-padding ion-text-center" color="primary">
       <img
         src="\assets\images\logoWhiteName.png"
         className={styles.loginLogo}

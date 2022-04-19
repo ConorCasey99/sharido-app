@@ -8,11 +8,11 @@ import {
 
 const PageHeader = ({pageTitle}) => {
   return (
-        <IonHeader collapse="fade" translucent={true}>
-          <IonToolbar>
-            <IonTitle>{pageTitle}</IonTitle>
-          </IonToolbar>
-        </IonHeader> 
+    <IonHeader collapse="fade" translucent={true}>
+      <IonToolbar color="primary">
+        <IonTitle>{pageTitle}</IonTitle>
+      </IonToolbar>
+    </IonHeader>
   );
 };
 

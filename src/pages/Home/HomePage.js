@@ -11,7 +11,7 @@ import {
 const HomePage = () => (
   <IonPage>
     <IonHeader collapse="fade" translucent={true}>
-      <IonToolbar>
+      <IonToolbar color="primary">
         <IonTitle>Home</IonTitle>
       </IonToolbar>
     </IonHeader>

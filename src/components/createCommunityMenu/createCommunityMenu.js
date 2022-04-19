@@ -142,26 +142,43 @@ const triggerCamera = useCallback(async () => {
           class="custom-options"
           className={styles.createCommunityInput}
         >
-          <ion-select-option value="MobileTechnology">
-            Mobile Technology
-          </ion-select-option>
-          <ion-select-option value="Automotive">Automotive</ion-select-option>
-          <ion-select-option value="HealthandFitness">
-            Health and Fitness
-          </ion-select-option>
+          <ion-select-option value="Agriculture">Agriculture</ion-select-option>
+          <ion-select-option value="Animals">Animals</ion-select-option>
           <ion-select-option value="ArtsandCrafts">
             Arts and Crafts
           </ion-select-option>
-          <ion-select-option value="TvandFilm">Film and Tv</ion-select-option>
-          <ion-select-option value="Outdoors">Outdoors</ion-select-option>
+          <ion-select-option value="Automotive">Automotive</ion-select-option>
+          <ion-select-option value="Carpentry">Carpentry</ion-select-option>
           <ion-select-option value="Cooking">Cooking</ion-select-option>
+          <ion-select-option value="Computing">Computing</ion-select-option>
+          <ion-select-option value="TvandFilm">Film and Tv</ion-select-option>
+          <ion-select-option value="Fashion">Fashion</ion-select-option>
+          <ion-select-option value="Finance">Finance</ion-select-option>
           <ion-select-option value="Gaming">Gaming</ion-select-option>
+          <ion-select-option value="HealthandFitness">
+            Health and Fitness
+          </ion-select-option>
+          <ion-select-option value="Outdoors">Outdoors</ion-select-option>
+          <ion-select-option value="Literature">Literature</ion-select-option>
+          <ion-select-option value="Metal Working">
+            Metal Working
+          </ion-select-option>
+          <ion-select-option value="MobileTechnology">
+            Mobile Technology
+          </ion-select-option>
           <ion-select-option value="Music">Music</ion-select-option>
+          <ion-select-option value="Travel">Travel</ion-select-option>
+
+          <ion-select-option value="Sports">Sports</ion-select-option>
         </ion-select>
       </ion-item>
       <div className={styles.uploadAreaText}>
         Upload Community Picture<br></br>
-        <input className={styles.uploadArea} type="file" onChange={handleChange}></input>
+        <input
+          className={styles.uploadArea}
+          type="file"
+          onChange={handleChange}
+        ></input>
         <br></br>
         <ion-button
           size="large"
