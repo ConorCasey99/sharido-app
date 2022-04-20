@@ -3,8 +3,15 @@ display: block;
   margin-left: auto;
   margin-right: auto;
   width: 40%;
+  max-width: 13em;
   padding-top: 1vh;
+  aspect-ratio: 1;
 }
 
 .userCard{
+  text-align: center;
+}
+
+.userName{
+  text-align: center;
 }

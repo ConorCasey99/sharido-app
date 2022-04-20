@@ -1,0 +1,48 @@
+.userPicture{
+    height: 11em;
+    width: 11em;
+    display: block;
+    margin: auto;
+    border-radius: 300px;
+}
+
+.userCard{
+
+}
+
+.userName{
+    text-align: center;
+    display: block;
+    margin: auto;
+}
+
+ ion-card{
+    display: flex;
+    flex-direction: column;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  .postPic{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 120%;
+  height: 50vh;
+  text-align: center;
+  }
+
+  .nameDiv{
+          display: inline-block;
+          width: 5em;     
+          height: 3em;     
+          float: inline-start;
+          color: black;
+  }
+
+  .picDiv{
+          display: inline-block;
+          width:4em;
+          height:4em;
+          float:inline-start;
+  }

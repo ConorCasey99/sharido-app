@@ -24,13 +24,16 @@ const UsersList = () => {
     <div id="communityCards" className={styles.usersPage}>
       {usersList.map((user) => {
         return (
+            <ion-grid>
+            <ion-row>
+              <ion-col class="ion-align-self-center" size-md="5" push-md="3">
           <ion-card className={styles.userCard} key={user.userName}>
             <Link to={`/page/User/${user.userName}`}>
               <img
                 className={styles.userIcon}
                 key={user.userName}
                 src={user?.userPicture}
-                alt="Avatar"
+                alt="User Profile Pic"
               ></img>
             </Link>
             <ion-card-header className={styles.userName}>
@@ -50,6 +53,9 @@ const UsersList = () => {
               </ion-row>
             </ion-footer>
           </ion-card>
+          </ion-col>
+          </ion-row>
+          </ion-grid>
         );
       })}
     </div>
