@@ -54,28 +54,32 @@ const UserPage = () => {
   console.log(postsList)
 
   return (
-    <div>
       <div id="communityCards" className="communitiesPage">
         {userProfile.map((Profile) => {
           return (
-            <ion-card className={styles.userCard} key={Profile.id}>
-              <img
-                className={styles.userPicture}
-                key={Profile.id}
-                src={Profile?.userPicture}
-                alt="ion"
-              ></img>
-              <ion-card-header>
-                <ion-card-title className={styles.userName}>
-                  {Profile.userName}
-                </ion-card-title>
-              </ion-card-header>
-              <ion-footer></ion-footer>
-            </ion-card>
+            <ion-grid>
+              <ion-row>
+                <ion-col class="ion-align-self-center" size-md="8" push-md="2">
+                  <ion-card className={styles.userCard} key={Profile.id}>
+                    <img
+                      className={styles.userPicture}
+                      key={Profile.id}
+                      src={Profile?.userPicture}
+                      alt="ion"
+                    ></img>
+                    <div className={styles.userName}>
+                      <ion-card-header className={styles.userName}>
+                        <ion-card-title className={styles.userName}>
+                          {Profile.userName}
+                        </ion-card-title>
+                      </ion-card-header>
+                    </div>
+                  </ion-card>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
           );
         })}
-      </div>
-      <div>
         {postsList.map((post) => {
           return (
             <ion-grid>
@@ -123,7 +127,6 @@ const UserPage = () => {
           );
         })}
       </div>
-    </div>
   );
 };
 
