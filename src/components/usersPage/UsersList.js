@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import styles from "./usersList.module.scss";
 
 import { getDocs, collection} from "firebase/firestore";
@@ -9,6 +9,7 @@ export var Community_Name;
 const UsersList = () => {
   const [usersList, setUsersList] = useState([]);
   const usersCollectionRef = collection(db, "users");
+  const history = useHistory();
 
   useEffect(() => {
     const getUsers = async () => {
@@ -20,41 +21,45 @@ const UsersList = () => {
     getUsers();
   }, []);
 
+  const openUserPage = (userName) => {
+    history.replace(`/page/Users/${userName}`);
+  }
+
   return (
     <div id="communityCards" className={styles.usersPage}>
       {usersList.map((user) => {
         return (
-            <ion-grid>
+          <ion-grid>
             <ion-row>
               <ion-col class="ion-align-self-center" size-md="5" push-md="3">
-          <ion-card className={styles.userCard} key={user.userName}>
-            <Link to={`/page/User/${user.userName}`}>
-              <img
-                className={styles.userIcon}
-                key={user.userName}
-                src={user?.userPicture}
-                alt="User Profile Pic"
-              ></img>
-            </Link>
-            <ion-card-header className={styles.userName}>
-              <ion-card-title className={styles.userName}>
-                {user.userName}
-              </ion-card-title>
-            </ion-card-header>
-            <ion-footer>
-              <ion-row>
-                <ion-col center text-center>
-                  <button>
-                    <ion-icon name="thumbs-up"></ion-icon>
-                    <div>Users Posts: {user?.posts?.length}</div>
-                  </button>
-                </ion-col>
-                <ion-col center text-center></ion-col>
-              </ion-row>
-            </ion-footer>
-          </ion-card>
-          </ion-col>
-          </ion-row>
+                <ion-card className={styles.userCard} key={user.userName}>
+                  <a href={`/page/Users/${user.userName}`}>
+                    <img
+                      key={user.userName}
+                      className={styles.userIcon}
+                      src={user?.userPicture}
+                      alt="User Profile Pic"
+                    ></img>
+                  </a>
+                  <ion-card-header className={styles.userName}>
+                    <ion-card-title className={styles.userName}>
+                      {user.userName}
+                    </ion-card-title>
+                  </ion-card-header>
+                  <ion-footer>
+                    <ion-row>
+                      <ion-col center text-center>
+                        <button>
+                          <ion-icon name="thumbs-up"></ion-icon>
+                          <div>Users Posts: {user?.posts?.length}</div>
+                        </button>
+                      </ion-col>
+                      <ion-col center text-center></ion-col>
+                    </ion-row>
+                  </ion-footer>
+                </ion-card>
+              </ion-col>
+            </ion-row>
           </ion-grid>
         );
       })}

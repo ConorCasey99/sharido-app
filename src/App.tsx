@@ -81,7 +81,7 @@ const App: React.FC = () => {
                   component={UsersPage} 
                   exact />
                 <Route 
-                  path="/page/User/:userName" 
+                  path="/page/Users/:userName" 
                   component={UserPage} />
                 <Route
                   path="/page/CreateCommunity"
