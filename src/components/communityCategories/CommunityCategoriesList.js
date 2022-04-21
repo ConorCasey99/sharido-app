@@ -153,6 +153,176 @@ return (
         </ion-card>
       </ion-col>
     </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <Link to={`/page/CommunityCategories/TvandFilm`}>
+            <IonImg
+              className={styles.communityCategoryPic}
+              src="assets\images\filmandtv.png"
+            ></IonImg>
+          </Link>
+          <ion-card-header>
+            <ion-card-title>Film and Tv</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            Find communities devoted to Film and Tv!
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <Link to={`/page/CommunityCategories/Animals`}>
+            <IonImg
+              className={styles.communityCategoryPic}
+              src="assets\images\Animals.png"
+            ></IonImg>
+          </Link>
+          <ion-card-header>
+            <ion-card-title>Animals</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            Find communities devoted to Animals!
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <Link to={`/page/CommunityCategories/Travel`}>
+            <IonImg
+              className={styles.communityCategoryPic}
+              src="assets\images\TravelCategory.png"
+            ></IonImg>
+          </Link>
+          <ion-card-header>
+            <ion-card-title>Travel</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            Find communities devoted to Travel!
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <Link to={`/page/CommunityCategories/Literature`}>
+            <IonImg
+              className={styles.communityCategoryPic}
+              src="assets\images\Literature.png"
+            ></IonImg>
+          </Link>
+          <ion-card-header>
+            <ion-card-title>Literature</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            Find communities devoted to Literature!
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <Link to={`/page/CommunityCategories/Fashion`}>
+            <IonImg
+              className={styles.communityCategoryPic}
+              src="assets\images\FashionCategory.png"
+            ></IonImg>
+          </Link>
+          <ion-card-header>
+            <ion-card-title>Fashion</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            Find communities devoted to Fashion!
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <Link to={`/page/CommunityCategories/Agriculture`}>
+            <IonImg
+              className={styles.communityCategoryPic}
+              src="assets\images\AgricultureCategory.png"
+            ></IonImg>
+          </Link>
+          <ion-card-header>
+            <ion-card-title>Agriculture</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            Find communities devoted to Agriculture!
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <Link to={`/page/CommunityCategories/Carpentry`}>
+            <IonImg
+              className={styles.communityCategoryPic}
+              src="assets\images\CarpentryCategory.png"
+            ></IonImg>
+          </Link>
+          <ion-card-header>
+            <ion-card-title>Carpentry</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            Find communities devoted to Carpentry!
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <Link to={`/page/CommunityCategories/MetalWorking`}>
+            <IonImg
+              className={styles.communityCategoryPic}
+              src="assets\images\MetalWorkingCategory.png"
+            ></IonImg>
+          </Link>
+          <ion-card-header>
+            <ion-card-title>Metal Working</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            Find communities devoted to Metal Working!
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <Link to={`/page/CommunityCategories/Computing`}>
+            <IonImg
+              className={styles.communityCategoryPic}
+              src="assets\images\ComputingCategory.png"
+            ></IonImg>
+          </Link>
+          <ion-card-header>
+            <ion-card-title>Computing</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            Find communities devoted to Computing!
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <Link to={`/page/CommunityCategories/Sports`}>
+            <IonImg
+              className={styles.communityCategoryPic}
+              src="assets\images\SportsCategory.png"
+            ></IonImg>
+          </Link>
+          <ion-card-header>
+            <ion-card-title>Sports</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            Find communities devoted to Sports!
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
   </ion-grid>
 );
 };

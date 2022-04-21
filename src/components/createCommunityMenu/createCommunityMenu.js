@@ -160,7 +160,7 @@ const triggerCamera = useCallback(async () => {
           </ion-select-option>
           <ion-select-option value="Outdoors">Outdoors</ion-select-option>
           <ion-select-option value="Literature">Literature</ion-select-option>
-          <ion-select-option value="Metal Working">
+          <ion-select-option value="MetalWorking">
             Metal Working
           </ion-select-option>
           <ion-select-option value="MobileTechnology">
