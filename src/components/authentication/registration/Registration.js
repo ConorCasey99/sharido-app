@@ -1,7 +1,7 @@
 import React, {useState, useRef} from 'react';
 import styles from "./Registration.module.scss";
 import { useAuthentication } from '../../../contexts/authentication/AuthenticationContext';
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import "./RegistrationCard.css";
 
 import {
@@ -145,7 +145,7 @@ const RegistrationCard = () => {
             </ion-item>
           </div>
         </div>
-        <p className={styles.uploadText}>Upload Profile Picture</p>
+        <p className={styles.uploadText}>Select Profile Picture</p>
         <input
           className={styles.fileUpload}
           type="file"
@@ -169,8 +169,10 @@ const RegistrationCard = () => {
           >
             Register
           </ion-button>
-          <p className={styles.alreadyHaveAccount}>Already have an account?</p>
         </div>
+        <Link to="login">
+          <p className={styles.alreadyHaveAccount}>Already have an account?</p>
+        </Link>
       </div>
     </IonContent>
   );

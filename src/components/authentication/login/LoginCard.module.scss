@@ -7,6 +7,18 @@
 }
 
 .loginButton{
-    margin-left: 20%;
     width: 15em;
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.forgotPass{
+  text-align: center;
+  color: black;
+}
+
+.dontHaveAccount{
+  text-align: center;
+  color: black;
 }

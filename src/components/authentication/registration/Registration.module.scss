@@ -32,33 +32,37 @@
 .registerText{
   color: black;
   display: block;
-  margin-left: 37%;
   margin-right: auto;
+  text-align: center;
 }
 
 .registerSub{
   color: black;
   display: block;
-  margin-left: 36%;
   margin-right: auto;
+  text-align: center;
 }
 
 .loginButton{
   color: blue;
-  margin-left: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .alreadyHaveAccount{
   color: black;
   display: block;
-  margin-left: 30%;
-  margin-right: auto;}
+  margin-right: auto;
+  margin-top: 5%;
+  text-align: center;
+}
 
 .uploadText{
   color: black;
   display: block;
-  margin-left: 33%;
   margin-right: auto;
+  text-align: center;
 }
 
 .fileUpload{
@@ -69,11 +73,15 @@
 }
 
 .registrationButton{
-  margin-left: 20%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
     width: 15em;
 }
 
 .uploadbutton{
-  margin-left: 20%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
     width: 15em;
 }

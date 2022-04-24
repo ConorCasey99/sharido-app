@@ -20,21 +20,21 @@
 
 .loginText{
     color: black;
-    margin-left: 40%;
+    text-align: center;
 }
 
 .welcomeText{
     color:black;
-    margin-left: 39%;
-
+    text-align: center;
 }
 
 .registerButton{
     width: 15em;
     right: 0;
     left: 0;
-    position: fixed;
-    margin:auto;
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
     margin-top: 7vh;
 }
 

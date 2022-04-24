@@ -1,26 +1,26 @@
 
 .loginText{
     color: black;
-    margin-left: 40%;
-}
+text-align: center;}
 
 .welcomeText{
     color:black;
-    margin-left: 39%;
+    text-align: center;
 
 }
 
 .login-button{
-    margin-left: 37%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     width: 15vh;
 }
 
 .forgotPassword{
-    margin-left: 32%;
+    text-align: center;
     color:black;
 }
 
 .dontHave{
     color:black;
-    margin-left: 32%;
-}
+    text-align: center;}

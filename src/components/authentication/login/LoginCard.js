@@ -83,7 +83,7 @@ const LoginCard = () => {
           className={styles.forgotPass}
           >Forgot your password?
           </p>
-          <div class="dontHave">Dont have an account?</div>
+          <div className={styles.dontHaveAccount}>Dont have an account?</div>
         </div>
       </div>
     </IonContent>
