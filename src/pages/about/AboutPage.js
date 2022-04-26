@@ -7,7 +7,6 @@ const AboutPage = () => (
   <IonPage>
       <PageHeader pageTitle={"About Us"}></PageHeader>
       <AboutUs></AboutUs>
-
   </IonPage>
 );
 

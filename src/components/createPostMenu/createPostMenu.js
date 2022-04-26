@@ -31,22 +31,22 @@ const CreatePostMenu = () => {
   const usersCollectionRef = collection(db, "users");
   const [user, setUser] = useState([]);
 
-  let postIdParam = useParams().id
+  let postIdParam = useParams().id;
 
-   useEffect(() => {
-     const queryUsers = async () => {
-       const usersQuery = query(
-         usersCollectionRef,
-         where("userEmail", "==", currentUser?.email)
-       );
-       const usersQuerySnap = await getDocs(usersQuery);
-       setUser(
-         usersQuerySnap?.docs?.map((doc) => ({ ...doc.data(), id: doc.id }))
-       );
-     };
-     queryUsers();
-     // eslint-disable-next-line react-hooks/exhaustive-deps
-   }, []);
+  useEffect(() => {
+    const queryUsers = async () => {
+      const usersQuery = query(
+        usersCollectionRef,
+        where("userEmail", "==", currentUser?.email)
+      );
+      const usersQuerySnap = await getDocs(usersQuery);
+      setUser(
+        usersQuerySnap?.docs?.map((doc) => ({ ...doc.data(), id: doc.id }))
+      );
+    };
+    queryUsers();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   async function handleCreate() {
     presentLoading();
@@ -77,10 +77,11 @@ const CreatePostMenu = () => {
     }
   };
 
+  //https://www.youtube.com/watch?v=8r1Pb6Ja90o
   const handleUploadPicture = () => {
     //image.name(communityTitleRef)
     const uploadTask = storage.ref(`images/${image.name}`).put(image);
-    presentUploading();
+    presentPictureUploading();
     uploadTask.on(
       "state change",
       (snapshot) => {},
@@ -99,6 +100,7 @@ const CreatePostMenu = () => {
     );
   };
 
+  //https://www.youtube.com/watch?v=8r1Pb6Ja90o
   const handleUploadFile = () => {
     //image.name(communityTitleRef)
     const uploadTask = storage.ref(`files/${file.name}`).put(file);
@@ -136,6 +138,17 @@ const CreatePostMenu = () => {
     const loading = document.createElement("ion-loading");
     loading.cssClass = "my-custom-class";
     loading.message = "Uploading";
+    loading.duration = 30000;
+    document.body.appendChild(loading);
+    await loading.present();
+    const { role, data } = await loading.onDidDismiss();
+    console.log("Loading dismissed!");
+  }
+
+  async function presentPictureUploading() {
+    const loading = document.createElement("ion-loading");
+    loading.cssClass = "my-custom-class";
+    loading.message = "Uploading Picture";
     loading.duration = 3000;
     document.body.appendChild(loading);
     await loading.present();

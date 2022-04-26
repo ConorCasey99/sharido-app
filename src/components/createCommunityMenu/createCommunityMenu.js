@@ -14,71 +14,79 @@ const CreateCommunityMenu = ({community}) => {
   const communityCategoryRef = useRef();
   const { currentUser } = useAuthentication();
   const communitiesCollectionRef = collection(db, "communities");
-  const history = useHistory()
+  const history = useHistory();
   const [image, setImage] = useState(null);
   const [url, setUrl] = useState("");
 
-  async function handleCreate(){
-     presentLoading()
-     await addDoc(communitiesCollectionRef, {
-        communityName: communityTitleRef.current.value, 
-        communityDescription: communityDescriptionRef.current.value, 
-        communityCategory: communityCategoryRef.current.value,
-        communityMembers: [
-          currentUser.email
-        ], 
-        admin: currentUser.email,
-        communityPicture: url ,
-        posts: [
-
-        ]
-      });
-     //uploadImageAsync();
-     //handleUpload();
-     community = communitiesCollectionRef
-     history.push("/page/Communities");
+  async function handleCreate() {
+    presentLoading();
+    await addDoc(communitiesCollectionRef, {
+      communityName: communityTitleRef.current.value,
+      communityDescription: communityDescriptionRef.current.value,
+      communityCategory: communityCategoryRef.current.value,
+      communityMembers: [currentUser.email],
+      admin: currentUser.email,
+      communityPicture: url,
+      posts: [],
+    });
+    //uploadImageAsync();
+    //handleUpload();
+    community = communitiesCollectionRef;
+    presentLoading();
   }
 
-  const handleChange = e => {
-    if (e.target.files[0]){
+  const handleChange = (e) => {
+    if (e.target.files[0]) {
       setImage(e.target.files[0]);
     }
   };
 
+  //https://www.youtube.com/watch?v=8r1Pb6Ja90o
   const handleUpload = () => {
     //image.name(communityTitleRef)
     const uploadTask = storage.ref(`images/${image.name}`).put(image);
     uploadTask.on(
       "state change",
-      snapshot => {},
-      error =>{
-        console.log(error)
+      (snapshot) => {},
+      (error) => {
+        console.log(error);
       },
       () => {
         storage
-        .ref("images")
-        .child(image.name)
-        .getDownloadURL()
-        .then(url => {
-          setUrl(url);
-        })
+          .ref("images")
+          .child(image.name)
+          .getDownloadURL()
+          .then((url) => {
+            setUrl(url);
+          });
       }
-    )
+    );
+    presentLoadingImageUpload();
   };
-  
 
-  function loadUsers(){
-    
-  }
+  function loadUsers() {}
 
-  console.log("image: ", image)
+  console.log("image: ", image);
 
   async function presentLoading() {
     const loading = document.createElement("ion-loading");
 
     loading.cssClass = "my-custom-class";
     loading.message = "Creating Community!";
-    loading.duration = 1400;
+    loading.duration = 2000;
+    document.body.appendChild(loading);
+    await loading.present();
+    const { role, data } = await loading.onDidDismiss();
+    console.log("Loading dismissed!");
+    history.push("/page/Communities");
+  }
+
+  async function presentLoadingImageUpload() {
+    const loading = document.createElement("ion-loading");
+
+    loading.cssClass = "my-custom-class";
+    loading.message = "Uploading Image!";
+    loading.duration = 2000;
     document.body.appendChild(loading);
     await loading.present();
     const { role, data } = await loading.onDidDismiss();
@@ -103,7 +111,6 @@ const triggerCamera = useCallback(async () => {
      
   }
 */
- 
 
   return (
     <div className={styles.createCommunitySection}>

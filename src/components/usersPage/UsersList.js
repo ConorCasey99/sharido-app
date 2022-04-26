@@ -46,17 +46,7 @@ const UsersList = () => {
                       {user.userName}
                     </ion-card-title>
                   </ion-card-header>
-                  <ion-footer>
-                    <ion-row>
-                      <ion-col center text-center>
-                        <button>
-                          <ion-icon name="thumbs-up"></ion-icon>
-                          <div>Users Posts: {user?.posts?.length}</div>
-                        </button>
-                      </ion-col>
-                      <ion-col center text-center></ion-col>
-                    </ion-row>
-                  </ion-footer>
+                 
                 </ion-card>
               </ion-col>
             </ion-row>

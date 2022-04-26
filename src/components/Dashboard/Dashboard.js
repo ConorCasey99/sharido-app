@@ -54,14 +54,14 @@ const Dashboard = () => {
         </ion-col>
         <ion-col>
           <ion-card>
-            <Link to={`/page/FollowedCommunities`}>
+            <Link to={`/page/About`}>
               <IonImg
                 className={styles.menuOptionPic}
-                src="assets\images\heart.png"
+                src="assets\images\information.png"
               ></IonImg>
             </Link>
             <ion-card-header>
-              <ion-card-title>Followed</ion-card-title>
+              <ion-card-title>About Us</ion-card-title>
             </ion-card-header>
           </ion-card>
         </ion-col>

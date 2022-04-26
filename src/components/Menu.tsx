@@ -66,22 +66,10 @@ const appPages: AppPage[] = [
     mdIcon: keypad,
   },
   {
-    title: "Followed Communities",
-    url: "/page/FollowedCommunities",
-    iosIcon: heartOutline,
-    mdIcon: heartSharp,
-  },
-  {
     title: "Users",
     url: "/page/UsersPage",
     iosIcon: person,
     mdIcon: person,
-  },
-  {
-    title: "Classes",
-    url: "/page/Classes",
-    iosIcon: book,
-    mdIcon: book,
   },
   {
     title: "About Us",

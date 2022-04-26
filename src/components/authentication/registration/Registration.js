@@ -14,8 +14,7 @@ import { storage } from "../../../firebase";
 
 
 const RegistrationCard = () => {
-
-  const {registerUser} = useAuthentication();
+  const { registerUser } = useAuthentication();
   const [loading, setLoading] = useState(false);
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -27,7 +26,7 @@ const RegistrationCard = () => {
   const [pictureUrl, setPictureUrl] = useState("");
 
   //const [warning, setWarning] = useRef();
-  const history = useHistory()
+  const history = useHistory();
 
   async function handleRegister(e) {
     if (passwordRef.current.value !== checkPasswordRef.current.value) {
@@ -39,19 +38,19 @@ const RegistrationCard = () => {
       addUserDetails(emailRef, usernameRef, userId, pictureUrl);
       history.push("/page/Login");
     } catch {
-     console.log(e)
+      console.log(e);
     }
     setLoading(false);
   }
 
-  async function addUserDetails () {
-      const usersCollectionRef = collection(db, "users");
-     await addDoc(usersCollectionRef, {
-        userEmail: emailRef.current.value,
-        userName: usernameRef.current.value,
-        //userId: userId,
-        userPicture: pictureUrl,
-      });
+  async function addUserDetails() {
+    const usersCollectionRef = collection(db, "users");
+    await addDoc(usersCollectionRef, {
+      userEmail: emailRef.current.value,
+      userName: usernameRef.current.value,
+      //userId: userId,
+      userPicture: pictureUrl,
+    });
   }
 
   async function passwordAlert() {
@@ -69,31 +68,45 @@ const RegistrationCard = () => {
     console.log("onDidDismiss resolved with role", role);
   }
 
-    const handleChange = (e) => {
-      if (e.target.files[0]) {
-        setImage(e.target.files[0]);
-      }
-    };
+  const handleChange = (e) => {
+    if (e.target.files[0]) {
+      setImage(e.target.files[0]);
+    }
+  };
 
-     const handleUploadPicture = () => {
-       const uploadTask = storage.ref(`images/${image.name}`).put(image);
-       uploadTask.on(
-         "state change",
-         (snapshot) => {},
-         (error) => {
-           console.log(error);
-         },
-         () => {
-           storage
-             .ref("images")
-             .child(image.name)
-             .getDownloadURL()
-             .then((url) => {
-               setPictureUrl(url);
-             });
-         }
-       );
-     };
+  //https://www.youtube.com/watch?v=8r1Pb6Ja90o
+  const handleUploadPicture = () => {
+    const uploadTask = storage.ref(`images/${image.name}`).put(image);
+    uploadTask.on(
+      "state change",
+      (snapshot) => {},
+      (error) => {
+        console.log(error);
+      },
+      () => {
+        storage
+          .ref("images")
+          .child(image.name)
+          .getDownloadURL()
+          .then((url) => {
+            setPictureUrl(url);
+          });
+      },
+      presentLoadingImageUpload()
+    );
+  };
+
+  async function presentLoadingImageUpload() {
+    const loading = document.createElement("ion-loading");
+
+    loading.cssClass = "my-custom-class";
+    loading.message = "Uploading Image!";
+    loading.duration = 5000;
+    document.body.appendChild(loading);
+    await loading.present();
+    const { role, data } = await loading.onDidDismiss();
+    console.log("Loading dismissed!");
+  }
 
   return (
     <IonContent class="ion-text-center ion-padding " color="primary">

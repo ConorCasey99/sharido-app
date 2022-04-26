@@ -28,6 +28,7 @@ const CommunitiesList = () => {
     } else {
       const communityDoc = doc(db, "communities", id);
       await deleteDoc(communityDoc);
+       window.location.reload();
     }
   };
 
@@ -91,24 +92,6 @@ const CommunitiesList = () => {
                         >
                           {" "}
                           Delete Community
-                        </button>
-                        <button
-                          onClick={() => {
-                            <Link
-                              to={`/page/CommunityPage/${community.id}`}
-                            ></Link>;
-                          }}
-                        >
-                          {" "}
-                          Update Community
-                        </button>
-                        <button
-                          onClick={() => {
-                            followCommunity();
-                          }}
-                        >
-                          {" "}
-                          Follow Community
                         </button>
                       </ion-col>
                       <ion-col center text-center></ion-col>

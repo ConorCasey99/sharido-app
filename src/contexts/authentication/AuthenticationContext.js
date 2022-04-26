@@ -3,6 +3,9 @@ import { auth } from "../../firebase"
 
 const AuthenticationContext = React.createContext();
 
+//tutorial used for gudience on implementing auth
+//https://www.youtube.com/watch?v=PKwu15ldZ7k
+
 export function useAuthentication() {
     return useContext(AuthenticationContext);
 }
