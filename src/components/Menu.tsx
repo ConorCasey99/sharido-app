@@ -38,7 +38,7 @@ import firebase from '../firebase'
 
 import { db } from '../firebase'
 
-import { getDocs, query, collection, where } from "firebase/firestore";
+import { getDocs, query, collection, where, getDoc, doc } from "firebase/firestore";
 interface AppPage {
   url: string;
   iosIcon: string;
@@ -80,6 +80,7 @@ const appPages: AppPage[] = [
 ];
 
 const Menu: React.FC = () => {
+
   const location = useLocation();
   const [loading, setLoading] = useState(false);
   const history = useHistory();
@@ -88,51 +89,69 @@ const Menu: React.FC = () => {
   var isLoggedIn = false;
 
   const [userProfile, setUserProfile] = useState([]);
+  const [userName, setUserName] = useState([]);
+
   const usersCollectionRef = collection(db, "users");
 
-   async function handleLogout() {
+  async function handleLogout() {
     try {
-       await signOut();
-       await presentLoading();
-       history.push("/page/Login");
-     } catch {
-       signOutAlert();
-     }
-     setLoading(false);
-   }
-
-   async function presentLoading() {
-     const loading = document.createElement("ion-loading");
-
-     loading.cssClass = "my-custom-class";
-     loading.message = "Signing Out";
-     loading.duration = 1000;
-
-     document.body.appendChild(loading);
-     await loading.present();
-
-     const { role, data } = await loading.onDidDismiss();
-     console.log("Loading dismissed!");
-   }
-
-    async function signOutAlert() {
-      const alert = document.createElement("ion-alert");
-      alert.cssClass = "my-custom-class";
-      alert.header = "Alert";
-      alert.subHeader = "";
-      alert.message = "Error Signing Out!";
-      alert.buttons = ["OK"];
-
-      document.body.appendChild(alert);
-      await alert.present();
-
-      const { role } = await alert.onDidDismiss();
-      console.log("onDidDismiss resolved with role", role);
+      await signOut();
+      await presentLoading();
+      history.push("/page/Login");
+    } catch {
+      signOutAlert();
     }
+    setLoading(false);
+  }
 
-    function signOut() {
-      return auth.signOut();
-    }
+  async function presentLoading() {
+    const loading = document.createElement("ion-loading");
+
+    loading.cssClass = "my-custom-class";
+    loading.message = "Signing Out";
+    loading.duration = 1000;
+
+    document.body.appendChild(loading);
+    await loading.present();
+
+    const { role, data } = await loading.onDidDismiss();
+    console.log("Loading dismissed!");
+  }
+
+  async function signOutAlert() {
+    const alert = document.createElement("ion-alert");
+    alert.cssClass = "my-custom-class";
+    alert.header = "Alert";
+    alert.subHeader = "";
+    alert.message = "Error Signing Out!";
+    alert.buttons = ["OK"];
+
+    document.body.appendChild(alert);
+    await alert.present();
+
+    const { role } = await alert.onDidDismiss();
+    console.log("onDidDismiss resolved with role", role);
+  }
+
+  function signOut() {
+    return auth.signOut();
+  }
+
+  useEffect(() => {
+    getUser();
+  }, []);
+
+
+  const usersRef = collection(db, "users");
+  const q = query(usersRef, where("userEmail", "==", email));
+
+  async function getUser() {
+  const querySnapshot = await getDocs(q);
+  querySnapshot.forEach((doc) => {
+    setUserProfile(doc.data().userPicture);
+    setUserName(doc.data().userName);
+  });
+  }
 
   return (
     <IonMenu side="start" contentId="main" type="overlay">
@@ -144,9 +163,10 @@ const Menu: React.FC = () => {
       <IonContent>
         <img
           className="userProfilePic"
-          src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fgladstoneentertainment.com%2Fwp-content%2Fuploads%2F2018%2F05%2Favatar-placeholder-450x450.gif&f=1&nofb=1"
+          src={`${userProfile}`}
           alt="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fgladstoneentertainment.com%2Fwp-content%2Fuploads%2F2018%2F05%2Favatar-placeholder-450x450.gif&f=1&nofb=1"
         ></img>
+        <IonLabel className="userEmail">{userName}</IonLabel>
         <IonLabel className="userEmail">{email}</IonLabel>
         <div className="buttonDiv">
           <IonButton
