@@ -85,13 +85,13 @@ const Menu: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const history = useHistory();
   const user = firebase.auth().currentUser;
-  const email = user?.email;
   var isLoggedIn = false;
 
-  const [userProfile, setUserProfile] = useState([]);
-  const [userName, setUserName] = useState([]);
+  const [userProfile, setUserProfile] = useState("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fgladstoneentertainment.com%2Fwp-content%2Fuploads%2F2018%2F05%2Favatar-placeholder-450x450.gif&f=1&nofb=1");
+  const [userName, setUserName] = useState("");
+  const [email, setEmail] = useState("");
+  const [userEmail, setUserEmail] = useState("");
 
-  const usersCollectionRef = collection(db, "users");
 
   async function handleLogout() {
     try {
@@ -138,8 +138,9 @@ const Menu: React.FC = () => {
   }
 
   useEffect(() => {
+    setEmail(`${user?.email}`)
     getUser();
-  }, []);
+  });
 
 
   const usersRef = collection(db, "users");
@@ -147,11 +148,12 @@ const Menu: React.FC = () => {
 
   async function getUser() {
   const querySnapshot = await getDocs(q);
-  querySnapshot.forEach((doc) => {
-    setUserProfile(doc.data().userPicture);
-    setUserName(doc.data().userName);
+  querySnapshot?.forEach((doc) => {
+    setUserProfile(doc.data()?.userPicture);
+    setUserName(doc.data()?.userName);
+    setUserEmail(doc.data()?.userEmail);
   });
-  }
+}
 
   return (
     <IonMenu side="start" contentId="main" type="overlay">
@@ -167,7 +169,7 @@ const Menu: React.FC = () => {
           alt="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fgladstoneentertainment.com%2Fwp-content%2Fuploads%2F2018%2F05%2Favatar-placeholder-450x450.gif&f=1&nofb=1"
         ></img>
         <IonLabel className="userEmail">{userName}</IonLabel>
-        <IonLabel className="userEmail">{email}</IonLabel>
+        <IonLabel className="userEmail">{userEmail}</IonLabel>
         <div className="buttonDiv">
           <IonButton
             color="primary"
